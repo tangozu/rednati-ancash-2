@@ -112,10 +112,12 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
+    'image-optimizer-state': ImageOptimizerState;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    'image-optimizer-state': ImageOptimizerStateSelect<false> | ImageOptimizerStateSelect<true>;
   };
   locale: null;
   widgets: {
@@ -124,6 +126,7 @@ export interface Config {
   user: User;
   jobs: {
     tasks: {
+      imageOptimizer_regenerateDocument: TaskImageOptimizerRegenerateDocument;
       schedulePublish: TaskSchedulePublish;
       inline: {
         input: unknown;
@@ -292,6 +295,13 @@ export interface Media {
     };
     [k: string]: unknown;
   } | null;
+  imageOptimizer?: {
+    thumbHash?: string | null;
+    originalSize?: number | null;
+    optimizedSize?: number | null;
+    status?: ('complete' | 'error') | null;
+    error?: string | null;
+  };
   folder?: (number | null) | FolderInterface;
   updatedAt: string;
   createdAt: string;
@@ -924,7 +934,7 @@ export interface PayloadJob {
     | {
         executedAt: string;
         completedAt: string;
-        taskSlug: 'inline' | 'schedulePublish';
+        taskSlug: 'inline' | 'imageOptimizer_regenerateDocument' | 'schedulePublish';
         taskID: string;
         input?:
           | {
@@ -957,7 +967,7 @@ export interface PayloadJob {
         id?: string | null;
       }[]
     | null;
-  taskSlug?: ('inline' | 'schedulePublish') | null;
+  taskSlug?: ('inline' | 'imageOptimizer_regenerateDocument' | 'schedulePublish') | null;
   queue?: string | null;
   waitUntil?: string | null;
   processing?: boolean | null;
@@ -1226,6 +1236,15 @@ export interface PostsSelect<T extends boolean = true> {
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
   caption?: T;
+  imageOptimizer?:
+    | T
+    | {
+        thumbHash?: T;
+        originalSize?: T;
+        optimizedSize?: T;
+        status?: T;
+        error?: T;
+      };
   folder?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -1691,6 +1710,24 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "image-optimizer-state".
+ */
+export interface ImageOptimizerState {
+  id: number;
+  collections?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -1737,6 +1774,16 @@ export interface FooterSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "image-optimizer-state_select".
+ */
+export interface ImageOptimizerStateSelect<T extends boolean = true> {
+  collections?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "collections_widget".
  */
 export interface CollectionsWidget {
@@ -1744,6 +1791,20 @@ export interface CollectionsWidget {
     [k: string]: unknown;
   };
   width: 'full';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TaskImageOptimizer_regenerateDocument".
+ */
+export interface TaskImageOptimizerRegenerateDocument {
+  input: {
+    collectionSlug: string;
+    docId: string;
+  };
+  output: {
+    status?: string | null;
+    reason?: string | null;
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
