@@ -45,6 +45,15 @@
   --breakpoint-2xl: 86rem;
   --font-mono: var(--font-geist-mono);
   --font-sans: var(--font-geist-sans);
+
+  --color-bg:#0e0c09;
+  --color-panel:#131009;
+  --color-cream:#ede8df;
+  --color-earth:#c4844a;
+
+  --font-display:'Fraunces', serif;
+  --font-body:'DM Sans', sans-serif;
+  --font-mono:'DM Mono', monospace;
 }
 
 @layer utilities {
@@ -222,3 +231,5 @@ html[data-theme='dark'],
 html[data-theme='light'] {
   opacity: initial;
 }
+
+

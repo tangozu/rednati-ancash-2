@@ -25,7 +25,7 @@
   "dependencies": {
     "@inoo-ch/payload-image-optimizer": "^3.5.3",
     "@payloadcms/admin-bar": "3.84.1",
-    "@payloadcms/db-mongodb": "^3.86.0",
+    "@payloadcms/db-mongodb": "^3.84.1",
     "@payloadcms/db-vercel-postgres": "3.84.1",
     "@payloadcms/live-preview-react": "3.84.1",
     "@payloadcms/next": "3.84.1",
