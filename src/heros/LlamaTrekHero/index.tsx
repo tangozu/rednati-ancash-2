@@ -9,7 +9,16 @@ import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
 
-export const LlamaTrekHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
+export const LlamaTrekHero: React.FC<Page['hero']> = ({
+  links,
+  media,
+  richText,
+  eyebrow,
+  title,
+  metadata,
+  coordinates,
+  location,
+}) => {
   const { setHeaderTheme } = useHeaderTheme()
 
   useEffect(() => {
@@ -36,18 +45,24 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ links, media, richText }
       <div className="relative z-10 flex min-h-screen flex-col justify-end px-6 py-20 sm:px-8 md:px-12 lg:px-16 xl:px-24 2xl:px-32">
         <div className="mb-7 flex flex-wrap items-center gap-3 sm:gap-4">
           <span className="text-[10px] uppercase tracking-[0.38em] text-[#c4844a]">
-            REDNATI Perú
+            {eyebrow}
           </span>
           <span className="h-px w-10 bg-[#c4844a]/60" />
           <span className="text-[10px] uppercase tracking-[0.28em] text-[#ede8df]/70">
-            Ancash · 4,700 msnm
+            {metadata}
           </span>
         </div>
 
         <h1 className="max-w-5xl font-['Fraunces'] text-[clamp(5rem,14vw,11.5rem)] font-black leading-[0.88] tracking-[-0.03em] text-[#ede8df]">
-          LLAMA
-          <br />
-          TREK
+          {title?.includes(' ') ? (
+            <>
+              {title.split(' ').slice(0, 1).join(' ')}
+              <br />
+              {title.split(' ').slice(1).join(' ')}
+            </>
+          ) : (
+            title
+          )}
         </h1>
 
         <div className="mt-8 max-w-xl">
@@ -81,10 +96,10 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ links, media, richText }
 
       <div className="absolute bottom-6 right-6 flex flex-col items-end gap-1.5 text-right sm:bottom-8 sm:right-8 md:bottom-10 md:right-10">
         <span className="text-[9px] uppercase tracking-[0.2em] text-[#ede8df]/20">
-          9°35&apos;S 77°10&apos;W
+          {coordinates}
         </span>
         <span className="text-[9px] uppercase tracking-[0.2em] text-[#ede8df]/20">
-          Ancash · Perú
+          {location}
         </span>
       </div>
     </section>

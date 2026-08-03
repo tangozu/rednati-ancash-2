@@ -178,6 +178,11 @@ export interface Page {
       };
       [k: string]: unknown;
     } | null;
+    eyebrow?: string | null;
+    title?: string | null;
+    metadata?: string | null;
+    coordinates?: string | null;
+    location?: string | null;
     links?:
       | {
           link: {
@@ -1074,6 +1079,11 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         type?: T;
         richText?: T;
+        eyebrow?: T;
+        title?: T;
+        metadata?: T;
+        coordinates?: T;
+        location?: T;
         links?:
           | T
           | {

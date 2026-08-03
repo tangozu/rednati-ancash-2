@@ -57,6 +57,46 @@ export const hero: Field = {
       }),
       label: false,
     },
+    {
+      name: 'eyebrow',
+      type: 'text',
+      defaultValue: 'REDNATI Perú',
+      admin: {
+        condition: (_, { type } = {}) => type === 'llamaTrek',
+      },
+    },
+    {
+      name: 'title',
+      type: 'text',
+      defaultValue: 'LLAMA\nTREK',
+      admin: {
+        condition: (_, { type } = {}) => type === 'llamaTrek',
+      },
+    },
+    {
+      name: 'metadata',
+      type: 'text',
+      defaultValue: 'Ancash · 4,700 msnm',
+      admin: {
+        condition: (_, { type } = {}) => type === 'llamaTrek',
+      },
+    },
+    {
+      name: 'coordinates',
+      type: 'text',
+      defaultValue: "9°35'S 77°10'W",
+      admin: {
+        condition: (_, { type } = {}) => type === 'llamaTrek',
+      },
+    },
+    {
+      name: 'location',
+      type: 'text',
+      defaultValue: 'Ancash · Perú',
+      admin: {
+        condition: (_, { type } = {}) => type === 'llamaTrek',
+      },
+    },
     linkGroup({
       overrides: {
         maxRows: 2,
