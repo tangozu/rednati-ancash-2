@@ -2,7 +2,7 @@ import React from 'react'
 
 import type { Page } from '@/payload-types'
 
-import { LlamaTrekHero } from '@/heros/llamaTrekHero'
+import { LlamaTrekHero } from '@/heros/LlamaTrekHero'
 
 const heroes = {
   llamaTrek: LlamaTrekHero,
