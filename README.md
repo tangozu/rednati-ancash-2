@@ -4,6 +4,8 @@ mover los datos harcodeados a un schema global y crear un script de seeding
 
 actualizar y/o crear los componentes que formaran parte de nuestro diseño
 
+cambiar blob storage a uploadthing
+
 # comentarios de la reunion domingo 7 de agosto 2026
 
 - integrar lo mistico de chavin
