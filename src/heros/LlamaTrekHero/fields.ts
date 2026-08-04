@@ -1,44 +1,20 @@
 import type { Field } from 'payload'
 
-import {
-  FixedToolbarFeature,
-  HeadingFeature,
-  InlineToolbarFeature,
-  lexicalEditor,
-} from '@payloadcms/richtext-lexical'
-
-const heroRichTextEditor = lexicalEditor({
-  features: ({ rootFeatures }) => {
-    return [
-      ...rootFeatures,
-      HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-      FixedToolbarFeature(),
-      InlineToolbarFeature(),
-    ]
-  },
-})
-
 export const llamaTrekHeroFields: Field = {
   name: 'llamaTrekHeroFields',
   type: 'group',
   required: true,
   fields: [
     {
-      name: 'logo',
-      type: 'text',
-      defaultValue: 'REDNATI Perú',
+      name: 'rednatiLogo',
+      type: 'upload',
+      relationTo: 'media',
       required: true,
     },
     {
-      name: 'title',
-      type: 'text',
-      defaultValue: 'LLAMA\nTREK',
-      required: true,
-    },
-    {
-      name: 'richText',
-      type: 'richText',
-      editor: heroRichTextEditor,
+      name: 'llamaTrekLogo',
+      type: 'upload',
+      relationTo: 'media',
       required: true,
     },
     {
@@ -48,10 +24,65 @@ export const llamaTrekHeroFields: Field = {
       required: true,
     },
     {
-      name: 'metadata',
+      name: 'region',
       type: 'text',
-      defaultValue: 'Ancash · 4,700 msnm',
+      defaultValue: 'Ancash',
       required: true,
+    },
+    {
+      name: 'altitude',
+      type: 'text',
+      defaultValue: '4,700 MSNM',
+      required: true,
+    },
+    {
+      name: 'title',
+      type: 'text',
+      defaultValue: 'LLAMATREK',
+      required: true,
+    },
+    {
+      name: 'subtitle',
+      type: 'textarea',
+      defaultValue:
+        'Ruta Ancash "Trazando nuevas rutas, nuevas historias" Una ruta ancestral. Tres días entre los Andes. Olleros a Chavín de Huántar con llamas como aliadas ecológicas.',
+      required: true,
+    },
+    {
+      name: 'emailContact',
+      type: 'group',
+      fields: [
+        {
+          name: 'label',
+          type: 'text',
+          defaultValue: 'Reserva:',
+          required: true,
+        },
+        {
+          name: 'email',
+          type: 'text',
+          defaultValue: 'jorge.martel59@gmail.com',
+          required: true,
+        },
+      ],
+    },
+    {
+      name: 'whatsappContact',
+      type: 'group',
+      fields: [
+        {
+          name: 'label',
+          type: 'text',
+          defaultValue: 'Reserva:',
+          required: true,
+        },
+        {
+          name: 'phone',
+          type: 'text',
+          defaultValue: '+51 958 848 684',
+          required: true,
+        },
+      ],
     },
     {
       name: 'coordinates',

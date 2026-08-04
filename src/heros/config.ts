@@ -1,7 +1,7 @@
 import type { Field } from 'payload'
 
 import { linkGroup } from '@/fields/linkGroup'
-import { llamaTrekHeroFields } from './LlamaTrekHero/fields'
+import { llamaTrekHeroFields } from './llamaTrekHero/fields'
 
 const manifestoDefaultValue = {
   root: {

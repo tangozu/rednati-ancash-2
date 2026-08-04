@@ -6,9 +6,7 @@ import React, { useEffect, useRef } from 'react'
 
 import type { Page } from '@/payload-types'
 
-import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
-import RichText from '@/components/RichText'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
 
 if (typeof window !== 'undefined') {
@@ -117,13 +115,29 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(14,12,9,0.58)_0%,rgba(14,12,9,0.18)_50%,rgba(14,12,9,0.05)_100%)]" />
 
         <div className="relative z-10 flex min-h-screen flex-col justify-end px-6 py-20 sm:px-8 md:px-12 lg:px-16 xl:px-24 2xl:px-32">
-          <div className="mb-7 flex flex-wrap items-center gap-3 sm:gap-4">
-            <span className="text-[10px] uppercase tracking-[0.38em] text-[#c4844a]">
-              {llamaTrekHeroFields?.logo}
-            </span>
+          <div className="mb-7 flex flex-wrap items-center gap-4 sm:gap-5">
+            {llamaTrekHeroFields?.rednatiLogo && typeof llamaTrekHeroFields.rednatiLogo === 'object' && (
+              <div className="relative h-8 w-24">
+                <Media
+                  fill
+                  imgClassName="object-contain object-left"
+                  resource={llamaTrekHeroFields.rednatiLogo}
+                />
+              </div>
+            )}
+            {llamaTrekHeroFields?.llamaTrekLogo &&
+              typeof llamaTrekHeroFields.llamaTrekLogo === 'object' && (
+                <div className="relative h-8 w-24">
+                  <Media
+                    fill
+                    imgClassName="object-contain object-left"
+                    resource={llamaTrekHeroFields.llamaTrekLogo}
+                  />
+                </div>
+              )}
             <span className="h-px w-10 bg-[#c4844a]/60" />
             <span className="text-[10px] uppercase tracking-[0.28em] text-[#ede8df]/70">
-              {llamaTrekHeroFields?.metadata}
+              {llamaTrekHeroFields?.region} · {llamaTrekHeroFields?.altitude}
             </span>
           </div>
 
@@ -140,12 +154,33 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({
           </h1>
 
           <div className="mt-8 max-w-xl">
-            {llamaTrekHeroFields?.richText && (
-              <RichText
-                className="text-base leading-relaxed text-[#ede8df]/75 md:text-lg"
-                data={llamaTrekHeroFields.richText}
-                enableGutter={false}
-              />
+            {llamaTrekHeroFields?.subtitle && (
+              <p className="whitespace-pre-line text-base leading-relaxed text-[#ede8df]/75 md:text-lg">
+                {llamaTrekHeroFields.subtitle}
+              </p>
+            )}
+          </div>
+
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            {llamaTrekHeroFields?.emailContact?.email && (
+              <a
+                href={`mailto:${llamaTrekHeroFields.emailContact.email}`}
+                className="inline-flex items-center gap-2 border border-[#ede8df]/15 px-6 py-3 text-xs uppercase tracking-[0.15em] text-[#ede8df]/80 transition-colors duration-300 hover:border-[#ede8df]/40 hover:text-[#ede8df]"
+              >
+                <span aria-hidden>✉️</span>
+                {llamaTrekHeroFields.emailContact.label} {llamaTrekHeroFields.emailContact.email}
+              </a>
+            )}
+            {llamaTrekHeroFields?.whatsappContact?.phone && (
+              <a
+                href={`https://wa.me/${llamaTrekHeroFields.whatsappContact.phone.replace(/[^\d]/g, '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#c4844a] px-6 py-3 text-xs uppercase tracking-[0.15em] text-[#0e0c09] transition-colors duration-300 hover:bg-[#c4844a]/85"
+              >
+                <span aria-hidden>📱</span>
+                {llamaTrekHeroFields.whatsappContact.label} {llamaTrekHeroFields.whatsappContact.phone}
+              </a>
             )}
           </div>
 
