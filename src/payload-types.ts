@@ -183,6 +183,24 @@ export interface Page {
     metadata?: string | null;
     coordinates?: string | null;
     location?: string | null;
+    manifestoLabel?: string | null;
+    manifesto?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    manifestoAuthor?: string | null;
+    manifestoKeywords?: string | null;
     links?:
       | {
           link: {
@@ -1084,6 +1102,10 @@ export interface PagesSelect<T extends boolean = true> {
         metadata?: T;
         coordinates?: T;
         location?: T;
+        manifestoLabel?: T;
+        manifesto?: T;
+        manifestoAuthor?: T;
+        manifestoKeywords?: T;
         links?:
           | T
           | {

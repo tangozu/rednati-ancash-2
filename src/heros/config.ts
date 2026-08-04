@@ -9,6 +9,78 @@ import {
 
 import { linkGroup } from '@/fields/linkGroup'
 
+const heroRichTextEditor = lexicalEditor({
+  features: ({ rootFeatures }) => {
+    return [
+      ...rootFeatures,
+      HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+      FixedToolbarFeature(),
+      InlineToolbarFeature(),
+    ]
+  },
+})
+
+const manifestoDefaultValue = {
+  root: {
+    type: 'root',
+    children: [
+      {
+        type: 'paragraph',
+        children: [
+          {
+            type: 'text',
+            detail: 0,
+            format: 0,
+            mode: 'normal',
+            style: '',
+            text: '“Hay caminos que no son rutas turísticas.',
+            version: 1,
+          },
+          { type: 'linebreak', version: 1 },
+          {
+            type: 'text',
+            detail: 0,
+            format: 0,
+            mode: 'normal',
+            style: '',
+            text: 'Son memorias vivas. Pasos que generaciones recorrieron',
+            version: 1,
+          },
+          { type: 'linebreak', version: 1 },
+          {
+            type: 'text',
+            detail: 0,
+            format: 0,
+            mode: 'normal',
+            style: '',
+            text: 'antes que nosotros, y que hoy compartimos',
+            version: 1,
+          },
+          { type: 'linebreak', version: 1 },
+          {
+            type: 'text',
+            detail: 0,
+            format: 0,
+            mode: 'normal',
+            style: '',
+            text: 'como acto de resistencia cultural.”',
+            version: 1,
+          },
+        ],
+        direction: 'ltr',
+        format: '',
+        indent: 0,
+        textFormat: 0,
+        version: 1,
+      },
+    ],
+    direction: 'ltr',
+    format: '',
+    indent: 0,
+    version: 1,
+  },
+}
+
 export const hero: Field = {
   name: 'hero',
   type: 'group',
@@ -45,16 +117,7 @@ export const hero: Field = {
     {
       name: 'richText',
       type: 'richText',
-      editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-          ]
-        },
-      }),
+      editor: heroRichTextEditor,
       label: false,
     },
     {
@@ -93,6 +156,39 @@ export const hero: Field = {
       name: 'location',
       type: 'text',
       defaultValue: 'Ancash · Perú',
+      admin: {
+        condition: (_, { type } = {}) => type === 'llamaTrek',
+      },
+    },
+    {
+      name: 'manifestoLabel',
+      type: 'text',
+      defaultValue: '01 — Manifiesto',
+      admin: {
+        condition: (_, { type } = {}) => type === 'llamaTrek',
+      },
+    },
+    {
+      name: 'manifesto',
+      type: 'richText',
+      editor: heroRichTextEditor,
+      defaultValue: manifestoDefaultValue,
+      admin: {
+        condition: (_, { type } = {}) => type === 'llamaTrek',
+      },
+    },
+    {
+      name: 'manifestoAuthor',
+      type: 'text',
+      defaultValue: 'REDNATI Perú',
+      admin: {
+        condition: (_, { type } = {}) => type === 'llamaTrek',
+      },
+    },
+    {
+      name: 'manifestoKeywords',
+      type: 'text',
+      defaultValue: 'Buen Vivir · Turismo Indígena · Regenerativo',
       admin: {
         condition: (_, { type } = {}) => type === 'llamaTrek',
       },
