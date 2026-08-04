@@ -1,6 +1,8 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import React, { useEffect, useRef } from 'react'
 
 import type { Page } from '@/payload-types'
 
@@ -8,6 +10,10 @@ import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 export const LlamaTrekHero: React.FC<Page['hero']> = ({
   links,
@@ -22,17 +28,83 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({
   manifesto,
   manifestoAuthor,
   manifestoKeywords,
+  rutaLabel,
+  rutaImage,
+  rutaTitle,
+  rutaDescription,
+  rutaStats,
 }) => {
   const { setHeaderTheme } = useHeaderTheme()
+  const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setHeaderTheme('dark')
   }, [setHeaderTheme])
 
+  useEffect(() => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    if (reduced) {
+      containerRef.current?.querySelectorAll<HTMLElement>('.reveal, .clip-reveal').forEach((el) => {
+        el.style.opacity = '1'
+      })
+      return
+    }
+
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray<Element>('.reveal').forEach((el) => {
+        gsap.from(el, {
+          y: 55,
+          opacity: 0,
+          duration: 1.3,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 90%',
+            once: true,
+          },
+        })
+      })
+
+      gsap.utils.toArray<Element>('.clip-reveal').forEach((el) => {
+        gsap.from(el, {
+          clipPath: 'inset(0% 0% 100% 0%)',
+          duration: 1.7,
+          ease: 'power4.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            once: true,
+          },
+        })
+      })
+
+      gsap.utils.toArray<Element>('.stagger-parent').forEach((parent) => {
+        gsap.from(Array.from(parent.children), {
+          y: 45,
+          opacity: 0,
+          duration: 1.1,
+          stagger: 0.15,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: parent,
+            start: 'top 85%',
+            once: true,
+          },
+        })
+      })
+    }, containerRef)
+
+    return () => ctx.revert()
+  }, [])
+
   const hasManifesto = Boolean(manifesto || manifestoLabel || manifestoAuthor || manifestoKeywords)
+  const hasRuta = Boolean(
+    rutaTitle || rutaDescription || rutaImage || (rutaStats && rutaStats.length > 0),
+  )
 
   return (
-    <>
+    <div ref={containerRef}>
       <section className="relative min-h-screen overflow-hidden bg-[#0e0c09] text-[#ede8df]">
         {media && typeof media === 'object' && (
           <div className="absolute inset-0">
@@ -121,7 +193,7 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({
         <section className="bg-bg px-6 py-32 md:px-16 md:py-52 xl:px-32">
           <div className="mx-auto max-w-screen-lg">
             {manifestoLabel && (
-              <div className="mb-14">
+              <div className="reveal mb-14">
                 <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-earth">
                   {manifestoLabel}
                 </span>
@@ -129,7 +201,7 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({
             )}
 
             {manifesto && (
-              <blockquote>
+              <blockquote className="reveal">
                 <RichText
                   className="font-display font-light italic leading-[1.08] text-cream [&_p]:text-[clamp(1.9rem,4.5vw,3.8rem)] [&_p]:leading-[1.08]"
                   data={manifesto}
@@ -141,9 +213,9 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({
 
             {(manifestoAuthor || manifestoKeywords) && (
               <>
-                <div className="mt-16 h-px bg-cream/[0.08]" />
+                <div className="reveal mt-16 h-px bg-cream/[0.08]" />
 
-                <div className="mt-8 flex flex-wrap items-center gap-4 md:gap-8">
+                <div className="reveal mt-8 flex flex-wrap items-center gap-4 md:gap-8">
                   {manifestoAuthor && (
                     <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-cream/30">
                       {manifestoAuthor}
@@ -163,6 +235,64 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({
           </div>
         </section>
       )}
-    </>
+
+      {hasRuta && (
+        <section className="overflow-hidden bg-bg py-16 md:py-0">
+          <div className="mx-auto mb-16 max-w-screen-xl px-6 md:mb-0 md:px-16 xl:px-24">
+            {rutaLabel && (
+              <div className="reveal pt-4 md:pt-20">
+                <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-earth">
+                  {rutaLabel}
+                </span>
+              </div>
+            )}
+          </div>
+
+          <div className="grid grid-cols-1 items-stretch md:grid-cols-2">
+            <div className="clip-reveal order-1 aspect-[3/4] overflow-hidden bg-[#131009] md:aspect-auto md:min-h-[700px]">
+              {rutaImage && typeof rutaImage === 'object' && (
+                <Media
+                  fill
+                  imgClassName="h-full w-full object-cover object-center transition-transform duration-[3s] ease-out hover:scale-[1.03]"
+                  resource={rutaImage}
+                />
+              )}
+            </div>
+
+            <div className="order-2 flex flex-col justify-center px-6 py-16 md:px-14 md:py-24 xl:px-20">
+              {rutaTitle && (
+                <h2 className="reveal mb-8 font-display font-bold leading-[1.05] text-cream text-[clamp(2.2rem,4.5vw,4rem)]">
+                  {rutaTitle}
+                </h2>
+              )}
+
+              {rutaDescription && (
+                <RichText
+                  className="reveal font-body text-cream/55 [&_p]:mb-6 [&_p]:text-base [&_p]:leading-relaxed md:[&_p]:text-lg"
+                  data={rutaDescription}
+                  enableGutter={false}
+                  enableProse={false}
+                />
+              )}
+
+              {Array.isArray(rutaStats) && rutaStats.length > 0 && (
+                <div className="stagger-parent mt-8 grid grid-cols-3 gap-6">
+                  {rutaStats.map(({ num, label }, i) => (
+                    <div key={i} className="border-t border-cream/10 pt-6">
+                      <span className="mb-2 block font-display font-bold text-earth text-[clamp(1.4rem,2.5vw,2rem)]">
+                        {num}
+                      </span>
+                      <span className="block font-mono text-[10px] uppercase tracking-[0.22em] text-cream/35">
+                        {label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+    </div>
   )
 }
