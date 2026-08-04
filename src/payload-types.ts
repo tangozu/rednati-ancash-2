@@ -164,30 +164,39 @@ export interface Page {
   hero: {
     type: 'llamaTrek';
     llamaTrekHeroFields?: {
-      logo: string;
-      title: string;
-      richText: {
-        root: {
-          type: string;
-          children: {
-            type: any;
-            version: number;
-            [k: string]: unknown;
-          }[];
-          direction: ('ltr' | 'rtl') | null;
-          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-          indent: number;
-          version: number;
-        };
-        [k: string]: unknown;
-      };
+      rednatiLogo: string | Media;
+      llamaTrekLogo: string | Media;
       media: string | Media;
-      metadata: string;
+      region: string;
+      altitude: string;
+      title: string;
+      subtitle: string;
+      emailContact: {
+        label: string;
+        email: string;
+      };
+      whatsappContact: {
+        label: string;
+        phone: string;
+      };
       coordinates: string;
       location: string;
     };
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+    | ManifiestoBlock
+    | LaRutaBlock
+    | FilosofiaBlock
+    | ExpedicionBlock
+    | GaleriaBlock
+    | ElDestinoBlock
+    | ContactoBlock
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -776,6 +785,130 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ManifiestoBlock".
+ */
+export interface ManifiestoBlock {
+  label: string;
+  quote: string;
+  author: string;
+  concepts: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'manifiesto';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LaRutaBlock".
+ */
+export interface LaRutaBlock {
+  label: string;
+  title: string;
+  media: string | Media;
+  paragraph1: string;
+  paragraph2: string;
+  days: string;
+  nights: string;
+  kilometers: string;
+  people: string;
+  stages: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'laRuta';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FilosofiaBlock".
+ */
+export interface FilosofiaBlock {
+  label: string;
+  title: string;
+  backgroundMedia?: (string | null) | Media;
+  pillars?:
+    | {
+        subtitle: string;
+        paragraph: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'filosofia';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ExpedicionBlock".
+ */
+export interface ExpedicionBlock {
+  label: string;
+  title: string;
+  days?:
+    | {
+        title: string;
+        media: string | Media;
+        altitude: string;
+        duration: string;
+        paragraph: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'expedicion';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GaleriaBlock".
+ */
+export interface GaleriaBlock {
+  label: string;
+  images?:
+    | {
+        media: string | Media;
+        id?: string | null;
+      }[]
+    | null;
+  imagesDriveUrl?: string | null;
+  videosDriveUrl?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'galeria';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ElDestinoBlock".
+ */
+export interface ElDestinoBlock {
+  label: string;
+  title: string;
+  media: string | Media;
+  recognition: string;
+  location: string;
+  altitude: string;
+  paragraph1: string;
+  paragraph2: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'elDestino';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactoBlock".
+ */
+export interface ContactoBlock {
+  preTitle: string;
+  title: string;
+  subtitle: string;
+  backgroundMedia?: (string | null) | Media;
+  guide: string;
+  whatsapp: string;
+  email: string;
+  address: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contacto';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1059,11 +1192,25 @@ export interface PagesSelect<T extends boolean = true> {
         llamaTrekHeroFields?:
           | T
           | {
-              logo?: T;
-              title?: T;
-              richText?: T;
+              rednatiLogo?: T;
+              llamaTrekLogo?: T;
               media?: T;
-              metadata?: T;
+              region?: T;
+              altitude?: T;
+              title?: T;
+              subtitle?: T;
+              emailContact?:
+                | T
+                | {
+                    label?: T;
+                    email?: T;
+                  };
+              whatsappContact?:
+                | T
+                | {
+                    label?: T;
+                    phone?: T;
+                  };
               coordinates?: T;
               location?: T;
             };
@@ -1076,6 +1223,13 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        manifiesto?: T | ManifiestoBlockSelect<T>;
+        laRuta?: T | LaRutaBlockSelect<T>;
+        filosofia?: T | FilosofiaBlockSelect<T>;
+        expedicion?: T | ExpedicionBlockSelect<T>;
+        galeria?: T | GaleriaBlockSelect<T>;
+        elDestino?: T | ElDestinoBlockSelect<T>;
+        contacto?: T | ContactoBlockSelect<T>;
       };
   meta?:
     | T
@@ -1172,6 +1326,123 @@ export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
   enableIntro?: T;
   introContent?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ManifiestoBlock_select".
+ */
+export interface ManifiestoBlockSelect<T extends boolean = true> {
+  label?: T;
+  quote?: T;
+  author?: T;
+  concepts?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LaRutaBlock_select".
+ */
+export interface LaRutaBlockSelect<T extends boolean = true> {
+  label?: T;
+  title?: T;
+  media?: T;
+  paragraph1?: T;
+  paragraph2?: T;
+  days?: T;
+  nights?: T;
+  kilometers?: T;
+  people?: T;
+  stages?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FilosofiaBlock_select".
+ */
+export interface FilosofiaBlockSelect<T extends boolean = true> {
+  label?: T;
+  title?: T;
+  backgroundMedia?: T;
+  pillars?:
+    | T
+    | {
+        subtitle?: T;
+        paragraph?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ExpedicionBlock_select".
+ */
+export interface ExpedicionBlockSelect<T extends boolean = true> {
+  label?: T;
+  title?: T;
+  days?:
+    | T
+    | {
+        title?: T;
+        media?: T;
+        altitude?: T;
+        duration?: T;
+        paragraph?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GaleriaBlock_select".
+ */
+export interface GaleriaBlockSelect<T extends boolean = true> {
+  label?: T;
+  images?:
+    | T
+    | {
+        media?: T;
+        id?: T;
+      };
+  imagesDriveUrl?: T;
+  videosDriveUrl?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ElDestinoBlock_select".
+ */
+export interface ElDestinoBlockSelect<T extends boolean = true> {
+  label?: T;
+  title?: T;
+  media?: T;
+  recognition?: T;
+  location?: T;
+  altitude?: T;
+  paragraph1?: T;
+  paragraph2?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactoBlock_select".
+ */
+export interface ContactoBlockSelect<T extends boolean = true> {
+  preTitle?: T;
+  title?: T;
+  subtitle?: T;
+  backgroundMedia?: T;
+  guide?: T;
+  whatsapp?: T;
+  email?: T;
+  address?: T;
   id?: T;
   blockName?: T;
 }

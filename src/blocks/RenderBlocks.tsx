@@ -5,7 +5,14 @@ import type { Page } from '@/payload-types'
 import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
+import { ContactoBlock } from '@/blocks/Contacto/Component'
+import { ElDestinoBlock } from '@/blocks/ElDestino/Component'
+import { ExpedicionBlock } from '@/blocks/Expedicion/Component'
+import { FilosofiaBlock } from '@/blocks/Filosofia/Component'
 import { FormBlock } from '@/blocks/Form/Component'
+import { GaleriaBlock } from '@/blocks/Galeria/Component'
+import { LaRutaBlock } from '@/blocks/LaRuta/Component'
+import { ManifiestoBlock } from '@/blocks/Manifiesto/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 
 const blockComponents = {
@@ -14,7 +21,24 @@ const blockComponents = {
   cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
+  manifiesto: ManifiestoBlock,
+  laRuta: LaRutaBlock,
+  filosofia: FilosofiaBlock,
+  expedicion: ExpedicionBlock,
+  galeria: GaleriaBlock,
+  elDestino: ElDestinoBlock,
+  contacto: ContactoBlock,
 }
+
+const fullBleedBlockTypes = new Set([
+  'manifiesto',
+  'laRuta',
+  'filosofia',
+  'expedicion',
+  'galeria',
+  'elDestino',
+  'contacto',
+])
 
 export const RenderBlocks: React.FC<{
   blocks: Page['layout'][0][]
@@ -33,6 +57,11 @@ export const RenderBlocks: React.FC<{
             const Block = blockComponents[blockType]
 
             if (Block) {
+              if (fullBleedBlockTypes.has(blockType)) {
+                // @ts-expect-error there may be some mismatch between the expected types here
+                return <Block {...block} key={index} />
+              }
+
               return (
                 <div className="my-16" key={index}>
                   {/* @ts-expect-error there may be some mismatch between the expected types here */}
