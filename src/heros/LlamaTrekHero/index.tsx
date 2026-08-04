@@ -16,23 +16,18 @@ if (typeof window !== 'undefined') {
 }
 
 export const LlamaTrekHero: React.FC<Page['hero']> = ({
-  links,
-  media,
-  richText,
-  eyebrow,
-  title,
-  metadata,
-  coordinates,
-  location,
-  manifestoLabel,
-  manifesto,
-  manifestoAuthor,
-  manifestoKeywords,
-  rutaLabel,
-  rutaImage,
-  rutaTitle,
-  rutaDescription,
-  rutaStats,
+  //links,
+  //media,
+  llamaTrekHeroFields,
+  // manifestoLabel,
+  // manifesto,
+  // manifestoAuthor,
+  // manifestoKeywords,
+  // rutaLabel,
+  // rutaImage,
+  // rutaTitle,
+  // rutaDescription,
+  // rutaStats,
 }) => {
   const { setHeaderTheme } = useHeaderTheme()
   const containerRef = useRef<HTMLDivElement>(null)
@@ -98,22 +93,22 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({
     return () => ctx.revert()
   }, [])
 
-  const hasManifesto = Boolean(manifesto || manifestoLabel || manifestoAuthor || manifestoKeywords)
-  const hasRuta = Boolean(
-    rutaTitle || rutaDescription || rutaImage || (rutaStats && rutaStats.length > 0),
-  )
+  //const hasManifesto = Boolean(manifesto || manifestoLabel || manifestoAuthor || manifestoKeywords)
+  //const hasRuta = Boolean(
+  //  rutaTitle || rutaDescription || rutaImage || (rutaStats && rutaStats.length > 0),
+  //)
 
   return (
     <div ref={containerRef}>
       <section className="relative min-h-screen overflow-hidden bg-[#0e0c09] text-[#ede8df]">
-        {media && typeof media === 'object' && (
+        {llamaTrekHeroFields?.media && typeof llamaTrekHeroFields.media === 'object' && (
           <div className="absolute inset-0">
             <Media
               fill
               imgClassName="object-cover object-center"
               videoClassName="object-cover object-center h-full w-full"
               priority
-              resource={media}
+              resource={llamaTrekHeroFields.media}
             />
           </div>
         )}
@@ -124,50 +119,35 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({
         <div className="relative z-10 flex min-h-screen flex-col justify-end px-6 py-20 sm:px-8 md:px-12 lg:px-16 xl:px-24 2xl:px-32">
           <div className="mb-7 flex flex-wrap items-center gap-3 sm:gap-4">
             <span className="text-[10px] uppercase tracking-[0.38em] text-[#c4844a]">
-              {eyebrow}
+              {llamaTrekHeroFields?.logo}
             </span>
             <span className="h-px w-10 bg-[#c4844a]/60" />
             <span className="text-[10px] uppercase tracking-[0.28em] text-[#ede8df]/70">
-              {metadata}
+              {llamaTrekHeroFields?.metadata}
             </span>
           </div>
 
           <h1 className="max-w-5xl font-['Fraunces'] text-[clamp(5rem,14vw,11.5rem)] font-black leading-[0.88] tracking-[-0.03em] text-[#ede8df]">
-            {title?.includes(' ') ? (
+            {llamaTrekHeroFields?.title?.includes(' ') ? (
               <>
-                {title.split(' ').slice(0, 1).join(' ')}
+                {llamaTrekHeroFields.title.split(' ').slice(0, 1).join(' ')}
                 <br />
-                {title.split(' ').slice(1).join(' ')}
+                {llamaTrekHeroFields.title.split(' ').slice(1).join(' ')}
               </>
             ) : (
-              title
+              llamaTrekHeroFields?.title
             )}
           </h1>
 
           <div className="mt-8 max-w-xl">
-            {richText && (
+            {llamaTrekHeroFields?.richText && (
               <RichText
                 className="text-base leading-relaxed text-[#ede8df]/75 md:text-lg"
-                data={richText}
+                data={llamaTrekHeroFields.richText}
                 enableGutter={false}
               />
             )}
           </div>
-
-          {Array.isArray(links) && links.length > 0 && (
-            <ul className="mt-8 flex flex-wrap gap-3 sm:gap-4">
-              {links.map(({ link }, i) => {
-                return (
-                  <li key={i}>
-                    <CMSLink
-                      {...link}
-                      className="rounded-full border border-[#ede8df]/20 bg-[#ede8df]/10 px-5 py-3 text-sm font-medium uppercase tracking-[0.24em] text-[#ede8df] transition hover:border-[#c4844a]/60 hover:bg-[#c4844a]/20"
-                    />
-                  </li>
-                )
-              })}
-            </ul>
-          )}
 
           <div className="mt-12 flex items-center gap-3.5">
             <div className="relative h-14 w-px overflow-hidden bg-[#ede8df]/15">
@@ -181,15 +161,15 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({
 
         <div className="absolute bottom-6 right-6 flex flex-col items-end gap-1.5 text-right sm:bottom-8 sm:right-8 md:bottom-10 md:right-10">
           <span className="text-[9px] uppercase tracking-[0.2em] text-[#ede8df]/20">
-            {coordinates}
+            {llamaTrekHeroFields?.coordinates}
           </span>
           <span className="text-[9px] uppercase tracking-[0.2em] text-[#ede8df]/20">
-            {location}
+            {llamaTrekHeroFields?.location}
           </span>
         </div>
       </section>
 
-      {hasManifesto && (
+      {/*hasManifesto && (
         <section className="bg-bg px-6 py-32 md:px-16 md:py-52 xl:px-32">
           <div className="mx-auto max-w-screen-lg">
             {manifestoLabel && (
@@ -234,9 +214,9 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({
             )}
           </div>
         </section>
-      )}
+      )*/}
 
-      {hasRuta && (
+      {/*hasRuta && (
         <section className="overflow-hidden bg-bg py-16 md:py-0">
           <div className="mx-auto mb-16 max-w-screen-xl px-6 md:mb-0 md:px-16 xl:px-24">
             {rutaLabel && (
@@ -292,7 +272,7 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({
             </div>
           </div>
         </section>
-      )}
+      )*/}
     </div>
   )
 }
