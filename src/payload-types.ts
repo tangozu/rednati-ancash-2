@@ -162,7 +162,7 @@ export interface Page {
   id: string;
   title: string;
   hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact' | 'llamaTrek';
+    type: 'llamaTrek';
     richText?: {
       root: {
         type: string;
