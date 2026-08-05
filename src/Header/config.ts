@@ -30,6 +30,22 @@ export const Header: GlobalConfig = {
         },
       },
     },
+    {
+      name: 'whatsappContact',
+      type: 'group',
+      fields: [
+        {
+          name: 'label',
+          type: 'text',
+          defaultValue: 'Reserva:',
+        },
+        {
+          name: 'phone',
+          type: 'text',
+          defaultValue: '+51 958 848 684',
+        },
+      ],
+    },
   ],
   hooks: {
     afterChange: [revalidateHeader],
