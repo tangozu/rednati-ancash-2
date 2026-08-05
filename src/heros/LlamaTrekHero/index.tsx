@@ -99,44 +99,37 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({
   return (
     <div ref={containerRef}>
       <section className="relative min-h-screen overflow-hidden bg-[#0e0c09] text-[#ede8df]">
-        {llamaTrekHeroFields?.media && typeof llamaTrekHeroFields.media === 'object' && (
-          <div className="absolute inset-0">
-            <Media
-              fill
-              imgClassName="object-cover object-center"
-              videoClassName="object-cover object-center h-full w-full"
-              priority
-              resource={llamaTrekHeroFields.media}
-            />
-          </div>
-        )}
+        {llamaTrekHeroFields?.imagenDeFondo &&
+          typeof llamaTrekHeroFields.imagenDeFondo === 'object' && (
+            <div className="absolute inset-0">
+              <Media
+                imgClassName="object-cover"
+                videoClassName="object-cover object-center h-full w-full"
+                priority
+                resource={llamaTrekHeroFields.imagenDeFondo}
+              />
+            </div>
+          )}
 
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,12,9,0.18)_0%,rgba(14,12,9,0.46)_48%,rgba(14,12,9,0.86)_100%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(14,12,9,0.58)_0%,rgba(14,12,9,0.18)_50%,rgba(14,12,9,0.05)_100%)]" />
 
-        <div className="relative z-10 flex min-h-screen flex-col justify-end px-6 py-20 sm:px-8 md:px-12 lg:px-16 xl:px-24 2xl:px-32">
-          <div className="mb-7 flex flex-wrap items-center gap-4 sm:gap-5">
-            {llamaTrekHeroFields?.rednatiLogo && typeof llamaTrekHeroFields.rednatiLogo === 'object' && (
-              <div className="relative h-8 w-24">
-                <Media
-                  fill
-                  imgClassName="object-contain object-left"
-                  resource={llamaTrekHeroFields.rednatiLogo}
-                />
-              </div>
-            )}
+        <div className="relative z-10 flex min-h-screen flex-col justify-start px-6 sm:px-8 md:px-12 lg:px-16 xl:px-24 2xl:px-32">
+          <div className="mb-12 flex flex-wrap items-center gap-4 sm:gap-5">
+            {llamaTrekHeroFields?.rednatiLogo &&
+              typeof llamaTrekHeroFields.rednatiLogo === 'object' && (
+                <div className="relative h-8 w-24">
+                  <Media resource={llamaTrekHeroFields.rednatiLogo} />
+                </div>
+              )}
             {llamaTrekHeroFields?.llamaTrekLogo &&
               typeof llamaTrekHeroFields.llamaTrekLogo === 'object' && (
                 <div className="relative h-8 w-24">
-                  <Media
-                    fill
-                    imgClassName="object-contain object-left"
-                    resource={llamaTrekHeroFields.llamaTrekLogo}
-                  />
+                  <Media resource={llamaTrekHeroFields.llamaTrekLogo} />
                 </div>
               )}
-            <span className="h-px w-10 bg-[#c4844a]/60" />
-            <span className="text-[10px] uppercase tracking-[0.28em] text-[#ede8df]/70">
+            <span className="h-px w-12 my-auto bg-[#c4844a]/60" />
+            <span className="text-[10px] uppercase tracking-[0.28em] text-[#ede8df]">
               {llamaTrekHeroFields?.region} · {llamaTrekHeroFields?.altitude}
             </span>
           </div>
@@ -179,7 +172,8 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({
                 className="inline-flex items-center gap-2 bg-[#c4844a] px-6 py-3 text-xs uppercase tracking-[0.15em] text-[#0e0c09] transition-colors duration-300 hover:bg-[#c4844a]/85"
               >
                 <span aria-hidden>📱</span>
-                {llamaTrekHeroFields.whatsappContact.label} {llamaTrekHeroFields.whatsappContact.phone}
+                {llamaTrekHeroFields.whatsappContact.label}{' '}
+                {llamaTrekHeroFields.whatsappContact.phone}
               </a>
             )}
           </div>

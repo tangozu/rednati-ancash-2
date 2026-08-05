@@ -2,18 +2,13 @@ import type { CollectionConfig } from 'payload'
 
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
-import { Archive } from '../../blocks/ArchiveBlock/config'
-import { CallToAction } from '../../blocks/CallToAction/config'
-import { Content } from '../../blocks/Content/config'
 import { Contacto } from '../../blocks/Contacto/config'
 import { ElDestino } from '../../blocks/ElDestino/config'
 import { Expedicion } from '../../blocks/Expedicion/config'
 import { Filosofia } from '../../blocks/Filosofia/config'
-import { FormBlock } from '../../blocks/Form/config'
 import { Galeria } from '../../blocks/Galeria/config'
 import { LaRuta } from '../../blocks/LaRuta/config'
 import { Manifiesto } from '../../blocks/Manifiesto/config'
-import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { hero } from '@/heros/config'
 import { slugField } from 'payload'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -79,20 +74,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [
-                CallToAction,
-                Content,
-                MediaBlock,
-                Archive,
-                FormBlock,
-                Manifiesto,
-                LaRuta,
-                Filosofia,
-                Expedicion,
-                Galeria,
-                ElDestino,
-                Contacto,
-              ],
+              blocks: [Manifiesto, LaRuta, Filosofia, Expedicion, Galeria, ElDestino, Contacto],
               required: true,
               admin: {
                 initCollapsed: true,

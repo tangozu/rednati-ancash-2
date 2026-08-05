@@ -18,7 +18,7 @@ export const llamaTrekHeroFields: Field = {
       required: true,
     },
     {
-      name: 'media',
+      name: 'imagenDeFondo',
       type: 'upload',
       relationTo: 'media',
       required: true,

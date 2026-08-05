@@ -4,6 +4,8 @@ corregir los diseños de los bloques
 
 cambiar blob storage a uploadthing
 
+agregar soporte para subir imagen svg
+
 # comentarios de la reunion domingo 7 de agosto 2026
 
 - integrar lo mistico de chavin
