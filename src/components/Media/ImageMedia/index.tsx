@@ -107,6 +107,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         src={src as string}
         width={!fill ? width : undefined}
         style={{ objectFit: 'cover', objectPosition: `${focalX ?? 50}% ${focalY ?? 50}%` }}
+        fetchPriority={priority ? 'high' : 'auto'}
       />
     </picture>
   )

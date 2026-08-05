@@ -1636,6 +1636,7 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Header {
   id: string;
+  logo?: (string | null) | Media;
   navItems?:
     | {
         link: {
@@ -1656,6 +1657,10 @@ export interface Header {
         id?: string | null;
       }[]
     | null;
+  whatsappContact?: {
+    label?: string | null;
+    phone?: string | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1711,6 +1716,7 @@ export interface ImageOptimizerState {
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
+  logo?: T;
   navItems?:
     | T
     | {
@@ -1724,6 +1730,12 @@ export interface HeaderSelect<T extends boolean = true> {
               label?: T;
             };
         id?: T;
+      };
+  whatsappContact?:
+    | T
+    | {
+        label?: T;
+        phone?: T;
       };
   updatedAt?: T;
   createdAt?: T;
