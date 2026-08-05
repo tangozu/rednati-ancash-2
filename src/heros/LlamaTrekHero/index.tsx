@@ -153,9 +153,9 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({
             )}
           </h1>
 
-          <div className="mt-8 max-w-xl">
+          <div className="mt-8 max-w-sm md:max-w-md">
             {llamaTrekHeroFields?.subtitle && (
-              <p className="whitespace-pre-line text-base leading-relaxed text-[#ede8df]/75 md:text-lg">
+              <p className="font-body text-cream/65 text-base md:text-lg leading-relaxed">
                 {llamaTrekHeroFields.subtitle}
               </p>
             )}
