@@ -64,7 +64,7 @@ export const ContactoBlock: React.FC<ContactoBlockProps> = ({
               href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-earth px-8 py-4 font-body text-sm font-medium tracking-wide text-bg transition-colors duration-300 hover:bg-earth/85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-earth"
+              className="inline-flex items-center gap-3 bg-earth px-8 py-4 font-body text-sm font-medium tracking-wide text-bg transition-colors duration-300 hover:bg-earth-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-earth"
             >
               WhatsApp {whatsapp}
             </a>

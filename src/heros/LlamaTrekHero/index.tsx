@@ -152,7 +152,7 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
                   href={`https://wa.me/${llamaTrekHeroFields.whatsappContact.phone.replace(/[^\d]/g, '')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-earth px-6 py-3 text-xs uppercase tracking-[0.15em] text-bg transition-colors duration-300 hover:bg-earth/85"
+                  className="inline-flex items-center gap-2 bg-earth px-6 py-3 text-xs uppercase tracking-[0.15em] text-bg transition-colors duration-300 hover:bg-earth-dark"
                 >
                   <span aria-hidden>📱</span>
                   {llamaTrekHeroFields.whatsappContact.label}{' '}

@@ -46,15 +46,18 @@
   --font-mono: var(--font-geist-mono);
   --font-sans: var(--font-geist-sans);
 
-  --color-bg:#0e0c09;
-  --color-panel:#131009;
-  --color-cream:#ede8df;
-  --color-earth:#c4844a;
-  --color-media-placeholder:#78716c;
+  --color-bg: rgb(255, 247, 224);
+  --color-panel: rgb(255, 242, 205);
+  --color-cream: rgb(121, 71, 55);
+  /*--color-earth: #60B028;*/
+  --color-earth: #f86800;
+  --color-earth-dark: #801800;
+  --color-earth-accent: #f86800;
+  --color-media-placeholder: #d9c9a8;
 
-  --font-display:'Fraunces', serif;
-  --font-body:'DM Sans', sans-serif;
-  --font-mono:'DM Mono', monospace;
+  --font-display: 'Fraunces', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
 }
 
 @layer utilities {
@@ -232,5 +235,3 @@ html[data-theme='dark'],
 html[data-theme='light'] {
   opacity: initial;
 }
-
-
