@@ -17,9 +17,12 @@ const BeforeDashboard: React.FC = () => {
       </p>
       <br />
       <p>
-        La mayoría de las modificaciones se realizan desde la colección <strong><a href="/admin/collections/pages">Pages</a></strong>,
-           donde podrá editar la información
-           predeterminada del proyecto o agregar nuevo contenido, como formularios.
+        La mayoría de las modificaciones se realizan desde la colección{' '}
+        <strong>
+          <a href="/admin/collections/pages">Pages</a>
+        </strong>
+        , donde podrá editar la información predeterminada del proyecto o agregar nuevo contenido,
+        como formularios.
       </p>
       <p>
         También es posible crear o administrar formularios y otros elementos disponibles desde el
@@ -27,8 +30,8 @@ const BeforeDashboard: React.FC = () => {
       </p>
       <p>
         Para conocer el funcionamiento completo del administrador, le recomendamos revisar la
-        documentación entregada con el proyecto, donde encontrará instrucciones detalladas para
-        cada sección.
+        documentación entregada con el proyecto, donde encontrará instrucciones detalladas para cada
+        sección.
       </p>
       <br />
       <p>
