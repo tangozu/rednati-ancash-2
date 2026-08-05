@@ -1,0 +1,80 @@
+.parallax-login-images {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  /* Portalled to <body> (see ParallaxLoginImages.tsx), so this stacks at the
+     root: keep it below the login card's z-index (1, set in custom.scss)
+     so the card covers it, but non-negative so it still shows above
+     .template-minimal's plain page background. */
+  z-index: 0;
+  pointer-events: none;
+
+  &__item {
+    position: absolute;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease-out;
+    will-change: transform;
+  }
+
+  &__item--0 {
+    top: 8%;
+    left: 6%;
+    width: 380px;
+    height: 260px;
+  }
+
+  &__item--1 {
+    bottom: 10%;
+    right: 7%;
+    width: 420px;
+    height: 300px;
+  }
+
+  &__item--2 {
+    top: 46%;
+    right: 4%;
+    width: 260px;
+    height: 340px;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at 50% 45%,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0.55) 40%,
+      rgba(0, 0, 0, 0.25) 100%
+    );
+  }
+
+  @media (max-width: 1100px) {
+    &__item--2 {
+      display: none;
+    }
+
+    &__item--0 {
+      width: 280px;
+      height: 190px;
+    }
+
+    &__item--1 {
+      width: 300px;
+      height: 210px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    display: none;
+  }
+}

@@ -29,6 +29,8 @@ export default buildConfig({
       // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below.
       beforeDashboard: ['@/components/BeforeDashboard'],
+      // Renders the RedNatí logo + wordmark at the top of the collections/globals sidebar.
+      beforeNavLinks: ['@/components/AdminNavBrand'],
       graphics: {
         Logo: '@/components/AdminGraphics#AdminLogo',
         Icon: '@/components/AdminGraphics#AdminIcon',

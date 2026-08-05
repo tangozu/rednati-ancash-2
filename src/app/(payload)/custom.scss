@@ -1,0 +1,127 @@
+/*
+ * Turns the Login / Forgot Password / Reset Password screens (all built on
+ * Payload's shared `.template-minimal` layout) into a floating card so the
+ * BeforeLogin parallax background is visible behind it.
+ */
+.template-minimal {
+  background: transparent;
+}
+
+.template-minimal__wrap {
+  position: relative;
+  z-index: 1;
+  background: var(--theme-elevation-50);
+  border: 1px solid var(--theme-elevation-100);
+  border-radius: 1rem;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
+}
+
+/*
+ * Sidebar (Collections / Globals) redesign: rounded "pill" links with an
+ * accent-tinted active state instead of Payload's default thin left bar,
+ * plus more breathing room between groups. The accent color is hardcoded
+ * (not read from a CSS var) because the admin panel doesn't load the
+ * site's Tailwind theme, where this same color lives as --color-earth.
+ */
+$admin-accent: #c4844a;
+
+.nav-group {
+  margin-bottom: 22px;
+}
+
+.nav-group__label {
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--theme-elevation-400);
+}
+
+.nav__link {
+  border-radius: 0.6rem;
+  padding-inline: 0.75rem;
+  margin-inline-end: var(--base);
+  transition: background-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background: var(--theme-elevation-100);
+  }
+}
+
+.nav__link-label {
+  display: inline-block;
+  transform-origin: left center;
+  transition: transform 0.15s ease;
+}
+
+.nav__link:hover .nav__link-label {
+  transform: scale(1.08);
+}
+
+// Payload only differentiates the active link by rendering an extra
+// `.nav__link-indicator` bar inside it — use that as the hook for the
+// pill background instead of showing the thin bar.
+.nav__link:has(.nav__link-indicator) {
+  background: rgba(196, 132, 74, 0.16);
+  color: $admin-accent;
+}
+
+.nav__link-indicator {
+  display: none;
+}
+
+/*
+ * List view tables (e.g. Media, Pages) alternate row backgrounds by
+ * default (`tbody tr:nth-child(odd)`), which reads as an unintentional
+ * two-tone stripe. Flatten it to a single consistent row color.
+ */
+tbody tr:nth-child(odd) {
+  background: transparent;
+}
+
+/*
+ * Payload already shows a lightweight, non-blocking loading indicator
+ * (`.loading-overlay`) during nav transitions and document saves — it's
+ * `position: fixed` + `pointer-events: none`, so it floats over the
+ * current page without replacing it. Reskin it to the RedNatí logo +
+ * three dots instead of its default 5-bar animation, rather than
+ * building a separate loading system.
+ */
+.loading-overlay__bars {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding-top: 44px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 32px;
+    height: 32px;
+    background-image: url('/rednati.ico');
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translateX(-50%);
+  }
+}
+
+.loading-overlay__bar {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+
+  // Keep only 3 dots (Payload renders 5 bars by default).
+  &:nth-child(4),
+  &:nth-child(5) {
+    display: none;
+  }
+}
+
+.loading-overlay__text {
+  display: none;
+}

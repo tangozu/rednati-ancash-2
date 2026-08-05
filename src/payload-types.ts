@@ -211,6 +211,7 @@ export interface Page {
 export interface Media {
   id: string;
   alt?: string | null;
+  imageType?: ('logo' | 'gallery' | 'unset') | null;
   caption?: {
     root: {
       type: string;
@@ -1215,6 +1216,7 @@ export interface PostsSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
+  imageType?: T;
   caption?: T;
   imageOptimizer?:
     | T

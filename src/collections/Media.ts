@@ -30,6 +30,20 @@ export const Media: CollectionConfig = {
       //required: true,
     },
     {
+      name: 'imageType',
+      type: 'select',
+      label: 'Tipo de imagen',
+      defaultValue: 'unset',
+      options: [
+        { label: 'Logo', value: 'logo' },
+        { label: 'Galería', value: 'gallery' },
+        { label: 'No definido', value: 'unset' },
+      ],
+      admin: {
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'caption',
       type: 'richText',
       editor: lexicalEditor({

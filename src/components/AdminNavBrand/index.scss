@@ -1,0 +1,25 @@
+.admin-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  padding-block-end: 1.15rem;
+  margin-block-end: 0.85rem;
+  border-bottom: 1px solid var(--theme-elevation-100);
+
+  &__icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 0.6rem;
+    object-fit: cover;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    flex-shrink: 0;
+  }
+
+  &__text {
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: 0.01em;
+    color: var(--theme-text);
+  }
+}
