@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react'
 import type { Header } from '@/payload-types'
 
 import { Logo } from '@/components/Logo/Logo'
+import { Media } from '@/components/Media'
 import { HeaderNav } from './Nav'
 
 interface HeaderClientProps {
@@ -71,11 +72,20 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
       >
 
         <Link href="/">
-          <Logo
-            loading="eager"
-            priority="high"
-            className="h-10 w-auto invert"
-          />
+          {data?.logo ? (
+            <Media
+              resource={data.logo}
+              imgClassName="h-10 w-auto object-contain"
+              priority
+              loading="eager"
+            />
+          ) : (
+            <Logo
+              loading="eager"
+              priority="high"
+              className="h-10 w-auto invert"
+            />
+          )}
         </Link>
 
 
