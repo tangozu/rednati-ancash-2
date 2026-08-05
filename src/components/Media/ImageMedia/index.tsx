@@ -95,20 +95,16 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         .map(([, value]) => `(max-width: ${value}px) ${value * 2}w`)
         .join(', ')
 
+  console.log('ImageMedia src:', src)
   return (
     <picture className={cn(pictureClassName)}>
-      <NextImage
+      <img
         alt={alt || ''}
         className={cn(imgClassName)}
-        fill={fill}
         height={!fill ? height : undefined}
-        placeholder="blur"
-        blurDataURL={placeholderBlur}
-        priority={priority}
-        quality={100}
         loading={loading}
         sizes={sizes}
-        src={src}
+        src={src as string}
         width={!fill ? width : undefined}
         style={{ objectFit: 'cover', objectPosition: `${focalX ?? 50}% ${focalY ?? 50}%` }}
       />
