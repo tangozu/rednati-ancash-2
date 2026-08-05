@@ -80,7 +80,7 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
 
   return (
     <div ref={containerRef}>
-      <section className="relative min-h-screen overflow-hidden bg-[#0e0c09] text-[#ede8df]">
+      <section className="relative min-h-screen overflow-hidden bg-bg text-cream">
         {llamaTrekHeroFields?.imagenDeFondo &&
           typeof llamaTrekHeroFields.imagenDeFondo === 'object' && (
             <div className="absolute inset-0">
@@ -93,8 +93,8 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
             </div>
           )}
 
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,12,9,0.18)_0%,rgba(14,12,9,0.46)_48%,rgba(14,12,9,0.86)_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(14,12,9,0.58)_0%,rgba(14,12,9,0.18)_50%,rgba(14,12,9,0.05)_100%)]" />
+        <div className="absolute inset-0 bg-linear-to-b from-bg/18 via-bg/46 to-bg/86" />
+        <div className="absolute inset-0 bg-linear-to-r from-bg/58 via-bg/18 to-bg/5" />
 
         <div className="relative z-10 flex min-h-screen flex-col justify-between px-6 sm:px-8 md:px-12 lg:px-16 xl:px-24 2xl:px-32">
           <div className="mt-24 flex flex-col items-start gap-4 ">
@@ -111,13 +111,13 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
                     <Media resource={llamaTrekHeroFields.llamaTrekLogo} />
                   </div>
                 )}
-              <span className="h-px w-12 my-auto bg-[#c4844a]/60" />
-              <span className="text-[10px] uppercase tracking-[0.28em] text-[#ede8df]">
+              <span className="h-px w-12 my-auto bg-earth/60" />
+              <span className="text-[10px] uppercase tracking-[0.28em] text-cream">
                 {llamaTrekHeroFields?.region} · {llamaTrekHeroFields?.altitude}
               </span>
             </div>
 
-            <h1 className="max-w-5xl font-['Fraunces'] text-[clamp(3rem,14vw,6rem)] font-black leading-[0.88] tracking-[-0.03em] text-[#ede8df]">
+            <h1 className="max-w-5xl font-['Fraunces'] text-[clamp(3rem,14vw,6rem)] font-black leading-[0.88] tracking-[-0.03em] text-cream">
               {llamaTrekHeroFields?.title?.includes(' ') ? (
                 <>
                   {llamaTrekHeroFields.title.split(' ').slice(0, 1).join(' ')}
@@ -141,7 +141,7 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
               {llamaTrekHeroFields?.emailContact?.email && (
                 <a
                   href={`mailto:${llamaTrekHeroFields.emailContact.email}`}
-                  className="inline-flex items-center gap-2 border border-[#ede8df]/15 px-6 py-3 text-xs uppercase tracking-[0.15em] text-[#ede8df]/80 transition-colors duration-300 hover:border-[#ede8df]/40 hover:text-[#ede8df]"
+                  className="inline-flex items-center gap-2 border border-cream/15 px-6 py-3 text-xs uppercase tracking-[0.15em] text-cream/80 transition-colors duration-300 hover:border-cream/40 hover:text-cream"
                 >
                   <span aria-hidden>✉️</span>
                   {llamaTrekHeroFields.emailContact.label} {llamaTrekHeroFields.emailContact.email}
@@ -152,7 +152,7 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
                   href={`https://wa.me/${llamaTrekHeroFields.whatsappContact.phone.replace(/[^\d]/g, '')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#c4844a] px-6 py-3 text-xs uppercase tracking-[0.15em] text-[#0e0c09] transition-colors duration-300 hover:bg-[#c4844a]/85"
+                  className="inline-flex items-center gap-2 bg-earth px-6 py-3 text-xs uppercase tracking-[0.15em] text-bg transition-colors duration-300 hover:bg-earth/85"
                 >
                   <span aria-hidden>📱</span>
                   {llamaTrekHeroFields.whatsappContact.label}{' '}
@@ -163,14 +163,14 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
           </div>
 
           <div className="flex items-center gap-3.5">
-            <div className="relative h-14 w-px overflow-hidden bg-[#ede8df]/15">
-              <div className="animate-scroll-line absolute inset-x-0 top-0 h-full bg-[#c4844a]" />
+            <div className="relative h-14 w-px overflow-hidden bg-cream/15">
+              <div className="animate-scroll-line absolute inset-x-0 top-0 h-full bg-earth" />
             </div>
             <div className=" flex flex-col items-end gap-1.5 text-right sm:bottom-8 sm:right-8 md:bottom-10 md:right-10">
-              <span className="text-[9px] uppercase tracking-[0.2em] text-[#ede8df]/20">
+              <span className="text-[9px] uppercase tracking-[0.2em] text-cream/20">
                 {llamaTrekHeroFields?.coordinates}
               </span>
-              <span className="text-[9px] uppercase tracking-[0.2em] text-[#ede8df]/20">
+              <span className="text-[9px] uppercase tracking-[0.2em] text-cream/20">
                 {llamaTrekHeroFields?.location}
               </span>
             </div>

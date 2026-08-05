@@ -58,7 +58,7 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps> = ({ label, title, 
                 </div>
 
                 <div
-                  className={`clip-reveal aspect-video overflow-hidden bg-stone md:aspect-auto md:h-80 ${
+                  className={`clip-reveal aspect-video overflow-hidden bg-media-placeholder md:aspect-auto md:h-80 ${
                     i % 2 === 1 ? 'md:order-1' : ''
                   }`}
                 >

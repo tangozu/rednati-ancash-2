@@ -37,7 +37,7 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps> = ({
       </div>
 
       <div className="grid grid-cols-1 items-stretch md:grid-cols-2">
-        <div className="clip-reveal order-1 aspect-[3/4] overflow-hidden bg-stone md:aspect-auto md:min-h-[700px]">
+        <div className="clip-reveal order-1 aspect-[3/4] overflow-hidden bg-media-placeholder md:aspect-auto md:min-h-[700px]">
           {media && typeof media === 'object' && (
             <Media
               fill

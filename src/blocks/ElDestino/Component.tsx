@@ -27,7 +27,7 @@ export const ElDestinoBlock: React.FC<ElDestinoBlockProps> = ({
       </div>
 
       {media && typeof media === 'object' && (
-        <div className="clip-reveal mb-16 h-56 overflow-hidden bg-stone sm:h-80 md:mb-24 md:h-[440px]">
+        <div className="clip-reveal mb-16 h-56 overflow-hidden bg-media-placeholder sm:h-80 md:mb-24 md:h-[440px]">
           <Media
             fill
             imgClassName="h-full w-full object-cover object-center transition-transform duration-[3s] ease-out hover:scale-[1.03]"

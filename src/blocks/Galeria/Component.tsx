@@ -37,7 +37,7 @@ export const GaleriaBlock: React.FC<GaleriaBlockProps> = ({ label, images }) => 
               {gallery.map((img, i) => (
                 <div
                   key={i}
-                  className={`clip-reveal overflow-hidden bg-stone ${desktopSpan[i % desktopSpan.length]}`}
+                  className={`clip-reveal overflow-hidden bg-media-placeholder ${desktopSpan[i % desktopSpan.length]}`}
                 >
                   <Media
                     fill
@@ -50,7 +50,7 @@ export const GaleriaBlock: React.FC<GaleriaBlockProps> = ({ label, images }) => 
 
             <div className="space-y-2 md:hidden">
               {gallery.slice(0, 4).map((img, i) => (
-                <div key={i} className="clip-reveal aspect-video overflow-hidden bg-stone">
+                <div key={i} className="clip-reveal aspect-video overflow-hidden bg-media-placeholder">
                   <Media fill imgClassName="h-full w-full object-cover" resource={img.media} />
                 </div>
               ))}
