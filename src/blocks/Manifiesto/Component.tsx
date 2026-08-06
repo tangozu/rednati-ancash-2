@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { HTMLAttributes } from 'react'
 
 import type { ManifiestoBlock as ManifiestoBlockProps } from '@/payload-types'
+import { cn } from '@/utilities/ui'
 
-export const ManifiestoBlock: React.FC<ManifiestoBlockProps> = ({
+export const ManifiestoBlock: React.FC<ManifiestoBlockProps & HTMLAttributes<HTMLElement>> = ({
   label,
   quote,
   author,
   concepts,
+  className,
 }) => {
   return (
-    <section className="bg-bg px-6 py-32 md:px-16 md:py-52 xl:px-32">
+    <section className={cn(className)}>
       <div className="mx-auto max-w-screen-lg">
         {label && (
           <div className="reveal mb-14">

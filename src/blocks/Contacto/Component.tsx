@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { HTMLAttributes } from 'react'
 
 import type { ContactoBlock as ContactoBlockProps } from '@/payload-types'
 
 import { Media } from '@/components/Media'
 import { WhatsappButton } from '@/components/Buttons/whatsappButton'
 import { EmailButton } from '@/components/Buttons/emailButton'
+import { cn } from '@/utilities/ui'
 
-export const ContactoBlock: React.FC<ContactoBlockProps> = ({
+export const ContactoBlock: React.FC<ContactoBlockProps & HTMLAttributes<HTMLElement>> = ({
   preTitle,
   title,
   subtitle,
@@ -15,9 +16,10 @@ export const ContactoBlock: React.FC<ContactoBlockProps> = ({
   whatsapp,
   email,
   address,
+  className,
 }) => {
   return (
-    <section className="relative overflow-hidden bg-panel py-32 md:py-52">
+    <section className={cn(className)}>
       {backgroundMedia && typeof backgroundMedia === 'object' && (
         <div className="absolute inset-0">
           <Media

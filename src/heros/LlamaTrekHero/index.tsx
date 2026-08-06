@@ -108,12 +108,6 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
                     <Media resource={llamaTrekHeroFields.rednatiLogo} />
                   </div>
                 )}
-              {llamaTrekHeroFields?.llamaTrekLogo &&
-                typeof llamaTrekHeroFields.llamaTrekLogo === 'object' && (
-                  <div className="relative  w-24">
-                    <Media resource={llamaTrekHeroFields.llamaTrekLogo} />
-                  </div>
-                )}
               <span className="h-px w-12 my-auto bg-earth/60" />
               <span className="text-[10px] uppercase tracking-[0.28em] text-cream">
                 {llamaTrekHeroFields?.region} · {llamaTrekHeroFields?.altitude}

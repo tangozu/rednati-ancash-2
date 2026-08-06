@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 
 import type { Page } from '@/payload-types'
+import { cn } from '@/utilities/ui'
 
 import { ContactoBlock } from '@/blocks/Contacto/Component'
 import { ElDestinoBlock } from '@/blocks/ElDestino/Component'
@@ -42,18 +43,26 @@ export const RenderBlocks: React.FC<{
       <Fragment>
         {blocks.map((block, index) => {
           const { blockType } = block
+          const bg = index % 2 === 1 ? 'bg-bg' : 'bg-panel'
 
           if (blockType && blockType in blockComponents) {
             const Block = blockComponents[blockType]
 
             if (Block) {
               if (fullBleedBlockTypes.has(blockType)) {
-                // @ts-expect-error there may be some mismatch between the expected types here
-                return <Block {...block} key={index} />
+                return (
+                  <Block
+                    {...block}
+                    // @ts-expect-error there may be some mismatch between the expected types here
+                    key={index}
+                    // @ts-expect-error there may be some mismatch between the expected types here
+                    className={cn('px-6 py-24 md:px-16 xl:px-32', bg)}
+                  />
+                )
               }
 
               return (
-                <div className="my-16" key={index}>
+                <div className={cn('my-16', bg)} key={index}>
                   {/* @ts-expect-error there may be some mismatch between the expected types here */}
                   <Block {...block} disableInnerContainer />
                 </div>

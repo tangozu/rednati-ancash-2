@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { HTMLAttributes } from 'react'
 
 import type { ExpedicionBlock as ExpedicionBlockProps } from '@/payload-types'
 
 import { Media } from '@/components/Media'
+import { cn } from '@/utilities/ui'
 
-export const ExpedicionBlock: React.FC<ExpedicionBlockProps> = ({ label, title, days }) => {
+export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTMLElement>> = ({
+  label,
+  title,
+  days,
+  className,
+}) => {
   return (
-    <section className="bg-bg py-24 md:py-40">
+    <section className={cn(className)}>
       <div className="mx-auto max-w-screen-xl px-6 md:px-16 xl:px-24">
         {label && (
           <div className="reveal mb-14">

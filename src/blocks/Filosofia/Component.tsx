@@ -1,17 +1,19 @@
-import React from 'react'
+import React, { HTMLAttributes } from 'react'
 
 import type { FilosofiaBlock as FilosofiaBlockProps } from '@/payload-types'
 
 import { Media } from '@/components/Media'
+import { cn } from '@/utilities/ui'
 
-export const FilosofiaBlock: React.FC<FilosofiaBlockProps> = ({
+export const FilosofiaBlock: React.FC<FilosofiaBlockProps & HTMLAttributes<HTMLElement>> = ({
   label,
   title,
   backgroundMedia,
   pillars,
+  className,
 }) => {
   return (
-    <section className="relative overflow-hidden bg-bg py-32 md:py-52">
+    <section className={cn(className)}>
       {backgroundMedia && typeof backgroundMedia === 'object' && (
         <div className="absolute inset-0">
           <Media

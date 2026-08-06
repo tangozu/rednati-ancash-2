@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { HTMLAttributes } from 'react'
 
 import type { LaRutaBlock as LaRutaBlockProps } from '@/payload-types'
 
 import { Media } from '@/components/Media'
+import { cn } from '@/utilities/ui'
 
-export const LaRutaBlock: React.FC<LaRutaBlockProps> = ({
+export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement>> = ({
   label,
   title,
   media,
@@ -15,6 +16,7 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps> = ({
   kilometers,
   people,
   stages,
+  className,
 }) => {
   const stats = [
     { num: days, label: 'Días' },
@@ -25,10 +27,10 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps> = ({
   ].filter((stat) => stat.num)
 
   return (
-    <section className="overflow-hidden bg-bg py-16 md:py-0">
+    <section className={cn(className)}>
       <div className="mx-auto mb-16 max-w-screen-xl px-6 md:mb-0 md:px-16 xl:px-24">
         {label && (
-          <div className="reveal pt-4 md:pt-20">
+          <div className="reveal mb-14">
             <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-earth">
               {label}
             </span>
