@@ -12,7 +12,7 @@ export const WhatsappButton: React.FC<{
     >
       <Button
         variant="link"
-        className="inline-flex items-center gap-2 bg-gold px-6 py-3 text-xs uppercase tracking-[0.15em] text-black"
+        className="inline-flex items-center gap-2 bg-earth px-6 py-3 text-xs uppercase tracking-[0.15em] text-bg"
       >
         <MessageCircleMore></MessageCircleMore>
         {phone}

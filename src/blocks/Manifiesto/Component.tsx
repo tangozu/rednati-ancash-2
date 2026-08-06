@@ -15,7 +15,7 @@ export const ManifiestoBlock: React.FC<ManifiestoBlockProps & HTMLAttributes<HTM
       <div className="mx-auto max-w-screen-lg">
         {label && (
           <div className="reveal mb-14">
-            <span className="font-mono text-sm font-semibold uppercase tracking-[0.3em] text-gold">
+            <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-earth">
               {label}
             </span>
           </div>
@@ -24,7 +24,7 @@ export const ManifiestoBlock: React.FC<ManifiestoBlockProps & HTMLAttributes<HTM
         {quote && (
           <blockquote className="reveal">
             <p
-              className="font-display font-light italic leading-[1.08] text-black"
+              className="font-display font-light italic leading-[1.08] text-cream"
               style={{ fontSize: 'clamp(1.9rem, 4.5vw, 3.8rem)' }}
             >
               &quot;{quote}&quot;
@@ -34,17 +34,17 @@ export const ManifiestoBlock: React.FC<ManifiestoBlockProps & HTMLAttributes<HTM
 
         {(author || concepts) && (
           <>
-            <div className="reveal mt-16 h-px bg-black/[0.08]" />
+            <div className="reveal mt-16 h-px bg-cream/[0.08]" />
 
             <div className="reveal mt-8 flex flex-wrap items-center gap-4 md:gap-8">
               {author && (
-                <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-black/40">
+                <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-cream/30">
                   {author}
                 </span>
               )}
-              {author && concepts && <span className="h-1 w-1 rounded-full bg-black/15" />}
+              {author && concepts && <span className="h-1 w-1 rounded-full bg-cream/15" />}
               {concepts && (
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-black/30">
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-cream/20">
                   {concepts}
                 </span>
               )}

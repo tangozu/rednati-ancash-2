@@ -21,7 +21,7 @@ export const ElDestinoBlock: React.FC<ElDestinoBlockProps & HTMLAttributes<HTMLE
       <div className="mx-auto max-w-screen-xl px-6 md:px-16 xl:px-24">
         {label && (
           <div className="reveal mb-14">
-            <span className="font-mono text-sm font-semibold uppercase tracking-[0.3em] text-gold">
+            <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-earth">
               {label}
             </span>
           </div>
@@ -43,14 +43,14 @@ export const ElDestinoBlock: React.FC<ElDestinoBlockProps & HTMLAttributes<HTMLE
           <div>
             {title && (
               <h2
-                className="reveal mb-5 font-display font-bold leading-[1.05] text-black"
+                className="reveal mb-5 font-display font-bold leading-[1.05] text-cream"
                 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 4rem)' }}
               >
                 {title}
               </h2>
             )}
             {(recognition || location || altitude) && (
-              <p className="reveal font-mono text-[10px] uppercase leading-loose tracking-[0.28em] text-gold">
+              <p className="reveal font-mono text-[10px] uppercase leading-loose tracking-[0.28em] text-earth">
                 {recognition}
                 <br />
                 {location} {location && altitude && '·'} {altitude}
@@ -60,12 +60,12 @@ export const ElDestinoBlock: React.FC<ElDestinoBlockProps & HTMLAttributes<HTMLE
 
           <div>
             {paragraph1 && (
-              <p className="reveal mb-6 font-body text-base leading-relaxed text-black/65 md:text-lg">
+              <p className="reveal mb-6 font-body text-base leading-relaxed text-cream/55 md:text-lg">
                 {paragraph1}
               </p>
             )}
             {paragraph2 && (
-              <p className="reveal font-body text-base leading-relaxed text-black/65 md:text-lg">
+              <p className="reveal font-body text-base leading-relaxed text-cream/55 md:text-lg">
                 {paragraph2}
               </p>
             )}

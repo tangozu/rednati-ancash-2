@@ -27,7 +27,7 @@ export const GaleriaBlock: React.FC<GaleriaBlockProps & HTMLAttributes<HTMLEleme
       <div className="mx-auto max-w-screen-xl">
         {label && (
           <div className="reveal mb-12 px-2 md:px-0">
-            <span className="font-mono text-sm font-semibold uppercase tracking-[0.3em] text-gold">
+            <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-earth">
               {label}
             </span>
           </div>
