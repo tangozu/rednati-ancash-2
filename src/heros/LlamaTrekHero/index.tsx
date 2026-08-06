@@ -8,6 +8,10 @@ import type { Page } from '@/payload-types'
 
 import { Media } from '@/components/Media'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
+import { Mail, MessageCircleMore } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { EmailButton } from '@/components/Buttons/emailButton'
+import { WhatsappButton } from '@/components/Buttons/whatsappButton'
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
@@ -93,9 +97,8 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
             </div>
           )}
 
-        <div className="absolute inset-0 bg-linear-to-b from-bg/18 via-bg/46 to-bg/86" />
-        <div className="absolute inset-0 bg-linear-to-r from-bg/58 via-bg/18 to-bg/5" />
-
+        <div className="absolute inset-0 bg-linear-to-t from-bg/40 via-bg/40 to-bg/5" />
+        <div className="absolute inset-0 bg-linear-to-r from-bg/40 via-bg/40 to-bg/5" />
         <div className="relative z-10 flex min-h-screen flex-col justify-between px-6 sm:px-8 md:px-12 lg:px-16 xl:px-24 2xl:px-32">
           <div className="mt-24 flex flex-col items-start gap-4 ">
             <div className="flex flex-wrap items-center gap-4 sm:gap-5">
@@ -131,7 +134,7 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
 
             <div className="mt-8 max-w-sm md:max-w-md">
               {llamaTrekHeroFields?.subtitle && (
-                <p className="font-body text-cream/65 text-base md:text-lg leading-relaxed">
+                <p className="font-body text-cream text-base md:text-lg leading-relaxed">
                   {llamaTrekHeroFields.subtitle}
                 </p>
               )}
@@ -139,25 +142,16 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
 
             <div className="mt-10 flex flex-wrap items-center gap-4">
               {llamaTrekHeroFields?.emailContact?.email && (
-                <a
-                  href={`mailto:${llamaTrekHeroFields.emailContact.email}`}
-                  className="inline-flex items-center gap-2 border border-cream/15 px-6 py-3 text-xs uppercase tracking-[0.15em] text-cream/80 transition-colors duration-300 hover:border-cream/40 hover:text-cream"
-                >
-                  <span aria-hidden>✉️</span>
-                  {llamaTrekHeroFields.emailContact.label} {llamaTrekHeroFields.emailContact.email}
-                </a>
+                <EmailButton
+                  email={llamaTrekHeroFields.emailContact.email}
+                  label={llamaTrekHeroFields.emailContact.label}
+                />
               )}
               {llamaTrekHeroFields?.whatsappContact?.phone && (
-                <a
-                  href={`https://wa.me/${llamaTrekHeroFields.whatsappContact.phone.replace(/[^\d]/g, '')}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-earth px-6 py-3 text-xs uppercase tracking-[0.15em] text-bg transition-colors duration-300 hover:bg-earth-dark"
-                >
-                  <span aria-hidden>📱</span>
-                  {llamaTrekHeroFields.whatsappContact.label}{' '}
-                  {llamaTrekHeroFields.whatsappContact.phone}
-                </a>
+                <WhatsappButton
+                  phone={llamaTrekHeroFields.whatsappContact.phone}
+                  label={llamaTrekHeroFields.whatsappContact.label}
+                />
               )}
             </div>
           </div>

@@ -3,6 +3,8 @@ import React from 'react'
 import type { ContactoBlock as ContactoBlockProps } from '@/payload-types'
 
 import { Media } from '@/components/Media'
+import { WhatsappButton } from '@/components/Buttons/whatsappButton'
+import { EmailButton } from '@/components/Buttons/emailButton'
 
 export const ContactoBlock: React.FC<ContactoBlockProps> = ({
   preTitle,
@@ -14,8 +16,6 @@ export const ContactoBlock: React.FC<ContactoBlockProps> = ({
   email,
   address,
 }) => {
-  const whatsappHref = whatsapp ? `https://wa.me/${whatsapp.replace(/[^\d]/g, '')}` : undefined
-
   return (
     <section className="relative overflow-hidden bg-panel py-32 md:py-52">
       {backgroundMedia && typeof backgroundMedia === 'object' && (
@@ -59,24 +59,8 @@ export const ContactoBlock: React.FC<ContactoBlockProps> = ({
         )}
 
         <div className="stagger-parent flex flex-col items-center justify-center gap-4 sm:flex-row">
-          {whatsappHref && (
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-earth px-8 py-4 font-body text-sm font-medium tracking-wide text-bg transition-colors duration-300 hover:bg-earth-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-earth"
-            >
-              WhatsApp {whatsapp}
-            </a>
-          )}
-          {email && (
-            <a
-              href={`mailto:${email}`}
-              className="inline-flex items-center gap-3 border border-cream/15 px-8 py-4 font-body text-sm tracking-wide text-cream/75 transition-all duration-300 hover:border-cream/40 hover:bg-cream/[0.04] hover:text-cream"
-            >
-              {email}
-            </a>
-          )}
+          {email && <EmailButton email={email} label="" />}
+          {whatsapp && <WhatsappButton phone={whatsapp} label="" />}
         </div>
 
         {address && (
