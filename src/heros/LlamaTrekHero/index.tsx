@@ -136,10 +136,7 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
 
             <div className="mt-10 flex flex-wrap items-center gap-4">
               {llamaTrekHeroFields?.emailContact?.email && (
-                <EmailButton
-                  email={llamaTrekHeroFields.emailContact.email}
-                  label={llamaTrekHeroFields.emailContact.label}
-                />
+                <EmailButton email={llamaTrekHeroFields.emailContact.email} />
               )}
             </div>
           </div>

@@ -165,19 +165,13 @@ export interface Page {
     type: 'llamaTrek';
     llamaTrekHeroFields?: {
       rednatiLogo: string | Media;
-      llamaTrekLogo: string | Media;
       imagenDeFondo: string | Media;
       region: string;
       altitude: string;
       title: string;
       subtitle: string;
       emailContact: {
-        label: string;
         email: string;
-      };
-      whatsappContact: {
-        label: string;
-        phone: string;
       };
       coordinates: string;
       location: string;
@@ -1015,7 +1009,6 @@ export interface PagesSelect<T extends boolean = true> {
           | T
           | {
               rednatiLogo?: T;
-              llamaTrekLogo?: T;
               imagenDeFondo?: T;
               region?: T;
               altitude?: T;
@@ -1024,14 +1017,7 @@ export interface PagesSelect<T extends boolean = true> {
               emailContact?:
                 | T
                 | {
-                    label?: T;
                     email?: T;
-                  };
-              whatsappContact?:
-                | T
-                | {
-                    label?: T;
-                    phone?: T;
                   };
               coordinates?: T;
               location?: T;
@@ -1660,7 +1646,6 @@ export interface Header {
       }[]
     | null;
   whatsappContact?: {
-    label?: string | null;
     phone?: string | null;
   };
   updatedAt?: string | null;
@@ -1736,7 +1721,6 @@ export interface HeaderSelect<T extends boolean = true> {
   whatsappContact?:
     | T
     | {
-        label?: T;
         phone?: T;
       };
   updatedAt?: T;

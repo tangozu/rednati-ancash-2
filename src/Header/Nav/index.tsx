@@ -17,9 +17,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
       {navItems.map(({ link }, i) => {
         return <CMSLink key={i} {...link} appearance="link" />
       })}
-      {whatsappContact?.phone && (
-        <WhatsappButton phone={whatsappContact.phone} label={whatsappContact.label!} />
-      )}
+      {whatsappContact?.phone && <WhatsappButton phone={whatsappContact.phone} />}
     </nav>
   )
 }

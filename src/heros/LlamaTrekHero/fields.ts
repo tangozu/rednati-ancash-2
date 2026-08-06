@@ -12,12 +12,6 @@ export const llamaTrekHeroFields: Field = {
       required: true,
     },
     {
-      name: 'llamaTrekLogo',
-      type: 'upload',
-      relationTo: 'media',
-      required: true,
-    },
-    {
       name: 'imagenDeFondo',
       type: 'upload',
       relationTo: 'media',
@@ -53,33 +47,9 @@ export const llamaTrekHeroFields: Field = {
       type: 'group',
       fields: [
         {
-          name: 'label',
-          type: 'text',
-          defaultValue: 'Reserva:',
-          required: true,
-        },
-        {
           name: 'email',
           type: 'text',
           defaultValue: 'jorge.martel59@gmail.com',
-          required: true,
-        },
-      ],
-    },
-    {
-      name: 'whatsappContact',
-      type: 'group',
-      fields: [
-        {
-          name: 'label',
-          type: 'text',
-          defaultValue: 'Reserva:',
-          required: true,
-        },
-        {
-          name: 'phone',
-          type: 'text',
-          defaultValue: '+51 958 848 684',
           required: true,
         },
       ],
