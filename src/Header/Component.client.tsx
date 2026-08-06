@@ -62,16 +62,30 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           md:px-12
           xl:px-16
 
-          flex
+          grid
+          grid-cols-[1fr_auto_1fr]
           items-center
-          justify-between
 
           h-16
           md:h-20
         "
       >
 
-        <Link href="/">
+        <div
+          className="
+            hidden
+            md:block
+            font-mono
+            text-[10px]
+            text-cream/35
+            tracking-[0.4em]
+            uppercase
+          "
+        >
+          LlamaTrek · Olleros → Chavín
+        </div>
+
+        <Link href="/" className="justify-self-center">
           {data?.logo ? (
             <Media
               resource={data.logo}
@@ -88,24 +102,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           )}
         </Link>
 
-
-        <div
-          className="
-            hidden
-            md:block
-            font-mono
-            text-[10px]
-            text-cream/35
-            tracking-[0.4em]
-            uppercase
-          "
-        >
-          LlamaTrek · Olleros → Chavín
+        <div className="justify-self-end">
+          <HeaderNav data={data}/>
         </div>
-
-
-        <HeaderNav data={data}/>
-
 
       </div>
 

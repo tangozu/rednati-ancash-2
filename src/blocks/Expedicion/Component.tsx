@@ -16,14 +16,14 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTM
       <div className="mx-auto max-w-screen-xl px-6 md:px-16 xl:px-24">
         {label && (
           <div className="reveal mb-14">
-            <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-earth">
+            <span className="font-mono text-sm font-semibold uppercase tracking-[0.3em] text-gold">
               {label}
             </span>
           </div>
         )}
         {title && (
           <h2
-            className="reveal mb-20 max-w-2xl font-display font-bold leading-[1.05] text-cream"
+            className="reveal mb-20 max-w-2xl font-display font-bold leading-[1.05] text-black"
             style={{ fontSize: 'clamp(2.2rem, 4.5vw, 4rem)' }}
           >
             {title}
@@ -31,7 +31,7 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTM
         )}
 
         {days && days.length > 0 && (
-          <div className="divide-y divide-cream/[0.07]">
+          <div className="divide-y divide-black/[0.07]">
             {days.map((day, i) => (
               <div key={i} className="reveal grid grid-cols-1 gap-0 py-0 md:grid-cols-2">
                 <div
@@ -40,25 +40,25 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTM
                   }`}
                 >
                   <div className="mb-7 flex items-center gap-5">
-                    <span className="font-mono text-[10px] tracking-[0.35em] text-earth">
+                    <span className="font-mono text-[10px] tracking-[0.35em] text-gold">
                       {String(i + 1).padStart(2, '0')}
                     </span>
-                    <span className="h-px w-8 bg-cream/15" />
-                    <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-cream/30">
+                    <span className="h-px w-8 bg-black/15" />
+                    <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-black/35">
                       {day.duration}
                     </span>
                   </div>
 
                   <h3
-                    className="mb-2 font-display font-bold text-cream"
+                    className="mb-2 font-display font-bold text-black"
                     style={{ fontSize: 'clamp(1.5rem, 2.8vw, 2.4rem)' }}
                   >
                     {day.title}
                   </h3>
-                  <p className="mb-7 font-mono text-[10px] uppercase tracking-[0.22em] text-earth/75">
+                  <p className="mb-7 font-mono text-[10px] uppercase tracking-[0.22em] text-gold/90">
                     {day.altitude}
                   </p>
-                  <p className="font-body text-sm leading-relaxed text-cream/50 md:text-base">
+                  <p className="font-body text-sm leading-relaxed text-black/60 md:text-base">
                     {day.paragraph}
                   </p>
                 </div>

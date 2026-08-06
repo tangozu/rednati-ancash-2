@@ -108,13 +108,13 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
                     <Media resource={llamaTrekHeroFields.rednatiLogo} />
                   </div>
                 )}
-              <span className="h-px w-12 my-auto bg-earth/60" />
+              <span className="h-px w-12 my-auto bg-gold/60" />
               <span className="text-[10px] uppercase tracking-[0.28em] text-cream">
                 {llamaTrekHeroFields?.region} · {llamaTrekHeroFields?.altitude}
               </span>
             </div>
 
-            <h1 className="max-w-5xl font-['Fraunces'] text-[clamp(3rem,14vw,6rem)] font-black leading-[0.88] tracking-[-0.03em] text-cream">
+            <h1 className="max-w-5xl font-['Fraunces'] text-[clamp(3rem,14vw,6rem)] font-black leading-[0.88] tracking-[-0.03em] text-gold">
               {llamaTrekHeroFields?.title?.includes(' ') ? (
                 <>
                   {llamaTrekHeroFields.title.split(' ').slice(0, 1).join(' ')}
@@ -128,7 +128,7 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
 
             <div className="mt-8 max-w-sm md:max-w-md">
               {llamaTrekHeroFields?.subtitle && (
-                <p className="font-body text-cream text-base md:text-lg leading-relaxed">
+                <p className="font-body text-bg text-base md:text-lg leading-relaxed">
                   {llamaTrekHeroFields.subtitle}
                 </p>
               )}

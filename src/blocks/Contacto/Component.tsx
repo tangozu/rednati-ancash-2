@@ -34,7 +34,7 @@ export const ContactoBlock: React.FC<ContactoBlockProps & HTMLAttributes<HTMLEle
       <div className="relative mx-auto max-w-screen-md px-6 text-center md:px-16">
         {preTitle && (
           <div className="reveal mb-8">
-            <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-earth">
+            <span className="font-mono text-sm font-semibold uppercase tracking-[0.3em] text-gold">
               {preTitle}
             </span>
           </div>
@@ -42,7 +42,7 @@ export const ContactoBlock: React.FC<ContactoBlockProps & HTMLAttributes<HTMLEle
 
         {title && (
           <h2
-            className="reveal mb-10 font-display font-black leading-[0.92] text-cream"
+            className="reveal mb-10 font-display font-black leading-[0.92] text-black"
             style={{ fontSize: 'clamp(3.2rem, 9vw, 7.5rem)' }}
           >
             {title}
@@ -50,12 +50,12 @@ export const ContactoBlock: React.FC<ContactoBlockProps & HTMLAttributes<HTMLEle
         )}
 
         {subtitle && (
-          <p className="reveal mx-auto mb-6 max-w-sm font-body text-base leading-relaxed text-cream/50 md:text-lg">
+          <p className="reveal mx-auto mb-6 max-w-sm font-body text-base leading-relaxed text-black/60 md:text-lg">
             {subtitle}
           </p>
         )}
         {guide && (
-          <p className="reveal mb-14 font-mono text-[10px] uppercase tracking-[0.25em] text-cream/35">
+          <p className="reveal mb-14 font-mono text-[10px] uppercase tracking-[0.25em] text-black/40">
             Guía: {guide}
           </p>
         )}
@@ -65,8 +65,8 @@ export const ContactoBlock: React.FC<ContactoBlockProps & HTMLAttributes<HTMLEle
         </div>
 
         {address && (
-          <div className="reveal mt-16 border-t border-cream/[0.07] pt-8">
-            <p className="font-mono text-[9px] uppercase leading-loose tracking-[0.22em] text-cream/25">
+          <div className="reveal mt-16 border-t border-black/[0.07] pt-8">
+            <p className="font-mono text-[9px] uppercase leading-loose tracking-[0.22em] text-black/30">
               {address}
             </p>
           </div>

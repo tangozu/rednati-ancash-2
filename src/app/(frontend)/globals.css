@@ -53,6 +53,8 @@
   --color-earth: #f86800;
   --color-earth-dark: #801800;
   --color-earth-accent: #f86800;
+  /* Matches the gold ring on the ASAM RECUAY-CHAVÍN / LlamaTrek logo badge. */
+  --color-gold: #eab308;
   --color-media-placeholder: #d9c9a8;
 
   --font-display: 'Fraunces', serif;
