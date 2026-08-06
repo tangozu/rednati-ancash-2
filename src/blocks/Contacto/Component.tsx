@@ -60,7 +60,6 @@ export const ContactoBlock: React.FC<ContactoBlockProps> = ({
 
         <div className="stagger-parent flex flex-col items-center justify-center gap-4 sm:flex-row">
           {email && <EmailButton email={email} label="" />}
-          {whatsapp && <WhatsappButton phone={whatsapp} label="" />}
         </div>
 
         {address && (

@@ -147,12 +147,6 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
                   label={llamaTrekHeroFields.emailContact.label}
                 />
               )}
-              {llamaTrekHeroFields?.whatsappContact?.phone && (
-                <WhatsappButton
-                  phone={llamaTrekHeroFields.whatsappContact.phone}
-                  label={llamaTrekHeroFields.whatsappContact.label}
-                />
-              )}
             </div>
           </div>
 
