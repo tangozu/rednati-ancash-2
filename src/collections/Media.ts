@@ -37,6 +37,7 @@ export const Media: CollectionConfig = {
       options: [
         { label: 'Logo', value: 'logo' },
         { label: 'Galería', value: 'gallery' },
+        { label: 'Créditos', value: 'creditos' },
         { label: 'No definido', value: 'unset' },
       ],
       admin: {

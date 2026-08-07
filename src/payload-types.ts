@@ -205,7 +205,7 @@ export interface Page {
 export interface Media {
   id: string;
   alt?: string | null;
-  imageType?: ('logo' | 'gallery' | 'unset') | null;
+  imageType?: ('logo' | 'gallery' | 'creditos' | 'unset') | null;
   caption?: {
     root: {
       type: string;
