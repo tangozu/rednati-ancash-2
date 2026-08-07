@@ -1,10 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-import { Logo } from '@/components/Logo/Logo'
-
 export async function Footer() {
-
   return (
     <footer
       className="
@@ -18,9 +15,7 @@ export async function Footer() {
         xl:px-24
       "
     >
-
       <div className="max-w-screen-xl mx-auto">
-
         {/* Top */}
         <div
           className="
@@ -34,14 +29,8 @@ export async function Footer() {
             border-cream/[0.05]
           "
         >
-
           {/* Marca */}
           <div>
-
-            <Link href="/">
-              <Logo />
-            </Link>
-
             <span
               className="
                 mt-3
@@ -58,13 +47,10 @@ export async function Footer() {
               <br />
               Turismo Indígena Regenerativo
             </span>
-
           </div>
-
 
           {/* Contacto */}
           <div className="space-y-2">
-
             <span
               className="
                 block
@@ -78,7 +64,6 @@ export async function Footer() {
             >
               Contacto
             </span>
-
 
             <a
               href="mailto:contacto@rednatiperu.com"
@@ -94,7 +79,6 @@ export async function Footer() {
             >
               contacto@rednatiperu.com
             </a>
-
 
             <a
               href="https://wa.me/51958848684"
@@ -113,24 +97,22 @@ export async function Footer() {
               +51 958 848 684
             </a>
 
-            <a className="
+            <a
+              className="
                 block
                 font-mono
                 text-[10px]
                 text-cream/30
                 tracking-[0.15em]
                 hover:text-cream/60
-                transition-colors">
+                transition-colors"
+            >
               By: Franco Panizo & Anthony Aguilar
             </a>
-
           </div>
-
-
 
           {/* Apoyo */}
           <div className="space-y-2">
-
             <span
               className="
                 block
@@ -145,7 +127,6 @@ export async function Footer() {
               Con apoyo de
             </span>
 
-
             <span
               className="
                 block
@@ -157,7 +138,6 @@ export async function Footer() {
             >
               CETSUR · Sueño Andino
             </span>
-
 
             <span
               className="
@@ -171,7 +151,6 @@ export async function Footer() {
               AGCID Chile · UNDP
             </span>
 
-
             <span
               className="
                 block
@@ -184,14 +163,8 @@ export async function Footer() {
             >
               Proyecto Buen Vivir Chile–Perú 2025–2026
             </span>
-
-
           </div>
-
-
         </div>
-
-
 
         {/* Bottom */}
         <div
@@ -206,7 +179,6 @@ export async function Footer() {
             gap-4
           "
         >
-
           <span
             className="
               font-mono
@@ -217,7 +189,6 @@ export async function Footer() {
           >
             © 2025 REDNATI Perú · Todos los derechos reservados
           </span>
-
 
           <span
             className="
@@ -230,13 +201,8 @@ export async function Footer() {
           >
             Olleros → Chavín de Huántar · Ancash · Perú
           </span>
-
-
         </div>
-
-
       </div>
-
     </footer>
   )
 }
