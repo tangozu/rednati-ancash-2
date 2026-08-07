@@ -56,7 +56,7 @@ export const RenderBlocks: React.FC<{
                     // @ts-expect-error there may be some mismatch between the expected types here
                     key={index}
                     // @ts-expect-error there may be some mismatch between the expected types here
-                    className={cn('px-6 py-24 md:px-16 xl:px-32', bg)}
+                    className={cn(' py-24 ', bg)}
                   />
                 )
               }

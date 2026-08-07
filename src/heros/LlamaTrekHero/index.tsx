@@ -1,26 +1,16 @@
-'use client'
-
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 
 import type { Page } from '@/payload-types'
 
 import { Media } from '@/components/Media'
-import { useHeaderTheme } from '@/providers/HeaderTheme'
-import { Mail, MessageCircleMore } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { EmailButton } from '@/components/Buttons/emailButton'
-import { WhatsappButton } from '@/components/Buttons/whatsappButton'
-
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger)
-}
+import { getCachedGlobal } from '@/utilities/getGlobals'
+import { HeaderClient } from '@/Header/Component.client'
 
 export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) => {
   return (
     <div>
-      <section className="relative min-h-screen overflow-hidden bg-bg text-cream">
+      <section className="relative min-h-screen bg-bg text-cream">
         {llamaTrekHeroFields?.imagenDeFondo &&
           typeof llamaTrekHeroFields.imagenDeFondo === 'object' && (
             <div className="absolute inset-0">
@@ -35,7 +25,7 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
 
         <div className="mx-auto container ">
           <div className="relative z-10 flex min-h-screen flex-col justify-between w-fit mr-auto px-8">
-            <div className="absolute -z-10 inset-0 w-full bg-bg/60" />
+            <div className="absolute mt-16 -z-10 inset-0 w-full bg-bg/60" />
             <div className="mt-24 flex flex-col items-start gap-4 mr-auto">
               <div className="flex flex-wrap items-center gap-4 sm:gap-5">
                 {llamaTrekHeroFields?.rednatiLogo &&
