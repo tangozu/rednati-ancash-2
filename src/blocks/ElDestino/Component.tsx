@@ -21,7 +21,7 @@ export const ElDestinoBlock: React.FC<ElDestinoBlockProps & HTMLAttributes<HTMLE
       <div className="mx-auto max-w-screen-xl px-6 md:px-16 xl:px-24">
         {label && (
           <div className="reveal mb-14">
-            <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-earth">
+            <span className="font-mono text-lg uppercase tracking-[0.4em] text-earth">
               {label}
             </span>
           </div>
@@ -42,15 +42,12 @@ export const ElDestinoBlock: React.FC<ElDestinoBlockProps & HTMLAttributes<HTMLE
         <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-2 md:gap-24">
           <div>
             {title && (
-              <h2
-                className="reveal mb-5 font-display font-bold leading-[1.05] text-cream"
-                style={{ fontSize: 'clamp(2.2rem, 4.5vw, 4rem)' }}
-              >
+              <h2 className="reveal mb-5 font-display text-5xl font-bold leading-[1.05] text-cream md:text-7xl">
                 {title}
               </h2>
             )}
             {(recognition || location || altitude) && (
-              <p className="reveal font-mono text-[10px] uppercase leading-loose tracking-[0.28em] text-earth">
+              <p className="reveal font-mono text-xs uppercase leading-loose tracking-[0.28em] text-earth">
                 {recognition}
                 <br />
                 {location} {location && altitude && '·'} {altitude}

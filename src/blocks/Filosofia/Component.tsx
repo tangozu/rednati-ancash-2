@@ -28,17 +28,14 @@ export const FilosofiaBlock: React.FC<FilosofiaBlockProps & HTMLAttributes<HTMLE
       <div className="relative mx-auto max-w-screen-lg px-6 md:px-16 xl:px-24">
         {label && (
           <div className="reveal mb-14">
-            <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-earth">
+            <span className="font-mono text-lg uppercase tracking-[0.4em] text-earth">
               {label}
             </span>
           </div>
         )}
 
         {title && (
-          <h2
-            className="reveal mb-20 max-w-3xl font-display font-bold leading-[1.05] text-cream"
-            style={{ fontSize: 'clamp(2.2rem, 4.5vw, 4rem)' }}
-          >
+          <h2 className="reveal mb-20 max-w-3xl font-display text-5xl font-bold leading-[1.05] text-cream md:text-7xl">
             {title}
           </h2>
         )}

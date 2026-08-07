@@ -237,12 +237,13 @@ html[data-theme='light'] {
 }
 
 .counter-container {
-  counter-reset: page;
+  --counter-name: page;
+  counter-reset: var(--counter-name);
 }
 
 .counter-item {
-  counter-increment: page;
+  counter-increment: var(--counter-name, page);
 }
 .counter-item::before {
-  content: counter(page, decimal-leading-zero) ' — ';
+  content: counter(var(--counter-name, page), decimal-leading-zero) ' — ';
 }

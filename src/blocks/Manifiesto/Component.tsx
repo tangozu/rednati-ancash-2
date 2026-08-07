@@ -15,7 +15,7 @@ export const ManifiestoBlock: React.FC<ManifiestoBlockProps & HTMLAttributes<HTM
       <div className="mx-auto container">
         {label && (
           <div className="reveal mb-14">
-            <span className="counter-item font-mono text-12 uppercase tracking-[0.4em] text-earth">
+            <span className="counter-item font-mono text-lg uppercase tracking-[0.4em] text-earth">
               {label}
             </span>
           </div>
@@ -23,10 +23,7 @@ export const ManifiestoBlock: React.FC<ManifiestoBlockProps & HTMLAttributes<HTM
 
         {quote && (
           <blockquote className="reveal">
-            <p
-              className="font-display font-light italic leading-[1.08] text-cream"
-              style={{ fontSize: 'clamp(1.9rem, 4.5vw, 3.8rem)' }}
-            >
+            <p className="font-display text-4xl font-light italic leading-[1.08] text-cream md:text-6xl">
               &quot;{quote}&quot;
             </p>
           </blockquote>
@@ -38,13 +35,13 @@ export const ManifiestoBlock: React.FC<ManifiestoBlockProps & HTMLAttributes<HTM
 
             <div className="reveal mt-8 flex flex-wrap items-center gap-4 md:gap-8">
               {author && (
-                <span className="font-mono text-4 uppercase tracking-widest text-cream">
+                <span className="font-mono text-xs uppercase tracking-widest text-cream">
                   {author}
                 </span>
               )}
               {author && concepts && <span className="h-1 w-1 rounded-full bg-cream" />}
               {concepts && (
-                <span className="font-mono text-4 uppercase tracking-widest text-cream">
+                <span className="font-mono text-xs uppercase tracking-widest text-cream">
                   {concepts}
                 </span>
               )}

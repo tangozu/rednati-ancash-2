@@ -97,8 +97,7 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
             </div>
           )}
 
-        <div className="absolute inset-0 bg-linear-to-t from-bg/40 via-bg/40 to-bg/5" />
-        <div className="absolute inset-0 bg-linear-to-r from-bg/40 via-bg/40 to-bg/5" />
+        <div className="absolute inset-y-0 left-0 w-full bg-linear-to-r from-bg/70 via-bg/30 to-transparent sm:w-4/5 md:w-3/5 lg:w-1/2" />
         <div className="relative z-10 flex min-h-screen flex-col justify-between px-6 sm:px-8 md:px-12 lg:px-16 xl:px-24 2xl:px-32">
           <div className="mt-24 flex flex-col items-start gap-4 ">
             <div className="flex flex-wrap items-center gap-4 sm:gap-5">
@@ -109,12 +108,12 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
                   </div>
                 )}
               <span className="h-px w-12 my-auto bg-earth/60" />
-              <span className="text-[10px] uppercase tracking-[0.28em] text-cream">
+              <span className="text-xs uppercase tracking-[0.28em] text-cream">
                 {llamaTrekHeroFields?.altitude}
               </span>
             </div>
 
-            <h1 className="max-w-5xl font-['Fraunces'] text-[clamp(3rem,14vw,6rem)] font-black leading-[0.88] tracking-[-0.03em] text-cream">
+            <h1 className="max-w-5xl font-display text-6xl font-black leading-[0.88] tracking-[-0.03em] text-cream sm:text-7xl md:text-8xl lg:text-9xl">
               {llamaTrekHeroFields?.title?.includes(' ') ? (
                 <>
                   {llamaTrekHeroFields.title.split(' ').slice(0, 1).join(' ')}
@@ -146,10 +145,10 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
               <div className="animate-scroll-line absolute inset-x-0 top-0 h-full bg-earth" />
             </div>
             <div className=" flex flex-col items-end gap-1.5 text-right sm:bottom-8 sm:right-8 md:bottom-10 md:right-10">
-              <span className="text-[9px] uppercase tracking-[0.2em] text-cream">
+              <span className="text-xs uppercase tracking-[0.2em] text-cream">
                 {llamaTrekHeroFields?.coordinates}
               </span>
-              <span className="text-[9px] uppercase tracking-[0.2em] text-cream">
+              <span className="text-xs uppercase tracking-[0.2em] text-cream">
                 {llamaTrekHeroFields?.location}
               </span>
             </div>

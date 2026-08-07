@@ -34,17 +34,14 @@ export const ContactoBlock: React.FC<ContactoBlockProps & HTMLAttributes<HTMLEle
       <div className="relative mx-auto max-w-screen-md px-6 text-center md:px-16">
         {preTitle && (
           <div className="reveal mb-8">
-            <span className="font-mono text-12 uppercase tracking-[0.4em] text-earth">
+            <span className="font-mono text-lg uppercase tracking-[0.4em] text-earth">
               {preTitle}
             </span>
           </div>
         )}
 
         {title && (
-          <h2
-            className="reveal mb-10 font-display font-black leading-[0.92] text-cream"
-            style={{ fontSize: 'clamp(3.2rem, 9vw, 7.5rem)' }}
-          >
+          <h2 className="reveal mb-10 font-display text-6xl font-black leading-[0.92] text-cream md:text-8xl">
             {title}
           </h2>
         )}
@@ -55,7 +52,7 @@ export const ContactoBlock: React.FC<ContactoBlockProps & HTMLAttributes<HTMLEle
           </p>
         )}
         {guide && (
-          <p className="reveal mb-14 font-mono text-[10px] uppercase tracking-[0.25em] text-cream/35">
+          <p className="reveal mb-14 font-mono text-xs uppercase tracking-[0.25em] text-cream/35">
             Guía: {guide}
           </p>
         )}
@@ -66,7 +63,7 @@ export const ContactoBlock: React.FC<ContactoBlockProps & HTMLAttributes<HTMLEle
 
         {address && (
           <div className="reveal mt-16 border-t border-cream/[0.07] pt-8">
-            <p className="font-mono text-[9px] uppercase leading-loose tracking-[0.22em] text-cream/25">
+            <p className="font-mono text-xs uppercase leading-loose tracking-[0.22em] text-cream/25">
               {address}
             </p>
           </div>
