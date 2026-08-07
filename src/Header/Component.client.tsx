@@ -6,7 +6,6 @@ import React, { useEffect, useState } from 'react'
 
 import type { Header } from '@/payload-types'
 
-import { Logo } from '@/components/Logo/Logo'
 import { Media } from '@/components/Media'
 import { HeaderNav } from './Nav'
 
@@ -15,13 +14,11 @@ interface HeaderClientProps {
 }
 
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
-
   const [scrolled, setScrolled] = useState(false)
 
   const { headerTheme, setHeaderTheme } = useHeaderTheme()
 
   useEffect(() => {
-
     const handleScroll = () => {
       setScrolled(window.scrollY > 70)
     }
@@ -31,9 +28,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-
   }, [])
-
 
   return (
     <header
@@ -46,14 +41,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         transition-all
         duration-700
 
-        ${
-          scrolled
-          ? 'bg-bg/80 backdrop-blur-xl border-b border-white/5'
-          : 'bg-transparent'
-        }
+        ${scrolled ? 'bg-bg/80 backdrop-blur-xl border-b border-white/5' : 'bg-transparent'}
       `}
     >
-
       <div
         className="
           max-w-screen-xl
@@ -70,45 +60,14 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           md:h-20
         "
       >
-
         <Link href="/">
-          {data?.logo ? (
-            <Media
-              resource={data.logo}
-              imgClassName="h-10 w-auto object-contain"
-              priority
-              loading="eager"
-            />
-          ) : (
-            <Logo
-              loading="eager"
-              priority="high"
-              className="h-10 w-auto invert"
-            />
+          {data?.logo && (
+            <Media resource={data.logo} imgClassName="w-22 " priority loading="eager" />
           )}
         </Link>
 
-
-        <div
-          className="
-            hidden
-            md:block
-            font-mono
-            text-[10px]
-            text-cream/35
-            tracking-[0.4em]
-            uppercase
-          "
-        >
-          LlamaTrek · Olleros → Chavín
-        </div>
-
-
-        <HeaderNav data={data}/>
-
-
+        <HeaderNav data={data} />
       </div>
-
     </header>
   )
 }
