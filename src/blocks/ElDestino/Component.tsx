@@ -18,27 +18,23 @@ export const ElDestinoBlock: React.FC<ElDestinoBlockProps & HTMLAttributes<HTMLE
 }) => {
   return (
     <section className={cn(className)}>
-      <div className="mx-auto max-w-screen-xl px-6 md:px-16 xl:px-24">
+      <div className="mx-auto container">
         {label && (
           <div className="reveal mb-14">
-            <span className="font-mono text-lg uppercase tracking-[0.4em] text-earth">
-              {label}
-            </span>
+            <span className="font-mono text-lg uppercase tracking-[0.4em] text-earth">{label}</span>
           </div>
         )}
-      </div>
 
-      {media && typeof media === 'object' && (
-        <div className="clip-reveal mb-16 h-56 overflow-hidden bg-media-placeholder sm:h-80 md:mb-24 md:h-[440px]">
-          <Media
-            fill
-            imgClassName="h-full w-full object-cover object-center transition-transform duration-[3s] ease-out hover:scale-[1.03]"
-            resource={media}
-          />
-        </div>
-      )}
+        {media && typeof media === 'object' && (
+          <div className="clip-reveal mb-16 h-56 overflow-hidden bg-media-placeholder sm:h-80 md:mb-24 md:h-[440px]">
+            <Media
+              fill
+              imgClassName="h-full w-full object-cover object-center transition-transform duration-[3s] ease-out hover:scale-[1.03]"
+              resource={media}
+            />
+          </div>
+        )}
 
-      <div className="mx-auto max-w-screen-xl px-6 md:px-16 xl:px-24">
         <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-2 md:gap-24">
           <div>
             {title && (
