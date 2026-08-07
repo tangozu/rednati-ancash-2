@@ -40,7 +40,7 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
                 </span>
               </div>
 
-              <h1 className="max-w-5xl font-display text-6xl font-black leading-[0.88] tracking-[-0.03em] text-cream sm:text-7xl md:text-8xl lg:text-9xl">
+              <h1 className="max-w-5xl font-display text-8xl font-black leading-[0.88] tracking-[-0.03em] text-cream">
                 {llamaTrekHeroFields?.title?.includes(' ') ? (
                   <>
                     {llamaTrekHeroFields.title.split(' ').slice(0, 1).join(' ')}
