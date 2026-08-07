@@ -15,9 +15,7 @@ export const ManifiestoBlock: React.FC<ManifiestoBlockProps & HTMLAttributes<HTM
       <div className="mx-auto max-w-screen-lg">
         {label && (
           <div className="reveal mb-14">
-            <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-earth">
-              {label}
-            </span>
+            <span className="font-mono text-12 uppercase tracking-[0.4em] text-earth">{label}</span>
           </div>
         )}
 
@@ -34,17 +32,17 @@ export const ManifiestoBlock: React.FC<ManifiestoBlockProps & HTMLAttributes<HTM
 
         {(author || concepts) && (
           <>
-            <div className="reveal mt-16 h-px bg-cream/[0.08]" />
+            <div className="reveal mt-16 h-px bg-cream/10" />
 
             <div className="reveal mt-8 flex flex-wrap items-center gap-4 md:gap-8">
               {author && (
-                <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-cream/30">
+                <span className="font-mono text-4 uppercase tracking-widest text-cream">
                   {author}
                 </span>
               )}
-              {author && concepts && <span className="h-1 w-1 rounded-full bg-cream/15" />}
+              {author && concepts && <span className="h-1 w-1 rounded-full bg-cream" />}
               {concepts && (
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-cream/20">
+                <span className="font-mono text-4 uppercase tracking-widest text-cream">
                   {concepts}
                 </span>
               )}
