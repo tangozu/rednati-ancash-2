@@ -13,10 +13,10 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTM
 }) => {
   return (
     <section className={cn(className)}>
-      <div className="mx-auto max-w-screen-xl px-6 md:px-16 xl:px-24">
+      <div className="mx-auto container">
         {label && (
           <div className="reveal mb-14">
-            <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-earth">
+            <span className="counter-item font-mono text-12 uppercase tracking-[0.4em] text-earth">
               {label}
             </span>
           </div>

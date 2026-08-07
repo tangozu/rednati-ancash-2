@@ -235,3 +235,14 @@ html[data-theme='dark'],
 html[data-theme='light'] {
   opacity: initial;
 }
+
+.counter-container {
+  counter-reset: page;
+}
+
+.counter-item {
+  counter-increment: page;
+}
+.counter-item::before {
+  content: counter(page, decimal-leading-zero) ' — ';
+}

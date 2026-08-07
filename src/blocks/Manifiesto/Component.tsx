@@ -12,10 +12,12 @@ export const ManifiestoBlock: React.FC<ManifiestoBlockProps & HTMLAttributes<HTM
 }) => {
   return (
     <section className={cn(className)}>
-      <div className="mx-auto max-w-screen-lg">
+      <div className="mx-auto container">
         {label && (
           <div className="reveal mb-14">
-            <span className="font-mono text-12 uppercase tracking-[0.4em] text-earth">{label}</span>
+            <span className="counter-item font-mono text-12 uppercase tracking-[0.4em] text-earth">
+              {label}
+            </span>
           </div>
         )}
 

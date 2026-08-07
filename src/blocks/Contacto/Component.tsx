@@ -34,7 +34,7 @@ export const ContactoBlock: React.FC<ContactoBlockProps & HTMLAttributes<HTMLEle
       <div className="relative mx-auto max-w-screen-md px-6 text-center md:px-16">
         {preTitle && (
           <div className="reveal mb-8">
-            <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-earth">
+            <span className="font-mono text-12 uppercase tracking-[0.4em] text-earth">
               {preTitle}
             </span>
           </div>
