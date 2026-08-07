@@ -403,14 +403,6 @@ export interface ExpedicionBlock {
  */
 export interface GaleriaBlock {
   label: string;
-  images?:
-    | {
-        media: string | Media;
-        id?: string | null;
-      }[]
-    | null;
-  imagesDriveUrl?: string | null;
-  videosDriveUrl?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'galeria';
@@ -1122,14 +1114,6 @@ export interface ExpedicionBlockSelect<T extends boolean = true> {
  */
 export interface GaleriaBlockSelect<T extends boolean = true> {
   label?: T;
-  images?:
-    | T
-    | {
-        media?: T;
-        id?: T;
-      };
-  imagesDriveUrl?: T;
-  videosDriveUrl?: T;
   id?: T;
   blockName?: T;
 }
