@@ -104,13 +104,13 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
             <div className="flex flex-wrap items-center gap-4 sm:gap-5">
               {llamaTrekHeroFields?.rednatiLogo &&
                 typeof llamaTrekHeroFields.rednatiLogo === 'object' && (
-                  <div className="relative  w-24">
+                  <div className="relative  w-80 -m-8">
                     <Media resource={llamaTrekHeroFields.rednatiLogo} />
                   </div>
                 )}
               <span className="h-px w-12 my-auto bg-earth/60" />
               <span className="text-[10px] uppercase tracking-[0.28em] text-cream">
-                {llamaTrekHeroFields?.region} · {llamaTrekHeroFields?.altitude}
+                {llamaTrekHeroFields?.altitude}
               </span>
             </div>
 
@@ -146,10 +146,10 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
               <div className="animate-scroll-line absolute inset-x-0 top-0 h-full bg-earth" />
             </div>
             <div className=" flex flex-col items-end gap-1.5 text-right sm:bottom-8 sm:right-8 md:bottom-10 md:right-10">
-              <span className="text-[9px] uppercase tracking-[0.2em] text-cream/20">
+              <span className="text-[9px] uppercase tracking-[0.2em] text-cream">
                 {llamaTrekHeroFields?.coordinates}
               </span>
-              <span className="text-[9px] uppercase tracking-[0.2em] text-cream/20">
+              <span className="text-[9px] uppercase tracking-[0.2em] text-cream">
                 {llamaTrekHeroFields?.location}
               </span>
             </div>
