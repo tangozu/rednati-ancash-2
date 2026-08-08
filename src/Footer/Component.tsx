@@ -14,12 +14,6 @@ const socialLinks = [
   { label: 'LinkedIn', href: '#', Icon: Linkedin },
 ]
 
-const quickLinks = [
-  { label: 'Aviso Legal', href: '#' },
-  { label: 'Política de Privacidad', href: '#' },
-  { label: 'Mapa del Sitio', href: '#' },
-]
-
 const labelClassName = `
   block
   mb-2.5
@@ -68,139 +62,65 @@ export async function Footer() {
       "
     >
       <div className="max-w-7xl mx-auto">
-        {/* Fila 1: Organización / Sobre Nosotros */}
+        {/* Fila 1: Nuestros Aliados / Contacto */}
         <div
           className="
             grid
-            grid-cols-1
-            md:grid-cols-[1fr_2fr]
-            gap-6
-            md:gap-10
-            pb-6
+            grid-cols-[auto_auto]
+            items-center
+            gap-x-14
+            gap-y-2.5
+            pb-4
           "
         >
-          {/* Organización */}
-          <div>
-            <span className={labelClassName}>Organización</span>
+          <span className={labelClassName}>Nuestros Aliados</span>
+          <span className={labelClassName}>Contacto</span>
 
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={REDNATI_LOGO_URL}
-              alt="RedNatí Perú"
-              className="mb-2.5 h-16 w-auto object-contain md:h-20"
-            />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={REDNATI_LOGO_URL}
+            alt="RedNatí Perú"
+            className="h-16 w-auto object-contain md:h-20"
+          />
 
-            <span
+          {/* Contacto (horizontal) */}
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2.5">
+            <a
+              href="mailto:contacto@rednatiperu.com"
               className="
-                block
+                flex
+                items-center
+                gap-2
                 font-mono
                 text-[10px]
                 text-cream
-                tracking-[0.22em]
-                uppercase
-                leading-relaxed
+                tracking-[0.15em]
+                hover:text-cream/60
+                transition-colors
               "
             >
-              REDNATI Perú — Turismo Indígena Regenerativo
-            </span>
-          </div>
-
-          {/* Sobre Nosotros */}
-          <div>
-            <span className={labelClassName}>Sobre Nosotros</span>
-
-            <p
+              <Mail size={12} />
+              contacto@rednatiperu.com
+            </a>
+            <a
+              href="https://wa.me/51958848684"
+              target="_blank"
+              rel="noopener noreferrer"
               className="
-                max-w-2xl
+                flex
+                items-center
+                gap-2
                 font-mono
-                text-[9px]
+                text-[10px]
                 text-cream
-                tracking-[0.08em]
-                leading-relaxed
+                tracking-[0.15em]
+                hover:text-cream/60
+                transition-colors
               "
             >
-              Esta Landing Page fue confeccionada con el apoyo del proyecto de Cooperación
-              Internacional Chile-Perú, año 2025-2026, &quot;El concepto del Buen Vivir:
-              Compartiendo con organizaciones en Perú para emprender en turismo cultural bajo una
-              mirada regenerativa&quot;, gracias a la iniciativa de cooperación internacional Fondo
-              Chile, gestionada por el Ministerio de Relaciones Exteriores de Chile y la Agencia
-              Chilena de Cooperación Internacional para el Desarrollo, AGCID, en conjunto con el
-              Programa de las Naciones Unidas para el Desarrollo de Chile.
-            </p>
-          </div>
-        </div>
-
-        {/* Fila 2: Contacto / Enlaces Rápidos / Con el Apoyo de */}
-        <div
-          className="
-            grid
-            grid-cols-1
-            sm:grid-cols-3
-            gap-6
-            md:gap-10
-            py-6
-            border-t
-            border-b
-            border-cream/[0.05]
-          "
-        >
-          {/* Contacto */}
-          <div>
-            <span className={labelClassName}>Contacto</span>
-
-            <div className="space-y-1.5">
-              <a
-                href="mailto:contacto@rednatiperu.com"
-                className="
-                  flex
-                  items-center
-                  gap-2
-                  font-mono
-                  text-[10px]
-                  text-cream
-                  tracking-[0.15em]
-                  hover:text-cream/60
-                  transition-colors
-                "
-              >
-                <Mail size={12} />
-                contacto@rednatiperu.com
-              </a>
-              <a
-                href="https://wa.me/51958848684"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-                  flex
-                  items-center
-                  gap-2
-                  font-mono
-                  text-[10px]
-                  text-cream
-                  tracking-[0.15em]
-                  hover:text-cream/60
-                  transition-colors
-                "
-              >
-                <Phone size={12} />
-                +51 958 848 684
-              </a>
-            </div>
-
-            <span
-              className="
-                mt-3
-                mb-2
-                block
-                font-mono
-                text-[9px]
-                text-cream
-                tracking-[0.22em]
-                uppercase
-              "
-            >
-              Social Links
-            </span>
+              <Phone size={12} />
+              +51 958 848 684
+            </a>
 
             <div className="flex items-center gap-2.5">
               {socialLinks.map(({ label, href, Icon }) => (
@@ -217,38 +137,29 @@ export async function Footer() {
               ))}
             </div>
           </div>
+        </div>
 
-          {/* Enlaces Rápidos */}
-          <div>
-            <span className={labelClassName}>Enlaces Rápidos</span>
-
-            <div className="space-y-1.5">
-              {quickLinks.map(({ label, href }) => (
-                <a
-                  key={label}
-                  href={href}
-                  className="
-                    block
-                    font-mono
-                    text-[10px]
-                    text-cream
-                    tracking-[0.15em]
-                    hover:text-cream/60
-                    transition-colors
-                  "
-                >
-                  {label}
-                </a>
-              ))}
-            </div>
-          </div>
-
+        {/* Fila 2: Con el Apoyo de / Sobre Nosotros */}
+        <div
+          className="
+            grid
+            grid-cols-[auto_1fr]
+            items-start
+            gap-x-14
+            gap-y-2.5
+            pt-4
+            pb-6
+            border-t
+            border-b
+            border-cream/[0.05]
+          "
+        >
           {/* Con el Apoyo de */}
           {creditImages.length > 0 && (
-            <div>
-              <span className={labelClassName}>Con el Apoyo de</span>
+            <>
+              <span className={`${labelClassName} col-start-1 row-start-1`}>Con el Apoyo de</span>
 
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="col-start-1 row-start-2 flex flex-wrap items-center gap-3">
                 {creditImages.map((image) => (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
@@ -259,8 +170,30 @@ export async function Footer() {
                   />
                 ))}
               </div>
-            </div>
+            </>
           )}
+
+          {/* Sobre Nosotros (sin subtítulo, solo contenido — alineado a la altura de las imágenes) */}
+          <p
+            className="
+              col-start-2
+              row-start-2
+              max-w-7xl
+              font-mono
+              text-[9px]
+              text-cream
+              tracking-[0.08em]
+              leading-relaxed
+            "
+          >
+            Esta Landing Page fue confeccionada con el apoyo del proyecto de Cooperación
+            Internacional Chile-Perú, año 2025-2026, &quot;El concepto del Buen Vivir:
+            Compartiendo con organizaciones en Perú para emprender en turismo cultural bajo una
+            mirada regenerativa&quot;, gracias a la iniciativa de cooperación internacional Fondo
+            Chile, gestionada por el Ministerio de Relaciones Exteriores de Chile y la Agencia
+            Chilena de Cooperación Internacional para el Desarrollo, AGCID, en conjunto con el
+            Programa de las Naciones Unidas para el Desarrollo de Chile.
+          </p>
         </div>
 
         {/* Derechos */}
@@ -295,7 +228,7 @@ export async function Footer() {
               tracking-[0.18em]
             "
           >
-            By: Franco Panizo & Anthony Aguilar
+            By: Franco Panizo, Anthony Aguilar & Julissa
           </span>
         </div>
       </div>
