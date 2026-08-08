@@ -23,7 +23,7 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
         )}
 
       <div className="mx-auto container ">
-        <div className="relative z-10 flex min-h-screen flex-col justify-between w-full mr-auto px-4 sm:px-8">
+        <div className="relative z-10 flex min-h-screen flex-col justify-between w-fit mr-auto px-4 sm:px-8">
           <div className="absolute mt-16 -z-10 inset-0 w-full bg-bg/60" />
           <div className="mt-24 flex flex-col items-start gap-4 mr-auto">
             <div className="flex flex-wrap items-center gap-4 sm:gap-5">
@@ -39,7 +39,7 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
               </span>
             </div>
 
-            <h1 className="max-w-full wrap-break-word font-display text-4xl font-black leading-[0.88] tracking-[-0.03em] text-cream sm:max-w-5xl sm:text-5xl md:text-7xl">
+            <h1 className="max-w-full  font-display text-xl font-black leading-[0.88] tracking-[-0.03em] text-cream sm:max-w-5xl 3xs:text-3xl sm:text-5xl md:text-7xl">
               {llamaTrekHeroFields?.title && llamaTrekHeroFields?.title}
             </h1>
 
