@@ -30,7 +30,7 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
               <div className="flex flex-wrap items-center gap-4 sm:gap-5">
                 {llamaTrekHeroFields?.rednatiLogo &&
                   typeof llamaTrekHeroFields.rednatiLogo === 'object' && (
-                    <div className="relative  w-80 -m-8">
+                    <div className="relative  w-24 ">
                       <Media resource={llamaTrekHeroFields.rednatiLogo} />
                     </div>
                   )}
@@ -40,16 +40,8 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
                 </span>
               </div>
 
-              <h1 className="max-w-5xl font-display text-8xl font-black leading-[0.88] tracking-[-0.03em] text-cream">
-                {llamaTrekHeroFields?.title?.includes(' ') ? (
-                  <>
-                    {llamaTrekHeroFields.title.split(' ').slice(0, 1).join(' ')}
-                    <br />
-                    {llamaTrekHeroFields.title.split(' ').slice(1).join(' ')}
-                  </>
-                ) : (
-                  llamaTrekHeroFields?.title
-                )}
+              <h1 className="max-w-5xl font-display text-7xl font-black leading-[0.88] tracking-[-0.03em] text-cream">
+                {llamaTrekHeroFields?.title && llamaTrekHeroFields?.title}
               </h1>
 
               <div className="mt-8 max-w-sm md:max-w-md">
