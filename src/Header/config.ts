@@ -15,6 +15,15 @@ export const Header: GlobalConfig = {
       relationTo: 'media',
     },
     {
+      name: 'shortLogo',
+      type: 'upload',
+      relationTo: 'media',
+      admin: {
+        description:
+          'Compact logo without text, shown on narrow screens where the full logo would not fit.',
+      },
+    },
+    {
       name: 'navItems',
       type: 'array',
       fields: [

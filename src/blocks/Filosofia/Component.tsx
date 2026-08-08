@@ -28,7 +28,7 @@ export const FilosofiaBlock: React.FC<FilosofiaBlockProps & HTMLAttributes<HTMLE
       <div className="relative mx-auto max-w-screen-lg px-6 md:px-16 xl:px-24">
         {label && (
           <div className="reveal mb-14">
-            <span className="font-mono text-lg uppercase tracking-[0.4em] text-earth">
+            <span className="wrap-break-word font-mono text-base uppercase tracking-[0.25em] text-earth sm:text-lg sm:tracking-[0.4em]">
               {label}
             </span>
           </div>

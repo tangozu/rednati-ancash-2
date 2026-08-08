@@ -1609,6 +1609,10 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface Header {
   id: string;
   logo?: (string | null) | Media;
+  /**
+   * Compact logo without text, shown on narrow screens where the full logo would not fit.
+   */
+  shortLogo?: (string | null) | Media;
   navItems?:
     | {
         link: {
@@ -1688,6 +1692,7 @@ export interface ImageOptimizerState {
  */
 export interface HeaderSelect<T extends boolean = true> {
   logo?: T;
+  shortLogo?: T;
   navItems?:
     | T
     | {

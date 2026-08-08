@@ -21,7 +21,7 @@ export const ElDestinoBlock: React.FC<ElDestinoBlockProps & HTMLAttributes<HTMLE
       <div className="mx-auto container">
         {label && (
           <div className="reveal mb-14">
-            <span className="counter-item font-mono text-lg uppercase tracking-[0.4em] text-earth">
+            <span className="counter-item wrap-break-word font-mono text-base uppercase tracking-[0.25em] text-earth sm:text-lg sm:tracking-[0.4em]">
               {label}
             </span>
           </div>
@@ -45,7 +45,7 @@ export const ElDestinoBlock: React.FC<ElDestinoBlockProps & HTMLAttributes<HTMLE
               </h2>
             )}
             {(recognition || location || altitude) && (
-              <p className="reveal font-mono text-xs uppercase leading-loose tracking-[0.28em] text-earth">
+              <p className="reveal wrap-break-word font-mono text-xs uppercase leading-loose tracking-[0.18em] text-earth sm:tracking-[0.28em]">
                 {recognition}
                 <br />
                 {location} {location && altitude && '·'} {altitude}

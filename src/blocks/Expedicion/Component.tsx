@@ -16,13 +16,13 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTM
       <div className="mx-auto container">
         {label && (
           <div className="reveal mb-14">
-            <span className="counter-item font-mono text-lg uppercase tracking-[0.4em] text-earth">
+            <span className="counter-item wrap-break-word font-mono text-base uppercase tracking-[0.25em] text-earth sm:text-lg sm:tracking-[0.4em]">
               {label}
             </span>
           </div>
         )}
         {title && (
-          <h2 className="reveal mb-20 max-w-2xl font-display text-5xl font-bold leading-[1.05] text-cream md:text-7xl">
+          <h2 className="reveal mb-20 max-w-2xl wrap-break-word font-display text-4xl font-bold leading-[1.05] text-cream sm:text-5xl md:text-7xl">
             {title}
           </h2>
         )}
@@ -37,7 +37,7 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTM
                   }`}
                 >
                   <div className="mb-4 flex items-center">
-                    <span className="counter-item font-mono text-sm tracking-[0.2em] text-earth">
+                    <span className="counter-item wrap-break-word font-mono text-sm tracking-[0.2em] text-earth">
                       {day.duration}
                     </span>
                   </div>
@@ -45,7 +45,9 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTM
                   <h3 className="mb-2 font-display text-3xl font-bold text-cream md:text-4xl">
                     {day.title}
                   </h3>
-                  <p className="mb-4 text-base tracking-[0.2em] text-earth">{day.altitude}</p>
+                  <p className="mb-4 wrap-break-word text-base tracking-[0.2em] text-earth">
+                    {day.altitude}
+                  </p>
                   <p className="font-body text-sm leading-relaxed text-cream/50 md:text-base">
                     {day.paragraph}
                   </p>

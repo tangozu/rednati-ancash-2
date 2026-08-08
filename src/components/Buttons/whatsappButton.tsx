@@ -9,13 +9,15 @@ export const WhatsappButton: React.FC<{
       href={`https://wa.me/${phone.replace(/[^\d]/g, '')}`}
       target="_blank"
       rel="noopener noreferrer"
+      className="shrink-0"
+      aria-label={phone}
     >
       <Button
         variant="link"
-        className="inline-flex items-center gap-2 bg-earth px-6 py-3 text-xs uppercase tracking-[0.15em] text-bg"
+        className="inline-flex h-auto items-center gap-2 whitespace-nowrap rounded-full bg-earth p-3 text-xs uppercase tracking-widest text-bg sm:rounded-md sm:px-6 sm:py-3 sm:tracking-[0.15em]"
       >
-        <MessageCircleMore></MessageCircleMore>
-        {phone}
+        <MessageCircleMore className="shrink-0"></MessageCircleMore>
+        <span className="hidden sm:inline">{phone}</span>
       </Button>
     </a>
   )

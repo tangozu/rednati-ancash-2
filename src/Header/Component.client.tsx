@@ -43,12 +43,29 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           flex
           items-center
           justify-between
+          gap-3
           h-16
+          px-4
         "
       >
-        <Link href="/">
+        <Link href="/" className="shrink-0">
+          {data?.shortLogo && (
+            <Media
+              resource={data.shortLogo}
+              imgClassName="w-10 sm:hidden"
+              priority
+              loading="eager"
+            />
+          )}
           {data?.logo && (
-            <Media resource={data.logo} imgClassName="w-56" priority loading="eager" />
+            <Media
+              resource={data.logo}
+              imgClassName={
+                data?.shortLogo ? 'hidden sm:block sm:w-56' : 'w-32 sm:w-56'
+              }
+              priority
+              loading="eager"
+            />
           )}
         </Link>
 

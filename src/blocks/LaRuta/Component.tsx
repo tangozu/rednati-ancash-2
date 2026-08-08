@@ -31,7 +31,7 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
       <div className="mx-auto container">
         {label && (
           <div className="reveal mb-14">
-            <span className="counter-item font-mono text-lg uppercase tracking-[0.4em] text-earth">
+            <span className="counter-item wrap-break-word font-mono text-base uppercase tracking-[0.25em] text-earth sm:text-lg sm:tracking-[0.4em]">
               {label}
             </span>
           </div>
@@ -50,7 +50,7 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
 
           <div className="order-2 flex flex-col justify-center pl-6  md:pl-14 xl:pl-20">
             {title && (
-              <h2 className="reveal mb-8 font-display text-5xl font-bold leading-[1.05] text-cream md:text-7xl">
+              <h2 className="reveal mb-8 wrap-break-word font-display text-4xl font-bold leading-[1.05] text-cream sm:text-5xl md:text-7xl">
                 {title}
               </h2>
             )}
@@ -68,13 +68,13 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
             )}
 
             {stats.length > 0 && (
-              <div className="stagger-parent grid grid-cols-3 gap-6">
+              <div className="stagger-parent grid grid-cols-2 gap-6 sm:grid-cols-3">
                 {stats.map(({ num, label }) => (
                   <div key={label} className="border-t border-cream/10 pt-6">
                     <span className="mb-2 block font-display text-2xl font-bold text-earth md:text-3xl">
                       {num}
                     </span>
-                    <span className="block font-mono text-xs uppercase tracking-[0.22em] text-cream/35">
+                    <span className="block wrap-break-word font-mono text-xs uppercase tracking-widest text-cream/35 sm:tracking-[0.22em]">
                       {label}
                     </span>
                   </div>
