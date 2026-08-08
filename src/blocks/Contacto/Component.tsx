@@ -27,11 +27,11 @@ export const ContactoBlock: React.FC<ContactoBlockProps & HTMLAttributes<HTMLEle
             imgClassName="h-full w-full object-cover opacity-[0.06]"
             resource={backgroundMedia}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-panel/70 via-transparent to-panel/80" />
+          <div className="absolute inset-0 bg-linear-to-b from-panel/70 via-transparent to-panel/80" />
         </div>
       )}
 
-      <div className="relative mx-auto max-w-screen-md px-6 text-center md:px-16">
+      <div className="relative mx-auto max-w-3xl px-6 text-center md:px-16">
         {preTitle && (
           <div className="reveal mb-8">
             <span className="font-mono text-lg uppercase tracking-[0.4em] text-earth">
@@ -47,12 +47,12 @@ export const ContactoBlock: React.FC<ContactoBlockProps & HTMLAttributes<HTMLEle
         )}
 
         {subtitle && (
-          <p className="reveal mx-auto mb-6 max-w-sm font-body text-base leading-relaxed text-cream/50 md:text-lg">
+          <p className="reveal mx-auto mb-6 max-w-sm font-body text-base leading-relaxed text-cream md:text-lg">
             {subtitle}
           </p>
         )}
         {guide && (
-          <p className="reveal mb-14 font-mono text-xs uppercase tracking-[0.25em] text-cream/35">
+          <p className="reveal mb-14 font-mono text-xs uppercase tracking-[0.25em] text-cream">
             Guía: {guide}
           </p>
         )}
@@ -63,7 +63,7 @@ export const ContactoBlock: React.FC<ContactoBlockProps & HTMLAttributes<HTMLEle
 
         {address && (
           <div className="reveal mt-16 border-t border-cream/[0.07] pt-8">
-            <p className="font-mono text-xs uppercase leading-loose tracking-[0.22em] text-cream/25">
+            <p className="font-mono text-xs uppercase leading-loose tracking-[0.22em] text-cream">
               {address}
             </p>
           </div>
