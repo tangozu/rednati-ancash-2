@@ -31,7 +31,7 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
       <div className="mx-auto container">
         {label && (
           <div className="reveal mb-14">
-            <span className="counter-item font-mono text-lg uppercase tracking-[0.4em] text-earth">
+            <span className="counter-item wrap-break-word font-mono text-base uppercase tracking-[0.25em] text-earth sm:text-lg sm:tracking-[0.4em]">
               {label}
             </span>
           </div>
@@ -50,7 +50,7 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
 
           <div className="order-2 flex flex-col justify-center pl-6  md:pl-14 xl:pl-20">
             {title && (
-              <h2 className="reveal mb-8 font-display text-5xl font-bold leading-[1.05] text-cream md:text-7xl">
+              <h2 className="reveal mb-8 wrap-break-word font-display text-4xl font-bold leading-[1.05] text-cream sm:text-5xl md:text-7xl">
                 {title}
               </h2>
             )}

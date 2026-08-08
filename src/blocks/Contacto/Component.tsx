@@ -34,14 +34,14 @@ export const ContactoBlock: React.FC<ContactoBlockProps & HTMLAttributes<HTMLEle
       <div className="relative mx-auto max-w-3xl px-6 text-center md:px-16">
         {preTitle && (
           <div className="reveal mb-8">
-            <span className="font-mono text-lg uppercase tracking-[0.4em] text-earth">
+            <span className="wrap-break-word font-mono text-base uppercase tracking-[0.25em] text-earth sm:text-lg sm:tracking-[0.4em]">
               {preTitle}
             </span>
           </div>
         )}
 
         {title && (
-          <h2 className="reveal mb-10 font-display text-6xl font-black leading-[0.92] text-cream md:text-8xl">
+          <h2 className="reveal mb-10 wrap-break-word font-display text-4xl font-black leading-[0.92] text-cream sm:text-6xl md:text-8xl">
             {title}
           </h2>
         )}
@@ -52,18 +52,18 @@ export const ContactoBlock: React.FC<ContactoBlockProps & HTMLAttributes<HTMLEle
           </p>
         )}
         {guide && (
-          <p className="reveal mb-14 font-mono text-xs uppercase tracking-[0.25em] text-cream">
+          <p className="reveal mb-14 wrap-break-word font-mono text-xs uppercase tracking-[0.25em] text-cream">
             Guía: {guide}
           </p>
         )}
 
-        <div className="stagger-parent flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <div className="stagger-parent flex min-w-0 flex-col items-center justify-center gap-4 sm:flex-row">
           {email && <EmailButton email={email} />}
         </div>
 
         {address && (
           <div className="reveal mt-16 border-t border-cream/[0.07] pt-8">
-            <p className="font-mono text-xs uppercase leading-loose tracking-[0.22em] text-cream">
+            <p className="wrap-break-word font-mono text-xs uppercase leading-loose tracking-[0.22em] text-cream">
               {address}
             </p>
           </div>
