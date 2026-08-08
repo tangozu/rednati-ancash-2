@@ -29,10 +29,10 @@ export const GaleriaBlock: React.FC<GaleriaBlockProps & HTMLAttributes<HTMLEleme
 
   return (
     <section className={cn(className)}>
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto container">
         {label && (
           <div className="reveal mb-12 px-2 md:px-0">
-            <span className="font-mono text-lg uppercase tracking-[0.4em] text-earth">
+            <span className="counter-item font-mono text-lg uppercase tracking-[0.4em] text-earth">
               {label}
             </span>
           </div>
