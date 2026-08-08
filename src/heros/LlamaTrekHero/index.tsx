@@ -23,7 +23,7 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
         )}
 
       <div className="mx-auto container ">
-        <div className="relative z-10 flex min-h-screen flex-col justify-between w-full mr-auto px-8">
+        <div className="relative z-10 flex min-h-screen flex-col justify-between w-full mr-auto px-4 sm:px-8">
           <div className="absolute mt-16 -z-10 inset-0 w-full bg-bg/60" />
           <div className="mt-24 flex flex-col items-start gap-4 mr-auto">
             <div className="flex flex-wrap items-center gap-4 sm:gap-5">
@@ -39,13 +39,13 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
               </span>
             </div>
 
-            <h1 className="max-w-5xl font-display text-4xl sm:text-5xl md:text-7xl font-black leading-[0.88] tracking-[-0.03em] text-cream">
+            <h1 className="max-w-full wrap-break-word font-display text-4xl font-black leading-[0.88] tracking-[-0.03em] text-cream sm:max-w-5xl sm:text-5xl md:text-7xl">
               {llamaTrekHeroFields?.title && llamaTrekHeroFields?.title}
             </h1>
 
-            <div className="mt-8 max-w-sm md:max-w-md">
+            <div className="mt-8 max-w-full sm:max-w-sm md:max-w-md">
               {llamaTrekHeroFields?.subtitle && (
-                <p className="font-body text-cream text-base md:text-lg leading-relaxed">
+                <p className="wrap-break-word font-body text-cream text-base md:text-lg leading-relaxed">
                   {llamaTrekHeroFields.subtitle}
                 </p>
               )}

@@ -13,7 +13,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
   const whatsappContact = data?.whatsappContact
 
   return (
-    <nav className="flex gap-3 items-center">
+    <nav className="flex gap-3 items-center min-w-0">
       {navItems.map(({ link }, i) => {
         return <CMSLink key={i} {...link} appearance="link" />
       })}
