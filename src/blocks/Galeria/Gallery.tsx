@@ -16,7 +16,6 @@ import { Media } from '@/components/Media'
 const ROW_HEIGHT = 220
 const ROW_COUNT = 3
 const AUTO_SCROLL_SPEED = 40 // px per second
-const RESUME_DELAY = 5000 // ms of inactivity before auto-scroll resumes
 
 const wrap = (value: number, width: number) => {
   if (width <= 0) return 0
@@ -30,8 +29,7 @@ const Row: React.FC<{
   row: { image: MediaType; index: number }[]
   onSelect: (index: number) => void
   isInteractingRef: React.RefObject<boolean>
-  pauseAutoScroll: () => void
-}> = ({ index, row, onSelect, isInteractingRef, pauseAutoScroll }) => {
+}> = ({ index, row, onSelect, isInteractingRef }) => {
   const measureRef = useRef<HTMLDivElement>(null)
   const [rowWidth, setRowWidth] = useState(0)
   const rawX = useMotionValue(0)
@@ -83,15 +81,8 @@ const Row: React.FC<{
 
   return (
     <motion.div
-      drag={rowWidth > 0 ? 'x' : false}
-      dragConstraints={false}
-      dragElastic={0.15}
-      onDragStart={pauseAutoScroll}
-      onDrag={(_, info) => rawX.set(rawX.get() + info.delta.x)}
-      onDragEnd={pauseAutoScroll}
-      onPointerDown={pauseAutoScroll}
       style={{ x }}
-      className="flex cursor-grab shrink-0 gap-3 active:cursor-grabbing"
+      className="flex shrink-0 gap-3"
     >
       <div ref={measureRef} className="flex shrink-0 gap-3">
         {renderItems('a')}
@@ -105,7 +96,6 @@ const Row: React.FC<{
 export const Gallery: React.FC<{ images: MediaType[] }> = ({ images }) => {
   const [selected, setSelected] = useState<number | null>(null)
   const isInteractingRef = useRef(false)
-  const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const rows = images.reduce<{ image: MediaType; index: number }[][]>((acc, image, index) => {
     const rowIndex = index % ROW_COUNT
@@ -114,19 +104,9 @@ export const Gallery: React.FC<{ images: MediaType[] }> = ({ images }) => {
     return acc
   }, [])
 
-  const pauseAutoScroll = () => {
-    isInteractingRef.current = true
-    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current)
-    resumeTimerRef.current = setTimeout(() => {
-      isInteractingRef.current = false
-    }, RESUME_DELAY)
-  }
-
   useEffect(() => {
-    return () => {
-      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current)
-    }
-  }, [])
+    isInteractingRef.current = selected !== null
+  }, [selected])
 
   useEffect(() => {
     if (selected === null) return
@@ -158,7 +138,6 @@ export const Gallery: React.FC<{ images: MediaType[] }> = ({ images }) => {
             row={row}
             onSelect={setSelected}
             isInteractingRef={isInteractingRef}
-            pauseAutoScroll={pauseAutoScroll}
           />
         ))}
       </div>
