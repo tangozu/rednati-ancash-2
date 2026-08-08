@@ -25,7 +25,7 @@ const labelClassName = `
   mb-2.5
   font-mono
   text-[9px]
-  text-earth/60
+  text-earth
   tracking-[0.28em]
   uppercase
 `
@@ -38,8 +38,9 @@ const getCreditImages = async () => {
     where: {
       imageType: { equals: 'creditos' },
     },
-    limit: 50,
+    limit: 10,
     depth: 0,
+    sort: 'alt',
   })
 
   return docs
@@ -66,7 +67,7 @@ export async function Footer() {
         xl:px-24
       "
     >
-      <div className="max-w-screen-xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         {/* Fila 1: Organización / Sobre Nosotros */}
         <div
           className="
@@ -94,7 +95,7 @@ export async function Footer() {
                 block
                 font-mono
                 text-[10px]
-                text-cream/25
+                text-cream
                 tracking-[0.22em]
                 uppercase
                 leading-relaxed
@@ -113,7 +114,7 @@ export async function Footer() {
                 max-w-2xl
                 font-mono
                 text-[9px]
-                text-cream/25
+                text-cream
                 tracking-[0.08em]
                 leading-relaxed
               "
@@ -156,7 +157,7 @@ export async function Footer() {
                   gap-2
                   font-mono
                   text-[10px]
-                  text-cream/30
+                  text-cream
                   tracking-[0.15em]
                   hover:text-cream/60
                   transition-colors
@@ -175,7 +176,7 @@ export async function Footer() {
                   gap-2
                   font-mono
                   text-[10px]
-                  text-cream/30
+                  text-cream
                   tracking-[0.15em]
                   hover:text-cream/60
                   transition-colors
@@ -193,7 +194,7 @@ export async function Footer() {
                 block
                 font-mono
                 text-[9px]
-                text-cream/25
+                text-cream
                 tracking-[0.22em]
                 uppercase
               "
@@ -209,7 +210,7 @@ export async function Footer() {
                   aria-label={label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-cream/30 hover:text-cream/60 transition-colors"
+                  className="text-cream hover:text-cream/60 transition-colors"
                 >
                   <Icon size={15} />
                 </a>
@@ -230,7 +231,7 @@ export async function Footer() {
                     block
                     font-mono
                     text-[10px]
-                    text-cream/30
+                    text-cream
                     tracking-[0.15em]
                     hover:text-cream/60
                     transition-colors
@@ -279,7 +280,7 @@ export async function Footer() {
             className="
               font-mono
               text-[9px]
-              text-cream/15
+              text-cream
               tracking-[0.18em]
             "
           >
@@ -290,7 +291,7 @@ export async function Footer() {
             className="
               font-mono
               text-[9px]
-              text-cream/15
+              text-cream
               tracking-[0.18em]
             "
           >
