@@ -21,7 +21,9 @@ export const ElDestinoBlock: React.FC<ElDestinoBlockProps & HTMLAttributes<HTMLE
       <div className="mx-auto container">
         {label && (
           <div className="reveal mb-14">
-            <span className="font-mono text-lg uppercase tracking-[0.4em] text-earth">{label}</span>
+            <span className="counter-item font-mono text-lg uppercase tracking-[0.4em] text-earth">
+              {label}
+            </span>
           </div>
         )}
 
