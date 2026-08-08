@@ -5,7 +5,7 @@
 - [] agregar soporte para subir imagen svg
 - [] falta implementar la galeria
 
-# comentarios de la reunion domingo 7 de agosto 2026
+# comentarios de la reunion domingo 1 de agosto 2026
 
 - [] integrar lo mistico de chavin
 - [] el objetivo de las landing es que los turistas puedan contactar a los emprendimientos
@@ -26,3 +26,33 @@
 - [] logos de rednati y llamatrek arriba y logos de otros abajo (la frase aprobada que esta en el documento compartido)
 - [] para el 20 de agosto tiene que estar la pagina publicada
 - [] hagamos el esfuerzo pa tenerlo esta semana
+
+# comentarios de la reunion viernes 7 de agosto 2026
+
+- [] Hero:
+  - el titulo de llamatrek debe ir junto
+  - el subtitulo tiene que tener un color diferente al marron, naranja posiblemente
+  - el boton de correo tiene que ser de color naranja
+  - la foto de fondo debe ser o la 224 o la 240 (ver drive)
+- [] manifiesto:
+  - el punto final debe estar fuera de las comillas
+- [] la ruta:
+  - aumentar el contraste de los textos
+  - cambiar la imagen por la
+  - titulo: Cultura viva y trekking
+  - subtitulo: con llamas en alta montaña
+- [] la expedicion:
+  - titulo: quitar los puntos poner una coma (tres dias, una transformacion)
+  - incrementar el contraste
+  - primera imagen: https://drive.google.com/file/d/12hma_GOgEWEVZvCkoHyCnAyV57_tmgtP/view?usp=sharing
+  - segunda imagen: 243
+  - tercera imagen: chavin de dia (whatsapp)
+
+- [] el destino:
+  - imagen: actividad en chavin (whatsapp)
+
+- [] footer:
+  - reemplazar organizacion por, nuestros aliados, incluir los enlaces a rednati junto con el logo al costado
+  - unir el texto de : de sobre nosotros, al: con el apoyo de
+- [] general:
+  - reestablecer las tranciciones de entrada de los textos de la pagina
