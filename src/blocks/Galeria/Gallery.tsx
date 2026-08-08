@@ -15,7 +15,7 @@ import { Media } from '@/components/Media'
 
 const ROW_HEIGHT = 220
 const ROW_COUNT = 3
-const AUTO_SCROLL_SPEED = 28 // px per second
+const AUTO_SCROLL_SPEED = 40 // px per second
 const RESUME_DELAY = 5000 // ms of inactivity before auto-scroll resumes
 
 const wrap = (value: number, width: number) => {
@@ -26,15 +26,16 @@ const wrap = (value: number, width: number) => {
 }
 
 const Row: React.FC<{
+  index: number
   row: { image: MediaType; index: number }[]
   onSelect: (index: number) => void
   isInteractingRef: React.RefObject<boolean>
   pauseAutoScroll: () => void
-}> = ({ row, onSelect, isInteractingRef, pauseAutoScroll }) => {
+}> = ({ index, row, onSelect, isInteractingRef, pauseAutoScroll }) => {
   const measureRef = useRef<HTMLDivElement>(null)
   const [rowWidth, setRowWidth] = useState(0)
   const rawX = useMotionValue(0)
-  const x = useTransform(rawX, (v) => wrap(v, rowWidth))
+  const x = useTransform(rawX, (v) => wrap((index % 2 ? 1 : -1) * v, rowWidth))
 
   useEffect(() => {
     const el = measureRef.current
@@ -152,6 +153,7 @@ export const Gallery: React.FC<{ images: MediaType[] }> = ({ images }) => {
       <div className="flex flex-col gap-3">
         {rows.map((row, rowIndex) => (
           <Row
+            index={rowIndex}
             key={rowIndex}
             row={row}
             onSelect={setSelected}
