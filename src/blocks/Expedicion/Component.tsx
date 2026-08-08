@@ -22,7 +22,7 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTM
           </div>
         )}
         {title && (
-          <h2 className="reveal mb-20 max-w-2xl font-display text-5xl font-bold leading-[1.05] text-cream md:text-7xl">
+          <h2 className="reveal mb-20 max-w-2xl wrap-break-word font-display text-4xl font-bold leading-[1.05] text-cream sm:text-5xl md:text-7xl">
             {title}
           </h2>
         )}
