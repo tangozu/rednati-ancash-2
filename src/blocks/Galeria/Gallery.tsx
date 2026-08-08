@@ -80,10 +80,7 @@ const Row: React.FC<{
   )
 
   return (
-    <motion.div
-      style={{ x }}
-      className="flex shrink-0 gap-3"
-    >
+    <motion.div style={{ x }} className="flex shrink-0 gap-3">
       <div ref={measureRef} className="flex shrink-0 gap-3">
         {renderItems('a')}
       </div>
@@ -165,33 +162,33 @@ export const Gallery: React.FC<{ images: MediaType[] }> = ({ images }) => {
               ✕
             </motion.button>
 
-            {selected > 0 && (
+            {
               <button
                 type="button"
                 aria-label="Anterior"
                 onClick={(e) => {
                   e.stopPropagation()
-                  setSelected((i) => (i === null ? i : Math.max(i - 1, 0)))
+                  setSelected((i) => (i === null ? i : (i - 1 + images.length) % images.length))
                 }}
                 className="absolute left-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 md:left-6"
               >
                 ‹
               </button>
-            )}
+            }
 
-            {selected < images.length - 1 && (
+            {
               <button
                 type="button"
                 aria-label="Siguiente"
                 onClick={(e) => {
                   e.stopPropagation()
-                  setSelected((i) => (i === null ? i : Math.min(i + 1, images.length - 1)))
+                  setSelected((i) => (i === null ? i : (i + 1) % images.length))
                 }}
                 className="absolute right-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 md:right-6"
               >
                 ›
               </button>
-            )}
+            }
 
             <motion.div
               key={selected}
