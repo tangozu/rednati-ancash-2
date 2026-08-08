@@ -68,13 +68,13 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
             )}
 
             {stats.length > 0 && (
-              <div className="stagger-parent grid grid-cols-3 gap-6">
+              <div className="stagger-parent grid grid-cols-2 gap-6 sm:grid-cols-3">
                 {stats.map(({ num, label }) => (
                   <div key={label} className="border-t border-cream/10 pt-6">
                     <span className="mb-2 block font-display text-2xl font-bold text-earth md:text-3xl">
                       {num}
                     </span>
-                    <span className="block font-mono text-xs uppercase tracking-[0.22em] text-cream/35">
+                    <span className="block wrap-break-word font-mono text-xs uppercase tracking-widest text-cream/35 sm:tracking-[0.22em]">
                       {label}
                     </span>
                   </div>
