@@ -69,12 +69,12 @@ export async function Footer() {
             grid-cols-[auto_auto]
             items-center
             gap-x-14
-            gap-y-2.5
-            pb-4
+            gap-y-1
+            pb-2
           "
         >
-          <span className={labelClassName}>Nuestros Aliados</span>
-          <span className={labelClassName}>Contacto</span>
+          <span className={`${labelClassName} !mb-0`}>Nuestros Aliados</span>
+          <span className={`${labelClassName} !mb-0`}>Contacto</span>
 
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -147,7 +147,7 @@ export async function Footer() {
             items-start
             gap-x-14
             gap-y-2.5
-            pt-4
+            pt-2
             pb-6
             border-t
             border-b
