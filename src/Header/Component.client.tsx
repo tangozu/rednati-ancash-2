@@ -48,7 +48,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
       >
         <Link href="/">
           {data?.logo && (
-            <Media resource={data.logo} imgClassName="w-22 " priority loading="eager" />
+            <Media resource={data.logo} imgClassName="w-56" priority loading="eager" />
           )}
         </Link>
 
