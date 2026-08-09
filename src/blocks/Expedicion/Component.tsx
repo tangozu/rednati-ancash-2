@@ -23,7 +23,7 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTM
           </Reveal>
         )}
         {title && (
-          <Reveal as="div" className="mb-20 max-w-2xl">
+          <Reveal as="div" className="mb-16 max-w-2xl">
             <h2 className="wrap-break-word font-display text-4xl font-bold leading-[1.05] text-cream sm:text-5xl md:text-7xl">
               {title}
             </h2>
@@ -31,11 +31,11 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTM
         )}
 
         {days && days.length > 0 && (
-          <div className="counter-container [--counter-name:day] divide-y divide-cream/[0.07]">
+          <div className="counter-container [--counter-name:day] divide-y divide-cream/[0.07] flex flex-col gap-16">
             {days.map((day, i) => (
               <div key={i} className="grid grid-cols-1 gap-0 py-0 md:grid-cols-2">
                 <Reveal
-                  className={`py-12 md:py-16 ${
+                  className={`${
                     i % 2 === 1 ? 'md:order-2 md:pl-16 xl:pl-24' : 'md:pr-16 xl:pr-24'
                   }`}
                 >
