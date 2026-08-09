@@ -6,6 +6,7 @@ import { Media } from '@/components/Media'
 import { WhatsappButton } from '@/components/Buttons/whatsappButton'
 import { EmailButton } from '@/components/Buttons/emailButton'
 import { cn } from '@/utilities/ui'
+import { Reveal, StaggerGroup } from '@/components/Reveal'
 
 export const ContactoBlock: React.FC<ContactoBlockProps & HTMLAttributes<HTMLElement>> = ({
   preTitle,
@@ -33,40 +34,46 @@ export const ContactoBlock: React.FC<ContactoBlockProps & HTMLAttributes<HTMLEle
 
       <div className="relative mx-auto max-w-3xl px-6 text-center md:px-16">
         {preTitle && (
-          <div className="reveal mb-8">
+          <Reveal className="mb-8">
             <span className="wrap-break-word font-mono text-base uppercase tracking-[0.25em] text-earth sm:text-lg sm:tracking-[0.4em]">
               {preTitle}
             </span>
-          </div>
+          </Reveal>
         )}
 
         {title && (
-          <h2 className="reveal mb-10 wrap-break-word font-display text-4xl font-black leading-[0.92] text-cream sm:text-6xl md:text-8xl">
-            {title}
-          </h2>
+          <Reveal className="mb-10">
+            <h2 className="wrap-break-word font-display text-4xl font-black leading-[0.92] text-cream sm:text-6xl md:text-8xl">
+              {title}
+            </h2>
+          </Reveal>
         )}
 
         {subtitle && (
-          <p className="reveal mx-auto mb-6 max-w-sm font-body text-base leading-relaxed text-cream md:text-lg">
-            {subtitle}
-          </p>
+          <Reveal className="mx-auto mb-6 max-w-sm">
+            <p className="font-body text-base leading-relaxed text-cream md:text-lg">
+              {subtitle}
+            </p>
+          </Reveal>
         )}
         {guide && (
-          <p className="reveal mb-14 wrap-break-word font-mono text-xs uppercase tracking-[0.25em] text-cream">
-            Guía: {guide}
-          </p>
+          <Reveal className="mb-14">
+            <p className="wrap-break-word font-mono text-xs uppercase tracking-[0.25em] text-cream">
+              Guía: {guide}
+            </p>
+          </Reveal>
         )}
 
-        <div className="stagger-parent flex min-w-0 flex-col items-center justify-center gap-4 sm:flex-row">
+        <StaggerGroup className="flex min-w-0 flex-col items-center justify-center gap-4 sm:flex-row">
           {email && <EmailButton email={email} />}
-        </div>
+        </StaggerGroup>
 
         {address && (
-          <div className="reveal mt-16 border-t border-cream/[0.07] pt-8">
+          <Reveal className="mt-16 border-t border-cream/[0.07] pt-8">
             <p className="wrap-break-word font-mono text-xs uppercase leading-loose tracking-[0.22em] text-cream">
               {address}
             </p>
-          </div>
+          </Reveal>
         )}
       </div>
     </section>

@@ -6,6 +6,7 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 
 import { cn } from '@/utilities/ui'
+import { Reveal } from '@/components/Reveal'
 import { Gallery } from './Gallery'
 
 export const GaleriaBlock: React.FC<GaleriaBlockProps & HTMLAttributes<HTMLElement>> = async ({
@@ -31,11 +32,11 @@ export const GaleriaBlock: React.FC<GaleriaBlockProps & HTMLAttributes<HTMLEleme
     <section className={cn(className)}>
       <div className="mx-auto container">
         {label && (
-          <div className="reveal mb-12 px-2 md:px-0">
+          <Reveal className="mb-12 px-2 md:px-0">
             <span className="counter-item wrap-break-word font-mono text-base uppercase tracking-[0.25em] text-earth sm:text-lg sm:tracking-[0.4em]">
               {label}
             </span>
-          </div>
+          </Reveal>
         )}
 
         {gallery.length > 0 && <Gallery images={gallery} />}

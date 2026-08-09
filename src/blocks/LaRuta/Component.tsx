@@ -4,6 +4,7 @@ import type { LaRutaBlock as LaRutaBlockProps } from '@/payload-types'
 
 import { Media } from '@/components/Media'
 import { cn } from '@/utilities/ui'
+import { ClipReveal, Reveal, StaggerGroup, StaggerItem } from '@/components/Reveal'
 
 export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement>> = ({
   label,
@@ -30,15 +31,15 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
     <section className={cn(className)}>
       <div className="mx-auto container">
         {label && (
-          <div className="reveal mb-14">
+          <Reveal className="mb-14">
             <span className="counter-item wrap-break-word font-mono text-base uppercase tracking-[0.25em] text-earth sm:text-lg sm:tracking-[0.4em]">
               {label}
             </span>
-          </div>
+          </Reveal>
         )}
 
         <div className="grid grid-cols-1 items-stretch md:grid-cols-2">
-          <div className="clip-reveal order-1 aspect-3/4 overflow-hidden bg-media-placeholder md:aspect-auto md:min-h-175">
+          <ClipReveal className="order-1 aspect-3/4 overflow-hidden bg-media-placeholder md:aspect-auto md:min-h-175">
             {media && typeof media === 'object' && (
               <Media
                 fill
@@ -46,40 +47,46 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
                 resource={media}
               />
             )}
-          </div>
+          </ClipReveal>
 
           <div className="order-2 flex flex-col justify-center pl-6  md:pl-14 xl:pl-20">
             {title && (
-              <h2 className="reveal mb-8 wrap-break-word font-display text-4xl font-bold leading-[1.05] text-cream sm:text-5xl md:text-7xl">
-                {title}
-              </h2>
+              <Reveal as="div" className="mb-8">
+                <h2 className="wrap-break-word font-display text-4xl font-bold leading-[1.05] text-cream sm:text-5xl md:text-7xl">
+                  {title}
+                </h2>
+              </Reveal>
             )}
 
             {paragraph1 && (
-              <p className="reveal mb-6 font-body text-base leading-relaxed text-cream/55 md:text-lg">
-                {paragraph1}
-              </p>
+              <Reveal className="mb-6">
+                <p className="font-body text-base leading-relaxed text-cream/55 md:text-lg">
+                  {paragraph1}
+                </p>
+              </Reveal>
             )}
 
             {paragraph2 && (
-              <p className="reveal mb-14 font-body text-base leading-relaxed text-cream/55 md:text-lg">
-                {paragraph2}
-              </p>
+              <Reveal className="mb-14">
+                <p className="font-body text-base leading-relaxed text-cream/55 md:text-lg">
+                  {paragraph2}
+                </p>
+              </Reveal>
             )}
 
             {stats.length > 0 && (
-              <div className="stagger-parent grid grid-cols-2 gap-6 sm:grid-cols-3">
+              <StaggerGroup className="grid grid-cols-2 gap-6 sm:grid-cols-3">
                 {stats.map(({ num, label }) => (
-                  <div key={label} className="border-t border-cream/10 pt-6">
+                  <StaggerItem key={label} className="border-t border-cream/10 pt-6">
                     <span className="mb-2 block font-display text-2xl font-bold text-earth md:text-3xl">
                       {num}
                     </span>
                     <span className="block wrap-break-word font-mono text-xs uppercase tracking-widest text-cream/35 sm:tracking-[0.22em]">
                       {label}
                     </span>
-                  </div>
+                  </StaggerItem>
                 ))}
-              </div>
+              </StaggerGroup>
             )}
           </div>
         </div>

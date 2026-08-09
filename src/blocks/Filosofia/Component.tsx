@@ -4,6 +4,7 @@ import type { FilosofiaBlock as FilosofiaBlockProps } from '@/payload-types'
 
 import { Media } from '@/components/Media'
 import { cn } from '@/utilities/ui'
+import { Reveal, StaggerGroup, StaggerItem } from '@/components/Reveal'
 
 export const FilosofiaBlock: React.FC<FilosofiaBlockProps & HTMLAttributes<HTMLElement>> = ({
   label,
@@ -27,32 +28,34 @@ export const FilosofiaBlock: React.FC<FilosofiaBlockProps & HTMLAttributes<HTMLE
 
       <div className="relative mx-auto max-w-screen-lg px-6 md:px-16 xl:px-24">
         {label && (
-          <div className="reveal mb-14">
+          <Reveal className="mb-14">
             <span className="wrap-break-word font-mono text-base uppercase tracking-[0.25em] text-earth sm:text-lg sm:tracking-[0.4em]">
               {label}
             </span>
-          </div>
+          </Reveal>
         )}
 
         {title && (
-          <h2 className="reveal mb-20 max-w-3xl font-display text-5xl font-bold leading-[1.05] text-cream md:text-7xl">
-            {title}
-          </h2>
+          <Reveal as="div" className="mb-20 max-w-3xl">
+            <h2 className="font-display text-5xl font-bold leading-[1.05] text-cream md:text-7xl">
+              {title}
+            </h2>
+          </Reveal>
         )}
 
         {pillars && pillars.length > 0 && (
-          <div className="stagger-parent grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-14">
+          <StaggerGroup className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-14">
             {pillars.map(({ subtitle, paragraph }, i) => (
-              <div key={i} className="border-t border-cream/[0.09] pt-8">
+              <StaggerItem key={i} className="border-t border-cream/[0.09] pt-8">
                 <h3 className="mb-5 font-display text-xl font-semibold text-cream md:text-2xl">
                   {subtitle}
                 </h3>
                 <p className="font-body text-sm leading-relaxed text-cream/50 md:text-base">
                   {paragraph}
                 </p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         )}
       </div>
     </section>
