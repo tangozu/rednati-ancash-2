@@ -30,8 +30,7 @@ const viewport = { once: true, amount: 0.15 } as const
 const MotionBlockquote = motion.create('blockquote')
 
 type RevealProps =
-  | (HTMLMotionProps<'div'> & { as?: 'div' })
-  | (HTMLMotionProps<'blockquote'> & { as: 'blockquote' })
+  (HTMLMotionProps<'div'> & { as?: 'div' }) | (HTMLMotionProps<'blockquote'> & { as: 'blockquote' })
 
 /** Fade + rise on scroll into view. Equivalent to the `.reveal` class in the legacy GSAP mockup. */
 export const Reveal: React.FC<RevealProps> = ({ children, as = 'div', ...props }) => {
@@ -69,7 +68,12 @@ export const ClipReveal: React.FC<HTMLMotionProps<'div'>> = ({ children, classNa
       whileInView="visible"
       viewport={viewport}
       variants={clipRevealMaskVariants}
-      style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', overflow: 'hidden' }}
+      style={{
+        position: 'absolute',
+        top: 0,
+        width: '100%',
+        overflow: 'hidden',
+      }}
       {...props}
     >
       <div className="absolute inset-x-0 bottom-0 h-full w-full">{children as React.ReactNode}</div>
