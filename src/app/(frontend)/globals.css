@@ -51,11 +51,12 @@
 
   --color-bg: rgb(255, 247, 224);
   --color-panel: rgb(255, 242, 205);
-  --color-cream: rgb(121, 71, 55);
+  --color-cream: #794737;
   /*--color-earth: #60B028;*/
   --color-earth: #f86800;
   --color-earth-dark: #801800;
-  --color-earth-accent: #f86800;
+  --color-earth-accent: #a35225;
+  /* --color-earth-accent: #726a33; */
   --color-media-placeholder: #d9c9a8;
 
   --font-display: 'Fraunces', serif;

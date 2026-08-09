@@ -13,7 +13,13 @@ export const LaRuta: Block = {
     {
       name: 'title',
       type: 'text',
-      defaultValue: 'Llamatrek Olleros–Chavín: Cultura viva y Trekking con llamas en alta montaña',
+      defaultValue: 'Cultura viva y Trekking',
+      required: true,
+    },
+    {
+      name: 'subtitle',
+      type: 'text',
+      defaultValue: 'con llamas en alta montaña',
       required: true,
     },
     {

@@ -345,6 +345,7 @@ export interface ManifiestoBlock {
 export interface LaRutaBlock {
   label: string;
   title: string;
+  subtitle: string;
   media: string | Media;
   paragraph1: string;
   paragraph2: string;
@@ -1059,6 +1060,7 @@ export interface ManifiestoBlockSelect<T extends boolean = true> {
 export interface LaRutaBlockSelect<T extends boolean = true> {
   label?: T;
   title?: T;
+  subtitle?: T;
   media?: T;
   paragraph1?: T;
   paragraph2?: T;

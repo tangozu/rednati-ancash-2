@@ -9,6 +9,7 @@ import { ClipReveal, Reveal, StaggerGroup, StaggerItem } from '@/components/Reve
 export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement>> = ({
   label,
   title,
+  subtitle,
   media,
   paragraph1,
   paragraph2,
@@ -39,7 +40,7 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
         )}
 
         <div className="grid grid-cols-1 items-stretch md:grid-cols-2">
-          <ClipReveal className="order-1 aspect-3/4 overflow-hidden bg-media-placeholder md:aspect-auto md:min-h-175">
+          <ClipReveal className="order-1 aspect-3/4 overflow-hidden bg-media-placeholder md:aspect-auto md:min-h-175 mb-16 md:mb-0">
             {media && typeof media === 'object' && (
               <Media
                 fill
@@ -49,11 +50,18 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
             )}
           </ClipReveal>
 
-          <div className="order-2 flex flex-col justify-center pl-6  md:pl-14 xl:pl-20">
+          <div className="order-2 flex flex-col justify-center md:pl-14 xl:pl-20">
             {title && (
-              <Reveal as="div" className="mb-8">
+              <Reveal as="div" className="mb-4">
                 <h2 className="wrap-break-word font-display text-4xl font-bold leading-[1.05] text-cream sm:text-5xl md:text-7xl">
                   {title}
+                </h2>
+              </Reveal>
+            )}
+            {subtitle && (
+              <Reveal as="div" className="mb-8">
+                <h2 className="wrap-break-word font-display text-2xl font-bold leading-[1.05] text-cream sm:text-3xl md:text-4xl">
+                  {subtitle}
                 </h2>
               </Reveal>
             )}

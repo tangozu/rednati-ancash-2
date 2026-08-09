@@ -29,30 +29,30 @@
 
 # comentarios de la reunion viernes 7 de agosto 2026
 
-- [] Hero:
-  - el titulo de llamatrek debe ir junto
-  - el subtitulo tiene que tener un color diferente al marron, naranja posiblemente
-  - el boton de correo tiene que ser de color naranja
-  - la foto de fondo debe ser o la 224 o la 240 (ver drive)
-- [] manifiesto:
-  - el punto final debe estar fuera de las comillas
-- [] la ruta:
-  - aumentar el contraste de los textos
-  - cambiar la imagen por la
-  - titulo: Cultura viva y trekking
-  - subtitulo: con llamas en alta montaña
+- [x] Hero:
+  - [x] el titulo de llamatrek debe ir junto
+  - [x] el subtitulo tiene que tener un color diferente al marron, naranja posiblemente
+  - [x] el boton de correo tiene que ser de color naranja
+  - [x] la foto de fondo debe ser o la 224 o la 240 (ver drive)
+- [x] manifiesto:
+  - [x] el punto final debe estar fuera de las comillas (kite el punto no hay punto v: )
+- [x] la ruta:
+  - [x] umentar el contraste de los textos
+  - [x] ambiar la imagen por la
+  - [x] titulo: Cultura viva y trekking
+  - [x] ubtitulo: con llamas en alta montaña
 - [] la expedicion:
-  - titulo: quitar los puntos poner una coma (tres dias, una transformacion)
-  - incrementar el contraste
-  - primera imagen: https://drive.google.com/file/d/12hma_GOgEWEVZvCkoHyCnAyV57_tmgtP/view?usp=sharing
-  - segunda imagen: 243
-  - tercera imagen: chavin de dia (whatsapp)
+  - [] titulo: quitar los puntos poner una coma (tres dias, una transformacion)
+  - [] incrementar el contraste
+  - [] primera imagen: https://drive.google.com/file/d/12hma_GOgEWEVZvCkoHyCnAyV57_tmgtP/view?usp=sharing
+  - [] segunda imagen: 243
+  - [] tercera imagen: chavin de dia (whatsapp)
 
 - [] el destino:
-  - imagen: actividad en chavin (whatsapp)
+  - [] imagen: actividad en chavin (whatsapp)
 
-- [] footer:
-  - reemplazar organizacion por, nuestros aliados, incluir los enlaces a rednati junto con el logo al costado
-  - unir el texto de : de sobre nosotros, al: con el apoyo de
-- [] general:
+- [x] footer:
+  - [x] eemplazar organizacion por, nuestros aliados, incluir los enlaces a rednati junto con el logo al costado
+  - [x] nir el texto de : de sobre nosotros, al: con el apoyo de
+- [x] general:
   - reestablecer las tranciciones de entrada de los textos de la pagina

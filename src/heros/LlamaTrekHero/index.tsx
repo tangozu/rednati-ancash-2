@@ -22,7 +22,11 @@ const metaVariants: Variants = {
 
 const titleVariants: Variants = {
   hidden: { opacity: 0, y: 70 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: 1.4 } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: 1.4 },
+  },
 }
 
 const subVariants: Variants = {
@@ -93,7 +97,7 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
               variants={subVariants}
             >
               {llamaTrekHeroFields?.subtitle && (
-                <p className="wrap-break-word font-body text-cream text-base md:text-lg leading-relaxed">
+                <p className="wrap-break-word font-body text-earth-accent text-base md:text-lg leading-relaxed">
                   {llamaTrekHeroFields.subtitle}
                 </p>
               )}
