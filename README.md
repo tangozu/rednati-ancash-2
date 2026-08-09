@@ -41,15 +41,15 @@
   - [x] ambiar la imagen por la
   - [x] titulo: Cultura viva y trekking
   - [x] ubtitulo: con llamas en alta montaña
-- [] la expedicion:
-  - [] titulo: quitar los puntos poner una coma (tres dias, una transformacion)
-  - [] incrementar el contraste
-  - [] primera imagen: https://drive.google.com/file/d/12hma_GOgEWEVZvCkoHyCnAyV57_tmgtP/view?usp=sharing
-  - [] segunda imagen: 243
-  - [] tercera imagen: chavin de dia (whatsapp)
+- [x] la expedicion:
+  - [x] titulo: quitar los puntos poner una coma (tres dias, una transformacion)
+  - [x] incrementar el contraste
+  - [x] primera imagen: https://drive.google.com/file/d/12hma_GOgEWEVZvCkoHyCnAyV57_tmgtP/view?usp=sharing
+  - [x] segunda imagen: 243
+  - [x] tercera imagen: chavin de dia (whatsapp)
 
-- [] el destino:
-  - [] imagen: actividad en chavin (whatsapp)
+- [x] el destino:
+  - [x] imagen: actividad en chavin (whatsapp)
 
 - [x] footer:
   - [x] eemplazar organizacion por, nuestros aliados, incluir los enlaces a rednati junto con el logo al costado
