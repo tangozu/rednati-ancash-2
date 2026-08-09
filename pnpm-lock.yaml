@@ -15,8 +15,8 @@ importers:
         specifier: 3.84.1
         version: 3.84.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@payloadcms/db-mongodb':
-        specifier: ^3.84.1
-        version: 3.86.0(payload@3.84.1(bufferutil@4.1.0)(graphql@16.14.2)(typescript@5.7.3))
+        specifier: 3.84.1
+        version: 3.84.1(payload@3.84.1(bufferutil@4.1.0)(graphql@16.14.2)(typescript@5.7.3))
       '@payloadcms/db-vercel-postgres':
         specifier: 3.84.1
         version: 3.84.1(@types/pg@8.11.6)(payload@3.84.1(bufferutil@4.1.0)(graphql@16.14.2)(typescript@5.7.3))
@@ -1635,10 +1635,10 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.1 || ^19.1.2 || ^19.2.1
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.1 || ^19.1.2 || ^19.2.1
 
-  '@payloadcms/db-mongodb@3.86.0':
-    resolution: {integrity: sha512-UIpp7Ga71ckUf9QTPQ6PRr2hCCIshSThZtApDgFQmi/hrRUbn8hW/39PWxhthV1o6iahsTJD/SKubqAoKpM3tg==}
+  '@payloadcms/db-mongodb@3.84.1':
+    resolution: {integrity: sha512-HTP/Z6iQHFyHhuMImAC/GH0xGhjuvuHZHdB7crJUkXAyD677tp6C3mS8YB04s28bCteDqcXBYjHODZr5xDHBcw==}
     peerDependencies:
-      payload: 3.86.0
+      payload: 3.84.1
 
   '@payloadcms/db-vercel-postgres@3.84.1':
     resolution: {integrity: sha512-eyclDLIuNSpJ133SX8R7/Hum6UKoseFfmn8Imlrh0o3NP1oTWjjKfuPqAc4GRmbDuPMpb+2XHoLS9Rlo0s6Jug==}
@@ -4219,8 +4219,8 @@ packages:
   mongodb-connection-string-url@3.0.2:
     resolution: {integrity: sha512-rMO7CGo/9BFwyZABcKAWL8UJwH/Kc2x0g72uhDWzG48URRax5TCIcJ7Rc3RZqffZzO/Gwff/jyKwCU9TN8gehA==}
 
-  mongodb@6.20.0:
-    resolution: {integrity: sha512-Tl6MEIU3K4Rq3TSHd+sZQqRBoGlFsOgNrH5ltAcFBV62Re3Fd+FcaVf8uSEQFOJ51SDowDVttBTONMfoYWrWlQ==}
+  mongodb@6.16.0:
+    resolution: {integrity: sha512-D1PNcdT0y4Grhou5Zi/qgipZOYeWrhLEpk33n3nm6LGtz61jvO88WlrWCK/bigMjpnOdAUKKQwsGIl0NtWMyYw==}
     engines: {node: '>=16.20.1'}
     peerDependencies:
       '@aws-sdk/credential-providers': ^3.188.0
@@ -4228,7 +4228,7 @@ packages:
       gcp-metadata: ^5.2.0
       kerberos: ^2.0.1
       mongodb-client-encryption: '>=6.0.0 <7'
-      snappy: ^7.3.2
+      snappy: ^7.2.2
       socks: ^2.7.1
     peerDependenciesMeta:
       '@aws-sdk/credential-providers':
@@ -4256,8 +4256,8 @@ packages:
     resolution: {integrity: sha512-0LOsVEQmjrbJKVDi/IvFEhIezmuRjUE4loGgslv57j9nK/NMC+mbKT0QnaPSPpib4lByKVBcy3VbDa1TvlHZjA==}
     engines: {node: '>=4.0.0'}
 
-  mongoose@8.22.1:
-    resolution: {integrity: sha512-c0bzt7ElI1CwWiyFSgg9bfhlFcblAoPwr+gmDcLCryClyKaeixWhP9KDGnr13kRPE8KPAuUN3ZZ3jSDxSPvoTg==}
+  mongoose@8.15.1:
+    resolution: {integrity: sha512-RhQ4DzmBi5BNGcS0w4u1vdMRIKcteXTCNzDt1j7XRcdWYBz1MjMjulBhPaeC5jBCHOD1yinuOFTTSOWLLGexWw==}
     engines: {node: '>=16.20.1'}
 
   motion-dom@13.0.0:
@@ -5257,10 +5257,6 @@ packages:
 
   uuid@11.1.0:
     resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
-    hasBin: true
-
-  uuid@13.0.2:
-    resolution: {integrity: sha512-vzi9uRZ926x4XV73S/4qQaTwPXM2JBj6/6lI/byHH1jOpCzb0zDbfytgA9LcN/hzb2l7WQSQnxITOVx5un/wGw==}
     hasBin: true
 
   vfile-message@4.0.3:
@@ -6628,13 +6624,13 @@ snapshots:
       react: 19.2.6
       react-dom: 19.2.6(react@19.2.6)
 
-  '@payloadcms/db-mongodb@3.86.0(payload@3.84.1(bufferutil@4.1.0)(graphql@16.14.2)(typescript@5.7.3))':
+  '@payloadcms/db-mongodb@3.84.1(payload@3.84.1(bufferutil@4.1.0)(graphql@16.14.2)(typescript@5.7.3))':
     dependencies:
-      mongoose: 8.22.1
-      mongoose-paginate-v2: 1.9.4(mongoose@8.22.1)
+      mongoose: 8.15.1
+      mongoose-paginate-v2: 1.9.4(mongoose@8.15.1)
       payload: 3.84.1(bufferutil@4.1.0)(graphql@16.14.2)(typescript@5.7.3)
       prompts: 2.4.2
-      uuid: 13.0.2
+      uuid: 11.1.0
     transitivePeerDependencies:
       - '@aws-sdk/credential-providers'
       - '@mongodb-js/zstd'
@@ -9593,28 +9589,28 @@ snapshots:
       '@types/whatwg-url': 11.0.5
       whatwg-url: 14.2.0
 
-  mongodb@6.20.0:
+  mongodb@6.16.0:
     dependencies:
       '@mongodb-js/saslprep': 1.4.13
       bson: 6.10.4
       mongodb-connection-string-url: 3.0.2
 
-  mongoose-lean-virtuals@1.1.1(mongoose@8.22.1):
+  mongoose-lean-virtuals@1.1.1(mongoose@8.15.1):
     dependencies:
-      mongoose: 8.22.1
+      mongoose: 8.15.1
       mpath: 0.8.4
 
-  mongoose-paginate-v2@1.9.4(mongoose@8.22.1):
+  mongoose-paginate-v2@1.9.4(mongoose@8.15.1):
     dependencies:
-      mongoose-lean-virtuals: 1.1.1(mongoose@8.22.1)
+      mongoose-lean-virtuals: 1.1.1(mongoose@8.15.1)
     transitivePeerDependencies:
       - mongoose
 
-  mongoose@8.22.1:
+  mongoose@8.15.1:
     dependencies:
       bson: 6.10.4
       kareem: 2.6.3
-      mongodb: 6.20.0
+      mongodb: 6.16.0
       mpath: 0.9.0
       mquery: 5.0.0
       ms: 2.1.3
@@ -10790,8 +10786,6 @@ snapshots:
   util-deprecate@1.0.2: {}
 
   uuid@11.1.0: {}
-
-  uuid@13.0.2: {}
 
   vfile-message@4.0.3:
     dependencies:
