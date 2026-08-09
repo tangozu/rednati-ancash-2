@@ -60,7 +60,7 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
 
             {paragraph1 && (
               <Reveal className="mb-6">
-                <p className="font-body text-base leading-relaxed text-cream/55 md:text-lg">
+                <p className="font-body text-base leading-relaxed text-cream md:text-lg">
                   {paragraph1}
                 </p>
               </Reveal>
@@ -68,7 +68,7 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
 
             {paragraph2 && (
               <Reveal className="mb-14">
-                <p className="font-body text-base leading-relaxed text-cream/55 md:text-lg">
+                <p className="font-body text-base leading-relaxed text-cream md:text-lg">
                   {paragraph2}
                 </p>
               </Reveal>
@@ -81,7 +81,7 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
                     <span className="mb-2 block font-display text-2xl font-bold text-earth md:text-3xl">
                       {num}
                     </span>
-                    <span className="block wrap-break-word font-mono text-xs uppercase tracking-widest text-cream/35 sm:tracking-[0.22em]">
+                    <span className="block wrap-break-word font-mono text-xs uppercase tracking-widest text-cream sm:tracking-[0.22em]">
                       {label}
                     </span>
                   </StaggerItem>

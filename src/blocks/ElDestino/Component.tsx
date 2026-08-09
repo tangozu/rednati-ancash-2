@@ -29,7 +29,7 @@ export const ElDestinoBlock: React.FC<ElDestinoBlockProps & HTMLAttributes<HTMLE
         )}
 
         {media && typeof media === 'object' && (
-          <ClipReveal className="mb-16 h-56 overflow-hidden bg-media-placeholder sm:h-80 md:mb-24 md:h-[440px]">
+          <ClipReveal className="mb-16 h-56 overflow-hidden bg-media-placeholder sm:h-80 md:mb-24 md:h-110">
             <Media
               fill
               imgClassName="h-full w-full object-cover object-center transition-transform duration-[3s] ease-out hover:scale-[1.03]"
@@ -61,14 +61,14 @@ export const ElDestinoBlock: React.FC<ElDestinoBlockProps & HTMLAttributes<HTMLE
           <div>
             {paragraph1 && (
               <Reveal className="mb-6">
-                <p className="font-body text-base leading-relaxed text-cream/55 md:text-lg">
+                <p className="font-body text-base leading-relaxed text-cream md:text-lg">
                   {paragraph1}
                 </p>
               </Reveal>
             )}
             {paragraph2 && (
               <Reveal>
-                <p className="font-body text-base leading-relaxed text-cream/55 md:text-lg">
+                <p className="font-body text-base leading-relaxed text-cream md:text-lg">
                   {paragraph2}
                 </p>
               </Reveal>

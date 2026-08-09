@@ -40,7 +40,7 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTM
                   }`}
                 >
                   <div className="mb-4 flex items-center">
-                    <span className="counter-item wrap-break-word font-mono text-sm tracking-[0.2em] text-earth">
+                    <span className="counter-item wrap-break-word font-mono text-base tracking-[0.2em] text-earth">
                       {day.duration}
                     </span>
                   </div>
@@ -48,10 +48,10 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTM
                   <h3 className="mb-2 font-display text-3xl font-bold text-cream md:text-4xl">
                     {day.title}
                   </h3>
-                  <p className="mb-4 wrap-break-word text-base tracking-[0.2em] text-earth">
+                  <p className="mb-4 wrap-break-word text-sm tracking-[0.2em] text-earth">
                     {day.altitude}
                   </p>
-                  <p className="font-body text-sm leading-relaxed text-cream/50 md:text-base">
+                  <p className="font-body text-sm leading-relaxed text-cream md:text-base">
                     {day.paragraph}
                   </p>
                 </Reveal>
