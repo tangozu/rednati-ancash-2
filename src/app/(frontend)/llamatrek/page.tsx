@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Lenis from '@studio-freight/lenis'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -706,14 +705,6 @@ export default function App() {
       return () => window.removeEventListener('scroll', onScroll)
     }
 
-    // ── Lenis smooth scroll ──────────────────────────────────────────────────
-    const lenis = new Lenis({})
-    lenis.on('scroll', ScrollTrigger.update)
-
-    const rafFn = (time: number) => lenis.raf(time * 1000)
-    gsap.ticker.add(rafFn)
-    gsap.ticker.lagSmoothing(0)
-
     // ── Scroll animations ────────────────────────────────────────────────────
     const ctx = gsap.context(() => {
       // Fade-up text reveals
@@ -764,8 +755,6 @@ export default function App() {
 
     return () => {
       window.removeEventListener('scroll', onScroll)
-      lenis.destroy()
-      gsap.ticker.remove(rafFn)
       ctx.revert()
       ScrollTrigger.getAll().forEach((t) => t.kill())
     }
