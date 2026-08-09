@@ -25,6 +25,111 @@ export const Footer: GlobalConfig = {
         },
       },
     },
+    {
+      name: 'rednatiLogo',
+      type: 'upload',
+      relationTo: 'media',
+      required: true,
+      admin: { description: 'Logo de REDNATI Perú' },
+    },
+    {
+      name: 'alliesLabel',
+      type: 'text',
+      defaultValue: 'Nuestros Aliados',
+    },
+    {
+      name: 'contactLabel',
+      type: 'text',
+      defaultValue: 'Contacto',
+    },
+    {
+      name: 'contactEmail',
+      type: 'text',
+      defaultValue: 'contacto@rednatiperu.com',
+    },
+    {
+      name: 'contactPhone',
+      type: 'text',
+      defaultValue: '+51 958 848 684',
+      admin: {
+        description: 'Número mostrado, ej: +51 958 848 684',
+      },
+    },
+    {
+      name: 'contactWhatsappLink',
+      type: 'text',
+      defaultValue: 'https://wa.me/51958848684',
+    },
+    {
+      name: 'socialLinks',
+      type: 'array',
+      defaultValue: [
+        { platform: 'instagram', href: '#' },
+        { platform: 'youtube', href: '#' },
+        { platform: 'facebook', href: '#' },
+        { platform: 'twitter', href: '#' },
+        { platform: 'linkedin', href: '#' },
+      ],
+      fields: [
+        {
+          name: 'platform',
+          type: 'select',
+          required: true,
+          options: [
+            { label: 'Instagram', value: 'instagram' },
+            { label: 'YouTube', value: 'youtube' },
+            { label: 'Facebook', value: 'facebook' },
+            { label: 'Twitter', value: 'twitter' },
+            { label: 'LinkedIn', value: 'linkedin' },
+          ],
+        },
+        {
+          name: 'href',
+          type: 'text',
+          required: true,
+        },
+      ],
+      admin: {
+        initCollapsed: true,
+      },
+    },
+    {
+      name: 'supportLabel',
+      type: 'text',
+      defaultValue: 'Con el Apoyo de',
+    },
+    {
+      name: 'creditImages',
+      type: 'array',
+      label: 'Logos de colaboradores',
+      fields: [
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+        },
+      ],
+      admin: {
+        initCollapsed: true,
+      },
+    },
+    {
+      name: 'aboutText',
+      type: 'textarea',
+      defaultValue:
+        'Esta Landing Page fue confeccionada con el apoyo del proyecto de Cooperación Internacional Chile-Perú, año 2025-2026, "El concepto del Buen Vivir: Compartiendo con organizaciones en Perú para emprender en turismo cultural bajo una mirada regenerativa", gracias a la iniciativa de cooperación internacional Fondo Chile, gestionada por el Ministerio de Relaciones Exteriores de Chile y la Agencia Chilena de Cooperación Internacional para el Desarrollo, AGCID, en conjunto con el Programa de las Naciones Unidas para el Desarrollo de Chile.',
+    },
+    {
+      name: 'copyrightText',
+      type: 'text',
+      defaultValue: '© 2025 REDNATI Perú · Todos los derechos reservados',
+    },
+    {
+      name: 'creditsText',
+      type: 'text',
+      defaultValue: 'By: Franco Panizo, Anthony Aguilar & Julissa Cerna',
+    },
   ],
   hooks: {
     afterChange: [revalidateFooter],

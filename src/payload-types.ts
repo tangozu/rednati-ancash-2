@@ -1667,6 +1667,35 @@ export interface Footer {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Logo de REDNATI Perú
+   */
+  rednatiLogo: string | Media;
+  alliesLabel?: string | null;
+  contactLabel?: string | null;
+  contactEmail?: string | null;
+  /**
+   * Número mostrado, ej: +51 958 848 684
+   */
+  contactPhone?: string | null;
+  contactWhatsappLink?: string | null;
+  socialLinks?:
+    | {
+        platform: 'instagram' | 'youtube' | 'facebook' | 'twitter' | 'linkedin';
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  supportLabel?: string | null;
+  creditImages?:
+    | {
+        image: string | Media;
+        id?: string | null;
+      }[]
+    | null;
+  aboutText?: string | null;
+  copyrightText?: string | null;
+  creditsText?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1737,6 +1766,29 @@ export interface FooterSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  rednatiLogo?: T;
+  alliesLabel?: T;
+  contactLabel?: T;
+  contactEmail?: T;
+  contactPhone?: T;
+  contactWhatsappLink?: T;
+  socialLinks?:
+    | T
+    | {
+        platform?: T;
+        href?: T;
+        id?: T;
+      };
+  supportLabel?: T;
+  creditImages?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  aboutText?: T;
+  copyrightText?: T;
+  creditsText?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
