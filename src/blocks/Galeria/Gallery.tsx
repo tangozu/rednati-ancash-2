@@ -202,6 +202,7 @@ export const Gallery: React.FC<{ images: MediaType[] }> = ({ images }) => {
               {selectedImage && (
                 <Media
                   imgClassName="max-h-[85vh] max-w-[90vw] rounded-xl object-contain"
+                  objectFit="contain"
                   resource={selectedImage}
                 />
               )}
