@@ -5,6 +5,8 @@ import type { LaRutaBlock as LaRutaBlockProps } from '@/payload-types'
 import { Media } from '@/components/Media'
 import { cn } from '@/utilities/ui'
 import { ClipReveal, Reveal, StaggerGroup, StaggerItem } from '@/components/Reveal'
+import { MoonStar, MountainSnow, Sun, Users } from 'lucide-react'
+import { Road } from '@/icons/road'
 
 export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement>> = ({
   label,
@@ -21,11 +23,11 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
   className,
 }) => {
   const stats = [
-    { num: days, label: 'Días' },
-    { num: nights, label: 'Noches' },
-    { num: kilometers, label: 'Kilómetros' },
-    { num: people, label: 'Personas' },
-    { num: stages, label: 'Etapas' },
+    { num: days, label: 'Días', icon: <Sun></Sun> },
+    { num: nights, label: 'Noches', icon: <MoonStar></MoonStar> },
+    { num: kilometers, label: 'Kilómetros', icon: <Road></Road> },
+    { num: people, label: 'Personas', icon: <Users></Users> },
+    { num: stages, label: 'Etapas', icon: <MountainSnow></MountainSnow> },
   ].filter((stat) => stat.num)
 
   return (
@@ -84,10 +86,11 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
 
             {stats.length > 0 && (
               <StaggerGroup className="grid grid-cols-2 gap-6 sm:grid-cols-3">
-                {stats.map(({ num, label }) => (
+                {stats.map(({ num, label, icon }) => (
                   <StaggerItem key={label} className="border-t border-cream/10 pt-6">
-                    <span className="mb-2 block font-display text-2xl font-bold text-earth md:text-3xl">
-                      {num}
+                    <span className="mb-2  font-display text-2xl font-bold text-earth md:text-3xl flex flex-nowrap gap-2 items-center">
+                      <span>{num}</span>
+                      <span>{icon}</span>
                     </span>
                     <span className="block wrap-break-word font-mono text-xs uppercase tracking-widest text-cream sm:tracking-[0.22em]">
                       {label}

@@ -56,3 +56,7 @@
   - [x] nir el texto de : de sobre nosotros, al: con el apoyo de
 - [x] general:
   - reestablecer las tranciciones de entrada de los textos de la pagina
+
+# otros comentarios
+
+- [x] agregar iconos a los numeros la ruta
