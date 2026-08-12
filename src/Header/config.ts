@@ -32,6 +32,14 @@ export const Header: GlobalConfig = {
       relationTo: 'media',
     },
     {
+      name: 'middleLogoUrl',
+      type: 'text',
+      defaultValue: 'https://www.rednatiperu.com/',
+      admin: {
+        description: 'URL a la que redirige el logo central (RedNatí) al hacer clic.',
+      },
+    },
+    {
       name: 'middleShortLogo',
       type: 'upload',
       relationTo: 'media',

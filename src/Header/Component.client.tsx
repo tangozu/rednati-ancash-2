@@ -79,34 +79,50 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           )}
         </div>
         <div className="shrink-0 ">
-          {data?.middleLogo && data?.middleShortLogo && (
-            <Media
-              resource={data.middleLogo}
-              imgClassName={'hidden sm:block sm:w-41 sm:h-13'}
-              priority
-              loading="eager"
-            />
-          )}
-          {data?.middleLogo && !data?.middleShortLogo && (
-            <Media
-              resource={data.middleLogo}
-              imgClassName={'w-32 h-13 sm:w-41'}
-              priority
-              loading="eager"
-            />
-          )}
-          {data?.middleShortLogo && (
-            <Media
-              resource={data.middleShortLogo}
-              imgClassName="w-13 h-13 sm:hidden"
-              priority
-              loading="eager"
-            />
-          )}
+          <MiddleLogo data={data} />
         </div>
 
         <HeaderNav data={data} />
       </div>
     </header>
+  )
+}
+
+const MiddleLogo: React.FC<{ data: Header }> = ({ data }) => {
+  const logos = (
+    <>
+      {data?.middleLogo && data?.middleShortLogo && (
+        <Media
+          resource={data.middleLogo}
+          imgClassName={'hidden sm:block sm:w-41 sm:h-13'}
+          priority
+          loading="eager"
+        />
+      )}
+      {data?.middleLogo && !data?.middleShortLogo && (
+        <Media
+          resource={data.middleLogo}
+          imgClassName={'w-32 h-13 sm:w-41'}
+          priority
+          loading="eager"
+        />
+      )}
+      {data?.middleShortLogo && (
+        <Media
+          resource={data.middleShortLogo}
+          imgClassName="w-13 h-13 sm:hidden"
+          priority
+          loading="eager"
+        />
+      )}
+    </>
+  )
+
+  if (!data?.middleLogoUrl) return logos
+
+  return (
+    <Link href={data.middleLogoUrl} target="_blank" rel="noopener noreferrer" aria-label="RedNatí Perú">
+      {logos}
+    </Link>
   )
 }

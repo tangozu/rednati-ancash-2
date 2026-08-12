@@ -220,6 +220,11 @@ export interface Media {
     };
     [k: string]: unknown;
   } | null;
+  /**
+   * Si se activa, esta imagen será clicable y redirigirá a la URL indicada.
+   */
+  enableLink?: boolean | null;
+  linkUrl?: string | null;
   imageOptimizer?: {
     thumbHash?: string | null;
     originalSize?: number | null;
@@ -1184,6 +1189,8 @@ export interface MediaSelect<T extends boolean = true> {
   alt?: T;
   imageType?: T;
   caption?: T;
+  enableLink?: T;
+  linkUrl?: T;
   imageOptimizer?:
     | T
     | {
@@ -1614,6 +1621,10 @@ export interface Header {
   leftShortLogo?: (string | null) | Media;
   middleLogo?: (string | null) | Media;
   /**
+   * URL a la que redirige el logo central (RedNatí) al hacer clic.
+   */
+  middleLogoUrl?: string | null;
+  /**
    * Compact logo without text, shown on narrow screens where the full logo would not fit.
    */
   middleShortLogo?: (string | null) | Media;
@@ -1727,6 +1738,7 @@ export interface HeaderSelect<T extends boolean = true> {
   leftLogo?: T;
   leftShortLogo?: T;
   middleLogo?: T;
+  middleLogoUrl?: T;
   middleShortLogo?: T;
   navItems?:
     | T

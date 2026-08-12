@@ -47,9 +47,25 @@ export async function Footer() {
       return {
         url: getMediaUrl(media.url, media.updatedAt),
         alt: media.alt || 'Institución colaboradora',
+        href: media.enableLink && media.linkUrl ? media.linkUrl : null,
       }
     })
-    .filter((image): image is { url: string; alt: string } => Boolean(image?.url))
+    .filter((image): image is { url: string; alt: string; href: string | null } =>
+      Boolean(image?.url),
+    )
+
+  const rednatiLogoMedia = typeof rednatiLogo === 'object' ? rednatiLogo : null
+  const rednatiLogoHref =
+    rednatiLogoMedia?.enableLink && rednatiLogoMedia?.linkUrl ? rednatiLogoMedia.linkUrl : null
+
+  const rednatiLogoImg = (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={rednatiLogoMedia ? getMediaUrl(rednatiLogoMedia.url, rednatiLogoMedia.updatedAt) : ''}
+      alt="RedNatí Perú"
+      className="h-16 w-auto object-contain md:h-20"
+    />
+  )
 
   return (
     <footer
@@ -80,16 +96,13 @@ export async function Footer() {
           <div>
             <span className={labelClassName}>{alliesLabel}</span>
 
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={
-                typeof rednatiLogo === 'object'
-                  ? getMediaUrl(rednatiLogo.url, rednatiLogo.updatedAt)
-                  : ''
-              }
-              alt="RedNatí Perú"
-              className="h-16 w-auto object-contain md:h-20"
-            />
+            {rednatiLogoHref ? (
+              <a href={rednatiLogoHref} target="_blank" rel="noopener noreferrer">
+                {rednatiLogoImg}
+              </a>
+            ) : (
+              rednatiLogoImg
+            )}
           </div>
 
           <div>
@@ -183,15 +196,24 @@ export async function Footer() {
               <span className={labelClassName}>{supportLabel}</span>
 
               <div className="flex flex-wrap items-center gap-3">
-                {creditImages.map((image) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    key={image.url}
-                    src={image.url}
-                    alt={image.alt}
-                    className="h-8 w-auto object-contain opacity-80 transition-opacity hover:opacity-100"
-                  />
-                ))}
+                {creditImages.map((image) => {
+                  const imgClassName =
+                    'h-8 w-auto object-contain opacity-80 transition-opacity hover:opacity-100'
+
+                  if (!image.href) {
+                    return (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img key={image.url} src={image.url} alt={image.alt} className={imgClassName} />
+                    )
+                  }
+
+                  return (
+                    <a key={image.url} href={image.href} target="_blank" rel="noopener noreferrer">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={image.url} alt={image.alt} className={imgClassName} />
+                    </a>
+                  )
+                })}
               </div>
             </div>
           )}
@@ -202,9 +224,9 @@ export async function Footer() {
               className="
                 flex-1
                 min-w-0
-                font-mono
+                font-body
                 text-xs
-                text-cream
+                text-earth-accent
                 tracking-[0.08em]
                 leading-relaxed
                 md:mt-6.5

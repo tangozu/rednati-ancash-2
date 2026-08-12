@@ -53,6 +53,25 @@ export const Media: CollectionConfig = {
         },
       }),
     },
+    {
+      name: 'enableLink',
+      type: 'checkbox',
+      label: 'Redirige a un link',
+      defaultValue: false,
+      admin: {
+        position: 'sidebar',
+        description: 'Si se activa, esta imagen será clicable y redirigirá a la URL indicada.',
+      },
+    },
+    {
+      name: 'linkUrl',
+      type: 'text',
+      label: 'URL de redirección',
+      admin: {
+        position: 'sidebar',
+        condition: (_, siblingData) => Boolean(siblingData?.enableLink),
+      },
+    },
   ],
   upload: {
     // Upload to the public/media directory in Next.js making them publicly accessible even outside of Payload
