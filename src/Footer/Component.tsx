@@ -15,7 +15,7 @@ const socialIcons = {
 const labelClassName = `
   mb-2.5
   font-mono
-  text-[9px]
+  text-xs
   text-earth
   tracking-[0.28em]
   uppercase
@@ -105,7 +105,7 @@ export async function Footer() {
                     items-center
                     gap-2
                     font-mono
-                    text-[10px]
+                    text-xs
                     text-cream
                     tracking-[0.15em]
                     hover:text-cream/60
@@ -126,7 +126,7 @@ export async function Footer() {
                     items-center
                     gap-2
                     font-mono
-                    text-[10px]
+                    text-xs
                     text-cream
                     tracking-[0.15em]
                     hover:text-cream/60
@@ -203,7 +203,7 @@ export async function Footer() {
                 flex-1
                 min-w-0
                 font-mono
-                text-[9px]
+                text-xs
                 text-cream
                 tracking-[0.08em]
                 leading-relaxed
@@ -225,13 +225,14 @@ export async function Footer() {
             items-start
             md:items-center
             justify-between
-            gap-2
+            gap-x-14
+            gap-y-4
           "
         >
           <span
             className="
               font-mono
-              text-[9px]
+              text-xs
               text-cream
               tracking-[0.18em]
             "
@@ -241,7 +242,7 @@ export async function Footer() {
           <span
             className="
               font-mono
-              text-[9px]
+              text-xs
               text-cream
               tracking-[0.18em]
             "
