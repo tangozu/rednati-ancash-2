@@ -17,17 +17,5 @@ export const Manifiesto: Block = {
         'Hay caminos que no son rutas turísticas. Son corredores de memorias vivas. Pasos que generaciones recorrieron antes que nosotros, y que hoy compartimos como acto de preservación cultural.',
       required: true,
     },
-    {
-      name: 'author',
-      type: 'text',
-      defaultValue: 'REDNATI Perú',
-      required: true,
-    },
-    {
-      name: 'concepts',
-      type: 'text',
-      defaultValue: 'Sumak Kawsay (Buen Vivir) · Turismo Indígena · Regenerativo',
-      required: true,
-    },
   ],
 }

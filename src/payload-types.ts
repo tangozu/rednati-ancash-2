@@ -331,8 +331,6 @@ export interface FolderInterface {
 export interface ManifiestoBlock {
   label: string;
   quote: string;
-  author: string;
-  concepts: string;
   id?: string | null;
   blockName?: string | null;
   blockType: 'manifiesto';
@@ -1046,8 +1044,6 @@ export interface PagesSelect<T extends boolean = true> {
 export interface ManifiestoBlockSelect<T extends boolean = true> {
   label?: T;
   quote?: T;
-  author?: T;
-  concepts?: T;
   id?: T;
   blockName?: T;
 }
