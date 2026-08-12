@@ -1,7 +1,6 @@
 # TODO
 
 - [x] corregir los diseños de los bloques
-- [] cambiar blob storage a uploadthing
 - [x] agregar soporte para subir imagen svg
 - [x] implementar la galeria
 
