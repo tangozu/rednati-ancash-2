@@ -38,6 +38,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     >
       <div
         className="
+          relative
           mx-auto
           container
           flex
@@ -48,26 +49,61 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           px-4
         "
       >
-        <Link href="/" className="shrink-0">
-          {data?.shortLogo && (
+        <div className="shrink-0">
+          {data?.leftLogo && data?.leftShortLogo && (
             <Media
-              resource={data.shortLogo}
-              imgClassName="w-10 sm:hidden"
+              objectFit="contain"
+              resource={data.leftLogo}
+              imgClassName={'hidden sm:block sm:w-21 sm:h-13'}
               priority
               loading="eager"
             />
           )}
-          {data?.logo && (
+          {data?.leftLogo && !data?.leftShortLogo && (
             <Media
-              resource={data.logo}
-              imgClassName={
-                data?.shortLogo ? 'hidden sm:block sm:w-56' : 'w-32 sm:w-56'
-              }
+              objectFit="contain"
+              resource={data.leftLogo}
+              imgClassName={'w-21 h-13'}
               priority
               loading="eager"
             />
           )}
-        </Link>
+          {data?.leftShortLogo && (
+            <Media
+              objectFit="contain"
+              resource={data.leftShortLogo}
+              imgClassName="w-21 h-13 sm:hidden"
+              priority
+              loading="eager"
+            />
+          )}
+        </div>
+        <div className="shrink-0 ">
+          {data?.middleLogo && data?.middleShortLogo && (
+            <Media
+              resource={data.middleLogo}
+              imgClassName={'hidden sm:block sm:w-41 sm:h-13'}
+              priority
+              loading="eager"
+            />
+          )}
+          {data?.middleLogo && !data?.middleShortLogo && (
+            <Media
+              resource={data.middleLogo}
+              imgClassName={'w-32 h-13 sm:w-41'}
+              priority
+              loading="eager"
+            />
+          )}
+          {data?.middleShortLogo && (
+            <Media
+              resource={data.middleShortLogo}
+              imgClassName="w-13 h-13 sm:hidden"
+              priority
+              loading="eager"
+            />
+          )}
+        </div>
 
         <HeaderNav data={data} />
       </div>

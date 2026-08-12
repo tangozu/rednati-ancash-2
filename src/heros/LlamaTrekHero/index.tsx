@@ -69,13 +69,6 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
               animate="visible"
               variants={metaVariants}
             >
-              {llamaTrekHeroFields?.rednatiLogo &&
-                typeof llamaTrekHeroFields.rednatiLogo === 'object' && (
-                  <div className="relative  w-24 ">
-                    <Media resource={llamaTrekHeroFields.rednatiLogo} />
-                  </div>
-                )}
-              <span className="h-px w-12 my-auto bg-earth" />
               <span className="text-xs uppercase tracking-[0.28em] text-cream">
                 {llamaTrekHeroFields?.altitude}
               </span>

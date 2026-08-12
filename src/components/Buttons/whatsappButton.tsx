@@ -14,7 +14,7 @@ export const WhatsappButton: React.FC<{
     >
       <Button
         variant="link"
-        className="inline-flex h-auto items-center gap-2 whitespace-nowrap rounded-full bg-earth p-3 text-xs uppercase tracking-widest text-bg sm:rounded-md sm:px-6 sm:py-3 sm:tracking-[0.15em]"
+        className="inline-flex h-13 min-w-13 items-center gap-2 whitespace-nowrap rounded-full bg-earth p-3 text-xs uppercase tracking-widest text-bg sm:rounded-md sm:px-6 sm:py-3 sm:tracking-[0.15em]"
       >
         <MessageCircleMore className="shrink-0"></MessageCircleMore>
         <span className="hidden sm:inline">{phone}</span>

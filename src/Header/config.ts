@@ -10,12 +10,29 @@ export const Header: GlobalConfig = {
   },
   fields: [
     {
-      name: 'logo',
+      name: 'leftLogo',
+      type: 'upload',
+      relationTo: 'media',
+      admin: {
+        description: 'Logo shown on the left side of the header.',
+      },
+    },
+    {
+      name: 'leftShortLogo',
+      type: 'upload',
+      relationTo: 'media',
+      admin: {
+        description:
+          'Compact left logo without text, shown on narrow screens where the full logo would not fit.',
+      },
+    },
+    {
+      name: 'middleLogo',
       type: 'upload',
       relationTo: 'media',
     },
     {
-      name: 'shortLogo',
+      name: 'middleShortLogo',
       type: 'upload',
       relationTo: 'media',
       admin: {

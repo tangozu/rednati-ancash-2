@@ -6,12 +6,6 @@ export const llamaTrekHeroFields: Field = {
   required: true,
   fields: [
     {
-      name: 'rednatiLogo',
-      type: 'upload',
-      relationTo: 'media',
-      required: true,
-    },
-    {
       name: 'imagenDeFondo',
       type: 'upload',
       relationTo: 'media',

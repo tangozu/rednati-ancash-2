@@ -164,7 +164,6 @@ export interface Page {
   hero: {
     type: 'llamaTrek';
     llamaTrekHeroFields?: {
-      rednatiLogo: string | Media;
       imagenDeFondo: string | Media;
       region: string;
       altitude: string;
@@ -1001,7 +1000,6 @@ export interface PagesSelect<T extends boolean = true> {
         llamaTrekHeroFields?:
           | T
           | {
-              rednatiLogo?: T;
               imagenDeFondo?: T;
               region?: T;
               altitude?: T;
@@ -1610,11 +1608,19 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Header {
   id: string;
-  logo?: (string | null) | Media;
+  /**
+   * Logo shown on the left side of the header.
+   */
+  leftLogo?: (string | null) | Media;
+  /**
+   * Compact left logo without text, shown on narrow screens where the full logo would not fit.
+   */
+  leftShortLogo?: (string | null) | Media;
+  middleLogo?: (string | null) | Media;
   /**
    * Compact logo without text, shown on narrow screens where the full logo would not fit.
    */
-  shortLogo?: (string | null) | Media;
+  middleShortLogo?: (string | null) | Media;
   navItems?:
     | {
         link: {
@@ -1722,8 +1728,10 @@ export interface ImageOptimizerState {
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
-  logo?: T;
-  shortLogo?: T;
+  leftLogo?: T;
+  leftShortLogo?: T;
+  middleLogo?: T;
+  middleShortLogo?: T;
   navItems?:
     | T
     | {
