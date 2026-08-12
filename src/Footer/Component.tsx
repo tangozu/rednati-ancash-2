@@ -198,7 +198,7 @@ export async function Footer() {
               <div className="flex flex-wrap items-center gap-3">
                 {creditImages.map((image) => {
                   const imgClassName =
-                    'h-8 w-auto object-contain opacity-80 transition-opacity hover:opacity-100'
+                    'h-12 w-auto object-contain opacity-80 transition-opacity hover:opacity-100'
 
                   if (!image.href) {
                     return (
