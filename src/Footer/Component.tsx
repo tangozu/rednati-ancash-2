@@ -203,7 +203,12 @@ export async function Footer() {
                   if (!image.href) {
                     return (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img key={image.url} src={image.url} alt={image.alt} className={imgClassName} />
+                      <img
+                        key={image.url}
+                        src={image.url}
+                        alt={image.alt}
+                        className={imgClassName}
+                      />
                     )
                   }
 
@@ -230,6 +235,7 @@ export async function Footer() {
                 tracking-[0.08em]
                 leading-relaxed
                 md:mt-6.5
+                text-justify
               "
             >
               {aboutText}
