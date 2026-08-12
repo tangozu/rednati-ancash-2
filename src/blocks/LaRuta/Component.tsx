@@ -42,7 +42,7 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
         )}
 
         <div className="grid grid-cols-1 items-stretch md:grid-cols-2">
-          <ClipReveal className="order-1 aspect-3/4 overflow-hidden bg-media-placeholder md:aspect-auto md:min-h-175 mb-16 md:mb-0">
+          <ClipReveal className="order-1 aspect-3/4 overflow-hidden rounded-2xl bg-media-placeholder md:aspect-auto md:min-h-175 mb-16 md:mb-0">
             {media && typeof media === 'object' && (
               <Media
                 fill

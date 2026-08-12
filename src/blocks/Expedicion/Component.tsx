@@ -57,7 +57,7 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTM
                 </Reveal>
 
                 <ClipReveal
-                  className={`aspect-video overflow-hidden bg-media-placeholder md:aspect-auto md:h-80 ${
+                  className={`aspect-video overflow-hidden rounded-2xl mt-4 bg-media-placeholder md:aspect-auto md:mt-0 md:h-80 ${
                     i % 2 === 1 ? 'md:order-1' : ''
                   }`}
                 >
