@@ -51,7 +51,7 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTM
                   <p className="mb-4 wrap-break-word text-sm tracking-[0.2em] text-earth">
                     {day.altitude}
                   </p>
-                  <p className="font-body text-sm leading-relaxed text-cream md:text-base">
+                  <p className="font-body text-sm leading-relaxed text-cream md:text-base text-justify">
                     {day.paragraph}
                   </p>
                 </Reveal>

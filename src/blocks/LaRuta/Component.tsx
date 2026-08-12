@@ -70,7 +70,7 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
 
             {paragraph1 && (
               <Reveal className="mb-6">
-                <p className="font-body text-base leading-relaxed text-cream md:text-lg">
+                <p className="font-body text-base leading-relaxed text-cream md:text-lg text-justify">
                   {paragraph1}
                 </p>
               </Reveal>
@@ -78,7 +78,7 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
 
             {paragraph2 && (
               <Reveal className="mb-14">
-                <p className="font-body text-base leading-relaxed text-cream md:text-lg">
+                <p className="font-body text-base leading-relaxed text-cream md:text-lg text-justify">
                   {paragraph2}
                 </p>
               </Reveal>
