@@ -1,5 +1,7 @@
 import type { Block } from 'payload'
 
+import { defaultLexical } from '@/fields/defaultLexical'
+
 export const LaRuta: Block = {
   slug: 'laRuta',
   interfaceName: 'LaRutaBlock',
@@ -29,17 +31,15 @@ export const LaRuta: Block = {
       required: true,
     },
     {
-      name: 'paragraph1',
-      type: 'textarea',
-      defaultValue:
-        'Un sendero pre-inca de tres días a través de la Cordillera Blanca de Ancash. El camino asciende desde el poblado de Olleros cruzando pasos cordilleranos a 4,700 metros sobre el nivel del mar.',
+      name: 'paragraph1V2',
+      type: 'richText',
+      editor: defaultLexical,
       required: true,
     },
     {
-      name: 'paragraph2',
-      type: 'textarea',
-      defaultValue:
-        'Al final del recorrido aguarda el Centro Ceremonial de Chavín de Huántar —Patrimonio de la Humanidad UNESCO desde 1985—, testimonio de una civilización que moldeó el mundo andino tres mil años atrás.',
+      name: 'paragraph2V2',
+      type: 'richText',
+      editor: defaultLexical,
       required: true,
     },
     {

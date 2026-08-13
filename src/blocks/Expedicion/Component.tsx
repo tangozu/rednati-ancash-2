@@ -5,6 +5,7 @@ import type { ExpedicionBlock as ExpedicionBlockProps } from '@/payload-types'
 import { Media } from '@/components/Media'
 import { cn } from '@/utilities/ui'
 import { ClipReveal, Reveal } from '@/components/Reveal'
+import RichText from '@/components/RichText'
 
 export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTMLElement>> = ({
   label,
@@ -17,7 +18,7 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTM
       <div className="mx-auto container">
         {label && (
           <Reveal className="mb-14">
-            <span className="counter-item wrap-break-word font-mono text-base uppercase tracking-[0.25em] text-earth sm:text-lg sm:tracking-[0.4em]">
+            <span className="font-bold counter-item wrap-break-word font-mono text-base uppercase tracking-[0.25em] text-earth sm:text-lg sm:tracking-[0.4em]">
               {label}
             </span>
           </Reveal>
@@ -51,9 +52,14 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTM
                   <p className="mb-4 wrap-break-word text-sm tracking-[0.2em] text-earth">
                     {day.altitude}
                   </p>
-                  <p className="font-body text-sm leading-relaxed text-cream md:text-base">
-                    {day.paragraph}
-                  </p>
+                  {day.paragraphV2 && (
+                    <RichText
+                      data={day.paragraphV2}
+                      enableProse={false}
+                      enableGutter={false}
+                      className="font-body text-sm leading-relaxed text-cream md:text-base text-justify"
+                    />
+                  )}
                 </Reveal>
 
                 <ClipReveal

@@ -3,6 +3,7 @@ import { Facebook, Instagram, Linkedin, Mail, Phone, Twitter, Youtube } from 'lu
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import type { Footer as FooterType } from '@/payload-types'
+import RichText from '@/components/RichText'
 
 const socialIcons = {
   instagram: Instagram,
@@ -31,7 +32,7 @@ export async function Footer() {
     contactPhone,
     socialLinks,
     supportLabel,
-    aboutText,
+    aboutTextV2,
     copyrightText,
     creditsText,
     contactWhatsappLink,
@@ -196,36 +197,59 @@ export async function Footer() {
               <span className={labelClassName}>{supportLabel}</span>
 
               <div className="flex flex-wrap items-center gap-3">
-                {creditImages.map((image) => {
+                {(() => {
                   const imgClassName =
-                    'h-8 w-auto object-contain opacity-80 transition-opacity hover:opacity-100'
+                    'h-16 w-auto object-contain opacity-80 transition-opacity hover:opacity-100'
 
-                  if (!image.href) {
+                  const renderImage = (image: (typeof creditImages)[number]) => {
+                    if (!image.href) {
+                      return (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          key={image.url}
+                          src={image.url}
+                          alt={image.alt}
+                          className={imgClassName}
+                        />
+                      )
+                    }
+
                     return (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
+                      <a
                         key={image.url}
-                        src={image.url}
-                        alt={image.alt}
-                        className={imgClassName}
-                      />
+                        href={image.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={image.url} alt={image.alt} className={imgClassName} />
+                      </a>
                     )
                   }
 
+                  const [firstImage, ...restImages] = creditImages
+
                   return (
-                    <a key={image.url} href={image.href} target="_blank" rel="noopener noreferrer">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={image.url} alt={image.alt} className={imgClassName} />
-                    </a>
+                    <>
+                      {firstImage && renderImage(firstImage)}
+                      {restImages.length > 0 && (
+                        <div className="flex items-center gap-3 flex-wrap">
+                          {restImages.map(renderImage)}
+                        </div>
+                      )}
+                    </>
                   )
-                })}
+                })()}
               </div>
             </div>
           )}
 
           {/* Sobre Nosotros (sin subtítulo, solo contenido — alineado a la altura de las imágenes) */}
-          {aboutText && (
-            <p
+          {aboutTextV2 && (
+            <RichText
+              data={aboutTextV2}
+              enableProse={false}
+              enableGutter={false}
               className="
                 flex-1
                 min-w-0
@@ -237,9 +261,7 @@ export async function Footer() {
                 md:mt-6.5
                 text-justify
               "
-            >
-              {aboutText}
-            </p>
+            />
           )}
         </div>
 

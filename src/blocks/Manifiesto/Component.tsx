@@ -3,10 +3,11 @@ import React, { HTMLAttributes } from 'react'
 import type { ManifiestoBlock as ManifiestoBlockProps } from '@/payload-types'
 import { cn } from '@/utilities/ui'
 import { Reveal } from '@/components/Reveal'
+import RichText from '@/components/RichText'
 
 export const ManifiestoBlock: React.FC<ManifiestoBlockProps & HTMLAttributes<HTMLElement>> = ({
   label,
-  quote,
+  quoteV2,
   className,
 }) => {
   return (
@@ -14,17 +15,20 @@ export const ManifiestoBlock: React.FC<ManifiestoBlockProps & HTMLAttributes<HTM
       <div className="mx-auto container">
         {label && (
           <Reveal className="mb-14">
-            <span className="counter-item wrap-break-word font-mono text-base uppercase tracking-[0.25em] text-earth sm:text-lg sm:tracking-[0.4em]">
+            <span className="font-bold counter-item wrap-break-word font-mono text-base uppercase tracking-[0.25em] text-earth sm:text-lg sm:tracking-[0.4em]">
               {label}
             </span>
           </Reveal>
         )}
 
-        {quote && (
+        {quoteV2 && (
           <Reveal as="blockquote">
-            <p className="wrap-break-word font-display text-2xl font-light italic leading-[1.08] text-cream sm:text-4xl md:text-6xl">
-              &quot;{quote}&quot;
-            </p>
+            <RichText
+              data={quoteV2}
+              enableProse={false}
+              enableGutter={false}
+              className="wrap-break-word font-display text-2xl font-light italic leading-[1.08] text-cream before:content-['\201C'] after:content-['\201D'] sm:text-4xl md:text-6xl [&_p]:inline"
+            />
           </Reveal>
         )}
       </div>

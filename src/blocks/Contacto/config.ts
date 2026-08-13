@@ -1,5 +1,7 @@
 import type { Block } from 'payload'
 
+import { defaultLexical } from '@/fields/defaultLexical'
+
 export const Contacto: Block = {
   slug: 'contacto',
   interfaceName: 'ContactoBlock',
@@ -17,9 +19,9 @@ export const Contacto: Block = {
       required: true,
     },
     {
-      name: 'subtitle',
-      type: 'textarea',
-      defaultValue: 'Contacta directamente con la Asociación de Auxiliares de Montaña Olleros–Chavín.',
+      name: 'subtitleV2',
+      type: 'richText',
+      editor: defaultLexical,
       required: true,
     },
     {

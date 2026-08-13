@@ -5,6 +5,7 @@ import type { ElDestinoBlock as ElDestinoBlockProps } from '@/payload-types'
 import { Media } from '@/components/Media'
 import { cn } from '@/utilities/ui'
 import { ClipReveal, Reveal } from '@/components/Reveal'
+import RichText from '@/components/RichText'
 
 export const ElDestinoBlock: React.FC<ElDestinoBlockProps & HTMLAttributes<HTMLElement>> = ({
   label,
@@ -13,8 +14,8 @@ export const ElDestinoBlock: React.FC<ElDestinoBlockProps & HTMLAttributes<HTMLE
   recognition,
   location,
   altitude,
-  paragraph1,
-  paragraph2,
+  paragraph1V2,
+  paragraph2V2,
   className,
 }) => {
   return (
@@ -22,7 +23,7 @@ export const ElDestinoBlock: React.FC<ElDestinoBlockProps & HTMLAttributes<HTMLE
       <div className="mx-auto container">
         {label && (
           <Reveal className="mb-14">
-            <span className="counter-item wrap-break-word font-mono text-base uppercase tracking-[0.25em] text-earth sm:text-lg sm:tracking-[0.4em]">
+            <span className="font-bold counter-item wrap-break-word font-mono text-base uppercase tracking-[0.25em] text-earth sm:text-lg sm:tracking-[0.4em]">
               {label}
             </span>
           </Reveal>
@@ -59,18 +60,24 @@ export const ElDestinoBlock: React.FC<ElDestinoBlockProps & HTMLAttributes<HTMLE
           </div>
 
           <div>
-            {paragraph1 && (
+            {paragraph1V2 && (
               <Reveal className="mb-6">
-                <p className="font-body text-base leading-relaxed text-cream md:text-lg">
-                  {paragraph1}
-                </p>
+                <RichText
+                  data={paragraph1V2}
+                  enableProse={false}
+                  enableGutter={false}
+                  className="font-body text-base leading-relaxed text-cream md:text-lg"
+                />
               </Reveal>
             )}
-            {paragraph2 && (
+            {paragraph2V2 && (
               <Reveal>
-                <p className="font-body text-base leading-relaxed text-cream md:text-lg">
-                  {paragraph2}
-                </p>
+                <RichText
+                  data={paragraph2V2}
+                  enableProse={false}
+                  enableGutter={false}
+                  className="font-body text-base leading-relaxed text-cream md:text-lg"
+                />
               </Reveal>
             )}
           </div>

@@ -6,7 +6,6 @@ import { cn } from '@/utilities/ui'
 import { ContactoBlock } from '@/blocks/Contacto/Component'
 import { ElDestinoBlock } from '@/blocks/ElDestino/Component'
 import { ExpedicionBlock } from '@/blocks/Expedicion/Component'
-import { FilosofiaBlock } from '@/blocks/Filosofia/Component'
 import { GaleriaBlock } from '@/blocks/Galeria/Component'
 import { LaRutaBlock } from '@/blocks/LaRuta/Component'
 import { ManifiestoBlock } from '@/blocks/Manifiesto/Component'
@@ -14,7 +13,6 @@ import { ManifiestoBlock } from '@/blocks/Manifiesto/Component'
 const blockComponents = {
   manifiesto: ManifiestoBlock,
   laRuta: LaRutaBlock,
-  filosofia: FilosofiaBlock,
   expedicion: ExpedicionBlock,
   galeria: GaleriaBlock,
   elDestino: ElDestinoBlock,
@@ -24,7 +22,6 @@ const blockComponents = {
 const fullBleedBlockTypes = new Set([
   'manifiesto',
   'laRuta',
-  'filosofia',
   'expedicion',
   'galeria',
   'elDestino',

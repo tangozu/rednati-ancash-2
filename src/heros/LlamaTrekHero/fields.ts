@@ -1,5 +1,7 @@
 import type { Field } from 'payload'
 
+import { defaultLexical } from '@/fields/defaultLexical'
+
 export const llamaTrekHeroFields: Field = {
   name: 'llamaTrekHeroFields',
   type: 'group',
@@ -30,10 +32,9 @@ export const llamaTrekHeroFields: Field = {
       required: true,
     },
     {
-      name: 'subtitle',
-      type: 'textarea',
-      defaultValue:
-        'Ruta Ancash "Trazando nuevas rutas, nuevas historias" Una ruta ancestral. Tres días entre los Andes. Olleros a Chavín de Huántar con llamas como aliadas ecológicas.',
+      name: 'subtitleV2',
+      type: 'richText',
+      editor: defaultLexical,
       required: true,
     },
     {

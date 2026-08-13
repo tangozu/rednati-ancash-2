@@ -1,6 +1,7 @@
 import type { GlobalConfig } from 'payload'
 
 import { link } from '@/fields/link'
+import { defaultLexical } from '@/fields/defaultLexical'
 import { revalidateFooter } from './hooks/revalidateFooter'
 
 export const Footer: GlobalConfig = {
@@ -115,10 +116,9 @@ export const Footer: GlobalConfig = {
       },
     },
     {
-      name: 'aboutText',
-      type: 'textarea',
-      defaultValue:
-        'Esta Landing Page fue confeccionada con el apoyo del proyecto de Cooperación Internacional Chile-Perú, año 2025-2026, "El concepto del Buen Vivir: Compartiendo con organizaciones en Perú para emprender en turismo cultural bajo una mirada regenerativa", gracias a la iniciativa de cooperación internacional Fondo Chile, gestionada por el Ministerio de Relaciones Exteriores de Chile y la Agencia Chilena de Cooperación Internacional para el Desarrollo, AGCID, en conjunto con el Programa de las Naciones Unidas para el Desarrollo de Chile.',
+      name: 'aboutTextV2',
+      type: 'richText',
+      editor: defaultLexical,
     },
     {
       name: 'copyrightText',
