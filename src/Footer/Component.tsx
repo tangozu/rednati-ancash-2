@@ -197,29 +197,49 @@ export async function Footer() {
               <span className={labelClassName}>{supportLabel}</span>
 
               <div className="flex flex-wrap items-center gap-3">
-                {creditImages.map((image) => {
+                {(() => {
                   const imgClassName =
-                    'h-12 w-auto object-contain opacity-80 transition-opacity hover:opacity-100'
+                    'h-16 w-auto object-contain opacity-80 transition-opacity hover:opacity-100'
 
-                  if (!image.href) {
+                  const renderImage = (image: (typeof creditImages)[number]) => {
+                    if (!image.href) {
+                      return (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          key={image.url}
+                          src={image.url}
+                          alt={image.alt}
+                          className={imgClassName}
+                        />
+                      )
+                    }
+
                     return (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
+                      <a
                         key={image.url}
-                        src={image.url}
-                        alt={image.alt}
-                        className={imgClassName}
-                      />
+                        href={image.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={image.url} alt={image.alt} className={imgClassName} />
+                      </a>
                     )
                   }
 
+                  const [firstImage, ...restImages] = creditImages
+
                   return (
-                    <a key={image.url} href={image.href} target="_blank" rel="noopener noreferrer">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={image.url} alt={image.alt} className={imgClassName} />
-                    </a>
+                    <>
+                      {firstImage && renderImage(firstImage)}
+                      {restImages.length > 0 && (
+                        <div className="flex items-center gap-3 flex-wrap">
+                          {restImages.map(renderImage)}
+                        </div>
+                      )}
+                    </>
                   )
-                })}
+                })()}
               </div>
             </div>
           )}
