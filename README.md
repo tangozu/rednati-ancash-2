@@ -59,3 +59,5 @@
 # otros comentarios
 
 - [x] agregar iconos a los numeros la ruta
+
+compilaaa
