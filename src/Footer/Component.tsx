@@ -3,6 +3,7 @@ import { Facebook, Instagram, Linkedin, Mail, Phone, Twitter, Youtube } from 'lu
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import type { Footer as FooterType } from '@/payload-types'
+import RichText from '@/components/RichText'
 
 const socialIcons = {
   instagram: Instagram,
@@ -31,7 +32,7 @@ export async function Footer() {
     contactPhone,
     socialLinks,
     supportLabel,
-    aboutText,
+    aboutTextV2,
     copyrightText,
     creditsText,
     contactWhatsappLink,
@@ -224,8 +225,11 @@ export async function Footer() {
           )}
 
           {/* Sobre Nosotros (sin subtítulo, solo contenido — alineado a la altura de las imágenes) */}
-          {aboutText && (
-            <p
+          {aboutTextV2 && (
+            <RichText
+              data={aboutTextV2}
+              enableProse={false}
+              enableGutter={false}
               className="
                 flex-1
                 min-w-0
@@ -237,9 +241,7 @@ export async function Footer() {
                 md:mt-6.5
                 text-justify
               "
-            >
-              {aboutText}
-            </p>
+            />
           )}
         </div>
 

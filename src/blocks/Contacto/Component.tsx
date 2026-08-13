@@ -7,11 +7,12 @@ import { WhatsappButton } from '@/components/Buttons/whatsappButton'
 import { EmailButton } from '@/components/Buttons/emailButton'
 import { cn } from '@/utilities/ui'
 import { Reveal, StaggerGroup } from '@/components/Reveal'
+import RichText from '@/components/RichText'
 
 export const ContactoBlock: React.FC<ContactoBlockProps & HTMLAttributes<HTMLElement>> = ({
   preTitle,
   title,
-  subtitle,
+  subtitleV2,
   backgroundMedia,
   guide,
   whatsapp,
@@ -35,7 +36,7 @@ export const ContactoBlock: React.FC<ContactoBlockProps & HTMLAttributes<HTMLEle
       <div className="relative mx-auto max-w-3xl px-6 text-center md:px-16">
         {preTitle && (
           <Reveal className="mb-8">
-            <span className="wrap-break-word font-mono text-base uppercase tracking-[0.25em] text-earth sm:text-lg sm:tracking-[0.4em]">
+            <span className="font-bold wrap-break-word font-mono text-base uppercase tracking-[0.25em] text-earth sm:text-lg sm:tracking-[0.4em]">
               {preTitle}
             </span>
           </Reveal>
@@ -49,11 +50,14 @@ export const ContactoBlock: React.FC<ContactoBlockProps & HTMLAttributes<HTMLEle
           </Reveal>
         )}
 
-        {subtitle && (
+        {subtitleV2 && (
           <Reveal className="mx-auto mb-6 max-w-sm">
-            <p className="font-body text-base leading-relaxed text-cream md:text-lg">
-              {subtitle}
-            </p>
+            <RichText
+              data={subtitleV2}
+              enableProse={false}
+              enableGutter={false}
+              className="font-body text-base leading-relaxed text-cream md:text-lg"
+            />
           </Reveal>
         )}
         {guide && (

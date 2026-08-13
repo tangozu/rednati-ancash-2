@@ -5,6 +5,7 @@ import type { LaRutaBlock as LaRutaBlockProps } from '@/payload-types'
 import { Media } from '@/components/Media'
 import { cn } from '@/utilities/ui'
 import { ClipReveal, Reveal, StaggerGroup, StaggerItem } from '@/components/Reveal'
+import RichText from '@/components/RichText'
 import { MoonStar, MountainSnow, Sun, Users } from 'lucide-react'
 import { Road } from '@/icons/road'
 
@@ -13,8 +14,8 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
   title,
   subtitle,
   media,
-  paragraph1,
-  paragraph2,
+  paragraph1V2,
+  paragraph2V2,
   days,
   nights,
   kilometers,
@@ -35,7 +36,7 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
       <div className="mx-auto container">
         {label && (
           <Reveal className="mb-14">
-            <span className="counter-item wrap-break-word font-mono text-base uppercase tracking-[0.25em] text-earth sm:text-lg sm:tracking-[0.4em]">
+            <span className="font-bold counter-item wrap-break-word font-mono text-base uppercase tracking-[0.25em] text-earth sm:text-lg sm:tracking-[0.4em]">
               {label}
             </span>
           </Reveal>
@@ -68,19 +69,25 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
               </Reveal>
             )}
 
-            {paragraph1 && (
+            {paragraph1V2 && (
               <Reveal className="mb-6">
-                <p className="font-body text-base leading-relaxed text-cream md:text-lg text-justify">
-                  {paragraph1}
-                </p>
+                <RichText
+                  data={paragraph1V2}
+                  enableProse={false}
+                  enableGutter={false}
+                  className="font-body text-base leading-relaxed text-cream md:text-lg text-justify"
+                />
               </Reveal>
             )}
 
-            {paragraph2 && (
+            {paragraph2V2 && (
               <Reveal className="mb-14">
-                <p className="font-body text-base leading-relaxed text-cream md:text-lg text-justify">
-                  {paragraph2}
-                </p>
+                <RichText
+                  data={paragraph2V2}
+                  enableProse={false}
+                  enableGutter={false}
+                  className="font-body text-base leading-relaxed text-cream md:text-lg text-justify"
+                />
               </Reveal>
             )}
 

@@ -7,6 +7,7 @@ import type { Page } from '@/payload-types'
 
 import { Media } from '@/components/Media'
 import { EmailButton } from '@/components/Buttons/emailButton'
+import RichText from '@/components/RichText'
 
 const EASE = [0.16, 1, 0.3, 1] as const
 
@@ -89,10 +90,13 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
               animate="visible"
               variants={subVariants}
             >
-              {llamaTrekHeroFields?.subtitle && (
-                <p className="wrap-break-word font-body text-earth-accent text-base md:text-lg leading-relaxed">
-                  {llamaTrekHeroFields.subtitle}
-                </p>
+              {llamaTrekHeroFields?.subtitleV2 && (
+                <RichText
+                  data={llamaTrekHeroFields.subtitleV2}
+                  enableProse={false}
+                  enableGutter={false}
+                  className="wrap-break-word font-body text-earth-accent text-base md:text-lg leading-relaxed"
+                />
               )}
             </motion.div>
 

@@ -168,7 +168,21 @@ export interface Page {
       region: string;
       altitude: string;
       title: string;
-      subtitle: string;
+      subtitleV2: {
+        root: {
+          type: string;
+          children: {
+            type: any;
+            version: number;
+            [k: string]: unknown;
+          }[];
+          direction: ('ltr' | 'rtl') | null;
+          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+          indent: number;
+          version: number;
+        };
+        [k: string]: unknown;
+      };
       emailContact: {
         email: string;
       };
@@ -176,9 +190,7 @@ export interface Page {
       location: string;
     };
   };
-  layout: (
-    ManifiestoBlock | LaRutaBlock | FilosofiaBlock | ExpedicionBlock | GaleriaBlock | ElDestinoBlock | ContactoBlock
-  )[];
+  layout: (ManifiestoBlock | LaRutaBlock | ExpedicionBlock | GaleriaBlock | ElDestinoBlock | ContactoBlock)[];
   meta?: {
     title?: string | null;
     /**
@@ -335,7 +347,21 @@ export interface FolderInterface {
  */
 export interface ManifiestoBlock {
   label: string;
-  quote: string;
+  quoteV2: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'manifiesto';
@@ -349,8 +375,36 @@ export interface LaRutaBlock {
   title: string;
   subtitle: string;
   media: string | Media;
-  paragraph1: string;
-  paragraph2: string;
+  paragraph1V2: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  paragraph2V2: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   days: string;
   nights: string;
   kilometers: string;
@@ -359,25 +413,6 @@ export interface LaRutaBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'laRuta';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FilosofiaBlock".
- */
-export interface FilosofiaBlock {
-  label: string;
-  title: string;
-  backgroundMedia?: (string | null) | Media;
-  pillars?:
-    | {
-        subtitle: string;
-        paragraph: string;
-        id?: string | null;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'filosofia';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -392,7 +427,21 @@ export interface ExpedicionBlock {
         media: string | Media;
         altitude: string;
         duration: string;
-        paragraph: string;
+        paragraphV2: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
         id?: string | null;
       }[]
     | null;
@@ -421,8 +470,36 @@ export interface ElDestinoBlock {
   recognition: string;
   location: string;
   altitude: string;
-  paragraph1: string;
-  paragraph2: string;
+  paragraph1V2: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  paragraph2V2: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'elDestino';
@@ -434,7 +511,21 @@ export interface ElDestinoBlock {
 export interface ContactoBlock {
   preTitle: string;
   title: string;
-  subtitle: string;
+  subtitleV2: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   backgroundMedia?: (string | null) | Media;
   guide: string;
   whatsapp: string;
@@ -1007,7 +1098,7 @@ export interface PagesSelect<T extends boolean = true> {
               region?: T;
               altitude?: T;
               title?: T;
-              subtitle?: T;
+              subtitleV2?: T;
               emailContact?:
                 | T
                 | {
@@ -1022,7 +1113,6 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         manifiesto?: T | ManifiestoBlockSelect<T>;
         laRuta?: T | LaRutaBlockSelect<T>;
-        filosofia?: T | FilosofiaBlockSelect<T>;
         expedicion?: T | ExpedicionBlockSelect<T>;
         galeria?: T | GaleriaBlockSelect<T>;
         elDestino?: T | ElDestinoBlockSelect<T>;
@@ -1048,7 +1138,7 @@ export interface PagesSelect<T extends boolean = true> {
  */
 export interface ManifiestoBlockSelect<T extends boolean = true> {
   label?: T;
-  quote?: T;
+  quoteV2?: T;
   id?: T;
   blockName?: T;
 }
@@ -1061,31 +1151,13 @@ export interface LaRutaBlockSelect<T extends boolean = true> {
   title?: T;
   subtitle?: T;
   media?: T;
-  paragraph1?: T;
-  paragraph2?: T;
+  paragraph1V2?: T;
+  paragraph2V2?: T;
   days?: T;
   nights?: T;
   kilometers?: T;
   people?: T;
   stages?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FilosofiaBlock_select".
- */
-export interface FilosofiaBlockSelect<T extends boolean = true> {
-  label?: T;
-  title?: T;
-  backgroundMedia?: T;
-  pillars?:
-    | T
-    | {
-        subtitle?: T;
-        paragraph?: T;
-        id?: T;
-      };
   id?: T;
   blockName?: T;
 }
@@ -1103,7 +1175,7 @@ export interface ExpedicionBlockSelect<T extends boolean = true> {
         media?: T;
         altitude?: T;
         duration?: T;
-        paragraph?: T;
+        paragraphV2?: T;
         id?: T;
       };
   id?: T;
@@ -1129,8 +1201,8 @@ export interface ElDestinoBlockSelect<T extends boolean = true> {
   recognition?: T;
   location?: T;
   altitude?: T;
-  paragraph1?: T;
-  paragraph2?: T;
+  paragraph1V2?: T;
+  paragraph2V2?: T;
   id?: T;
   blockName?: T;
 }
@@ -1141,7 +1213,7 @@ export interface ElDestinoBlockSelect<T extends boolean = true> {
 export interface ContactoBlockSelect<T extends boolean = true> {
   preTitle?: T;
   title?: T;
-  subtitle?: T;
+  subtitleV2?: T;
   backgroundMedia?: T;
   guide?: T;
   whatsapp?: T;
@@ -1706,7 +1778,21 @@ export interface Footer {
         id?: string | null;
       }[]
     | null;
-  aboutText?: string | null;
+  aboutTextV2?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   copyrightText?: string | null;
   creditsText?: string | null;
   updatedAt?: string | null;
@@ -1802,7 +1888,7 @@ export interface FooterSelect<T extends boolean = true> {
         image?: T;
         id?: T;
       };
-  aboutText?: T;
+  aboutTextV2?: T;
   copyrightText?: T;
   creditsText?: T;
   updatedAt?: T;

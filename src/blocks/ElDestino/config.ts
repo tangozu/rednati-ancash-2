@@ -1,5 +1,7 @@
 import type { Block } from 'payload'
 
+import { defaultLexical } from '@/fields/defaultLexical'
+
 export const ElDestino: Block = {
   slug: 'elDestino',
   interfaceName: 'ElDestinoBlock',
@@ -41,17 +43,15 @@ export const ElDestino: Block = {
       required: true,
     },
     {
-      name: 'paragraph1',
-      type: 'textarea',
-      defaultValue:
-        'El destino final de Llamatrek es uno de los sitios arqueológicos más importantes del continente. Centro ceremonial de una civilización preinca que floreció entre 900 y 200 a.C., Chavín fue el primer gran horizonte cultural pan-andino.',
+      name: 'paragraph1V2',
+      type: 'richText',
+      editor: defaultLexical,
       required: true,
     },
     {
-      name: 'paragraph2',
-      type: 'textarea',
-      defaultValue:
-        'Sus galerías subterráneas, el monolito Lanzón y sus estelas revelan un sistema de conocimiento astronómico, ritual y social extraordinariamente sofisticado. Llegar aquí caminando, como lo hacían los peregrinos, es la manera más auténtica de comprender su dimensión sagrada.',
+      name: 'paragraph2V2',
+      type: 'richText',
+      editor: defaultLexical,
       required: true,
     },
   ],

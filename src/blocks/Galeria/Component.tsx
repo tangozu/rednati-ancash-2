@@ -33,7 +33,7 @@ export const GaleriaBlock: React.FC<GaleriaBlockProps & HTMLAttributes<HTMLEleme
       <div className="mx-auto container">
         {label && (
           <Reveal className="mb-12 px-2 md:px-0">
-            <span className="counter-item wrap-break-word font-mono text-base uppercase tracking-[0.25em] text-earth sm:text-lg sm:tracking-[0.4em]">
+            <span className="font-bold counter-item wrap-break-word font-mono text-base uppercase tracking-[0.25em] text-earth sm:text-lg sm:tracking-[0.4em]">
               {label}
             </span>
           </Reveal>
