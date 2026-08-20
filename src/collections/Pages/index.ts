@@ -8,6 +8,7 @@ import { Expedicion } from '../../blocks/Expedicion/config'
 import { Galeria } from '../../blocks/Galeria/config'
 import { LaRuta } from '../../blocks/LaRuta/config'
 import { Manifiesto } from '../../blocks/Manifiesto/config'
+import { RouteMap } from '../../blocks/RouteMap/config'
 import { hero } from '@/heros/config'
 import { slugField } from 'payload'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -73,7 +74,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [Manifiesto, LaRuta, Expedicion, Galeria, ElDestino, Contacto],
+              blocks: [Manifiesto, LaRuta, RouteMap, Expedicion, Galeria, ElDestino, Contacto],
               required: true,
               admin: {
                 initCollapsed: true,

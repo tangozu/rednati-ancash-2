@@ -5,6 +5,7 @@ import type { ContactoBlock as ContactoBlockProps } from '@/payload-types'
 import { Media } from '@/components/Media'
 import { WhatsappButton } from '@/components/Buttons/whatsappButton'
 import { EmailButton } from '@/components/Buttons/emailButton'
+import { PhoneButton } from '@/components/Buttons/phoneButton'
 import { cn } from '@/utilities/ui'
 import { Reveal, StaggerGroup } from '@/components/Reveal'
 import RichText from '@/components/RichText'
@@ -62,14 +63,15 @@ export const ContactoBlock: React.FC<ContactoBlockProps & HTMLAttributes<HTMLEle
         )}
         {guide && (
           <Reveal className="mb-14">
-            <p className="wrap-break-word font-mono text-xs uppercase tracking-[0.25em] text-cream">
-              Guía: {guide}
+            <p className="wrap-break-word font-mono text-sm uppercase tracking-[0.25em] text-cream">
+              {guide}
             </p>
           </Reveal>
         )}
 
         <StaggerGroup className="flex min-w-0 flex-col items-center justify-center gap-4 sm:flex-row">
           {email && <EmailButton email={email} />}
+          {whatsapp && <PhoneButton phone={whatsapp} />}
         </StaggerGroup>
 
         {address && (

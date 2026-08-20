@@ -94,7 +94,7 @@ const MiddleLogo: React.FC<{ data: Header }> = ({ data }) => {
       {data?.middleLogo && data?.middleShortLogo && (
         <Media
           resource={data.middleLogo}
-          imgClassName={'hidden sm:block sm:w-41 sm:h-13'}
+          imgClassName={'hidden sm:block sm:w-42 sm:h-13'}
           priority
           loading="eager"
         />
@@ -102,7 +102,7 @@ const MiddleLogo: React.FC<{ data: Header }> = ({ data }) => {
       {data?.middleLogo && !data?.middleShortLogo && (
         <Media
           resource={data.middleLogo}
-          imgClassName={'w-32 h-13 sm:w-41'}
+          imgClassName={'w-32 h-13 sm:w-42'}
           priority
           loading="eager"
         />
@@ -121,7 +121,12 @@ const MiddleLogo: React.FC<{ data: Header }> = ({ data }) => {
   if (!data?.middleLogoUrl) return logos
 
   return (
-    <Link href={data.middleLogoUrl} target="_blank" rel="noopener noreferrer" aria-label="RedNatí Perú">
+    <Link
+      href={data.middleLogoUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="RedNatí Perú"
+    >
       {logos}
     </Link>
   )

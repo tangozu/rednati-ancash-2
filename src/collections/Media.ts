@@ -72,11 +72,40 @@ export const Media: CollectionConfig = {
         condition: (_, siblingData) => Boolean(siblingData?.enableLink),
       },
     },
+    {
+      name: 'latitude',
+      type: 'number',
+      label: 'Latitud (GPS)',
+      admin: {
+        position: 'sidebar',
+        description:
+          'Extraída automáticamente de los metadatos EXIF de la imagen al subirla, si están disponibles.',
+        components: {
+          Field: '@/components/admin/GpsCapture#GpsCaptureField',
+        },
+      },
+    },
+    {
+      name: 'longitude',
+      type: 'number',
+      label: 'Longitud (GPS)',
+      admin: {
+        position: 'sidebar',
+      },
+    },
   ],
   upload: {
     // Upload to the public/media directory in Next.js making them publicly accessible even outside of Payload
     staticDir: path.resolve(dirname, '../../public/media'),
-    mimeTypes: ['image/*', 'video/*'],
+    mimeTypes: [
+      'image/*',
+      'video/*',
+      'application/gpx+xml',
+      'application/octet-stream',
+      'application/xml',
+      'text/xml',
+      '.gpx',
+    ],
     adminThumbnail: 'thumbnail',
     focalPoint: true,
     imageSizes: [
@@ -114,7 +143,8 @@ export const Media: CollectionConfig = {
     ],
 
     modifyResponseHeaders: ({ headers }) => {
-      if (headers.get('content-type') === 'application/xml') {
+      const isSvg = headers.get('content-disposition')?.toLowerCase().includes('.svg')
+      if (isSvg && headers.get('content-type') === 'application/xml') {
         headers.set('content-type', 'image/svg+xml; charset=utf-8')
       }
       return headers

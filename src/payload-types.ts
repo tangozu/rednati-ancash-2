@@ -190,7 +190,9 @@ export interface Page {
       location: string;
     };
   };
-  layout: (ManifiestoBlock | LaRutaBlock | ExpedicionBlock | GaleriaBlock | ElDestinoBlock | ContactoBlock)[];
+  layout: (
+    ManifiestoBlock | LaRutaBlock | RouteMapBlock | ExpedicionBlock | GaleriaBlock | ElDestinoBlock | ContactoBlock
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -237,6 +239,11 @@ export interface Media {
    */
   enableLink?: boolean | null;
   linkUrl?: string | null;
+  /**
+   * Extraída automáticamente de los metadatos EXIF de la imagen al subirla, si están disponibles.
+   */
+  latitude?: number | null;
+  longitude?: number | null;
   imageOptimizer?: {
     thumbHash?: string | null;
     originalSize?: number | null;
@@ -413,6 +420,35 @@ export interface LaRutaBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'laRuta';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "RouteMapBlock".
+ */
+export interface RouteMapBlock {
+  label?: string | null;
+  difficulty?: ('facil' | 'moderada' | 'dificil' | 'muy-dificil') | null;
+  /**
+   * Sube un archivo .gpx con la ruta del trek.
+   */
+  gpxFile: string | Media;
+  /**
+   * Si se activa, todas las imágenes de la biblioteca de medios que tengan coordenadas GPS se mostrarán como marcadores en el mapa, además de las seleccionadas manualmente abajo.
+   */
+  autoIncludeGpsMedia?: boolean | null;
+  /**
+   * Fotos a mostrar como marcadores en el mapa. Solo se listan imágenes que ya tienen coordenadas GPS extraídas de sus metadatos.
+   */
+  markers?:
+    | {
+        image: string | Media;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'routeMap';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1113,6 +1149,7 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         manifiesto?: T | ManifiestoBlockSelect<T>;
         laRuta?: T | LaRutaBlockSelect<T>;
+        routeMap?: T | RouteMapBlockSelect<T>;
         expedicion?: T | ExpedicionBlockSelect<T>;
         galeria?: T | GaleriaBlockSelect<T>;
         elDestino?: T | ElDestinoBlockSelect<T>;
@@ -1158,6 +1195,25 @@ export interface LaRutaBlockSelect<T extends boolean = true> {
   kilometers?: T;
   people?: T;
   stages?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "RouteMapBlock_select".
+ */
+export interface RouteMapBlockSelect<T extends boolean = true> {
+  label?: T;
+  difficulty?: T;
+  gpxFile?: T;
+  autoIncludeGpsMedia?: T;
+  markers?:
+    | T
+    | {
+        image?: T;
+        caption?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -1263,6 +1319,8 @@ export interface MediaSelect<T extends boolean = true> {
   caption?: T;
   enableLink?: T;
   linkUrl?: T;
+  latitude?: T;
+  longitude?: T;
   imageOptimizer?:
     | T
     | {
