@@ -21,6 +21,14 @@
   filter: sepia(35%) saturate(140%) hue-rotate(-8deg) brightness(0.95) contrast(1.05);
 }
 
+/* Contain Leaflet's internal z-indexes (panes go up to ~650, controls ~1000)
+   so they can never stack above the site's fixed navbar (z-50). */
+.route-map-container {
+  position: relative;
+  isolation: isolate;
+  z-index: 0;
+}
+
 .route-map-container .leaflet-popup-content-wrapper,
 .route-map-container .leaflet-popup-tip {
   background: var(--color-panel);
