@@ -71,7 +71,7 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
               variants={metaVariants}
             >
               <span className="text-xs uppercase tracking-[0.28em] text-cream">
-                {llamaTrekHeroFields?.altitude}
+                {llamaTrekHeroFields?.highlight}
               </span>
             </motion.div>
 
@@ -123,7 +123,7 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
             </div>
             <div className=" flex flex-col items-end gap-1.5 text-right sm:bottom-8 sm:right-8 md:bottom-10 md:right-10">
               <span className="text-xs uppercase tracking-[0.2em] text-cream">
-                {llamaTrekHeroFields?.coordinates}
+                {llamaTrekHeroFields?.duration}
               </span>
               <span className="text-xs uppercase tracking-[0.2em] text-cream">
                 {llamaTrekHeroFields?.location}

@@ -10,7 +10,7 @@ import RichText from '@/components/RichText'
 export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTMLElement>> = ({
   label,
   title,
-  days,
+  stops,
   className,
 }) => {
   return (
@@ -31,9 +31,9 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTM
           </Reveal>
         )}
 
-        {days && days.length > 0 && (
-          <div className="counter-container [--counter-name:day] divide-y divide-cream/[0.07] flex flex-col gap-16">
-            {days.map((day, i) => (
+        {stops && stops.length > 0 && (
+          <div className="divide-y divide-cream/[0.07] flex flex-col gap-16">
+            {stops.map((stop, i) => (
               <div key={i} className="grid grid-cols-1 gap-0 py-0 md:grid-cols-2">
                 <Reveal
                   className={`${
@@ -41,20 +41,20 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTM
                   }`}
                 >
                   <div className="mb-4 flex items-center">
-                    <span className="counter-item wrap-break-word font-mono text-base tracking-[0.2em] text-earth">
-                      {day.duration}
+                    <span className="wrap-break-word font-mono text-base tracking-[0.2em] text-earth">
+                      {stop.category}
                     </span>
                   </div>
 
                   <h3 className="mb-2 font-display text-3xl font-bold text-cream md:text-4xl">
-                    {day.title}
+                    {stop.title}
                   </h3>
                   <p className="mb-4 wrap-break-word text-sm tracking-[0.2em] text-earth">
-                    {day.altitude}
+                    {stop.location}
                   </p>
-                  {day.paragraphV2 && (
+                  {stop.paragraphV2 && (
                     <RichText
-                      data={day.paragraphV2}
+                      data={stop.paragraphV2}
                       enableProse={false}
                       enableGutter={false}
                       className="font-body text-sm leading-relaxed text-cream md:text-base text-justify"
@@ -67,11 +67,11 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTM
                     i % 2 === 1 ? 'md:order-1' : ''
                   }`}
                 >
-                  {day.media && typeof day.media === 'object' && (
+                  {stop.media && typeof stop.media === 'object' && (
                     <Media
                       fill
                       imgClassName="h-full w-full object-cover transition-transform duration-[2.5s] ease-out hover:scale-[1.04]"
-                      resource={day.media}
+                      resource={stop.media}
                     />
                   )}
                 </ClipReveal>

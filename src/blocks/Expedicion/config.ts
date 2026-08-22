@@ -9,35 +9,39 @@ export const Expedicion: Block = {
     {
       name: 'label',
       type: 'text',
-      defaultValue: '04 — La Expedición',
+      defaultValue: '03 — La Ruta Cultural',
       required: true,
     },
     {
       name: 'title',
       type: 'text',
-      defaultValue: 'Tres días. Una transformación.',
+      defaultValue: 'Puntos de interés en el recorrido',
       required: true,
     },
     {
-      name: 'days',
+      name: 'stops',
       type: 'array',
       minRows: 1,
-      maxRows: 3,
+      maxRows: 6,
+      labels: {
+        singular: 'Punto de interés',
+        plural: 'Puntos de interés',
+      },
       defaultValue: [
         {
-          title: 'Ascenso desde Olleros',
-          altitude: '2,800 → 4,100 msnm',
-          duration: '5–6 horas',
+          title: 'Escalinatas de Ríos de Color',
+          location: 'Jr. Pedro Pablo Palacios, San Miguel',
+          category: 'Muralismo',
         },
         {
-          title: 'El Paso de los Andes',
-          altitude: '4,100 → 4,700 → 3,800 msnm',
-          duration: '7–8 horas',
+          title: 'Casa Cultural Shancayán',
+          location: 'San Miguel, Independencia, Huaraz',
+          category: 'Comunidad',
         },
         {
-          title: 'Llegada a Chavín',
-          altitude: '3,800 → 3,177 msnm',
-          duration: '4–5 horas',
+          title: 'Feria Viva del 25 de julio',
+          location: 'Espacio público de Shancayán',
+          category: 'Feria y gastronomía',
         },
       ],
       fields: [
@@ -53,12 +57,12 @@ export const Expedicion: Block = {
           required: true,
         },
         {
-          name: 'altitude',
+          name: 'location',
           type: 'text',
           required: true,
         },
         {
-          name: 'duration',
+          name: 'category',
           type: 'text',
           required: true,
         },

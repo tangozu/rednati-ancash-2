@@ -125,7 +125,7 @@ export const hero: Field = {
       label: 'Type',
       options: [
         {
-          label: 'LlamaTrek Hero',
+          label: 'Shancayán Hero',
           value: 'llamaTrek',
         },
       ],

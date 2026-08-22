@@ -16,6 +16,7 @@ import { getServerSideURL } from './utilities/getURL'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import { imageOptimizer } from '@inoo-ch/payload-image-optimizer'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
+import { mcpPlugin } from '@payloadcms/plugin-mcp'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -92,6 +93,16 @@ export default buildConfig({
     imageOptimizer({
       collections: {
         media: true,
+      },
+    }),
+    mcpPlugin({
+      collections: {
+        pages: {
+          enabled: true,
+        },
+        media: {
+          enabled: true,
+        },
       },
     }),
   ],

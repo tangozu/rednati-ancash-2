@@ -6,8 +6,7 @@ import { Media } from '@/components/Media'
 import { cn } from '@/utilities/ui'
 import { ClipReveal, Reveal, StaggerGroup, StaggerItem } from '@/components/Reveal'
 import RichText from '@/components/RichText'
-import { MoonStar, MountainSnow, Sun, Users } from 'lucide-react'
-import { Road } from '@/icons/road'
+import { CalendarDays, Clock, Gauge, Palette } from 'lucide-react'
 
 export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement>> = ({
   label,
@@ -16,19 +15,17 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
   media,
   paragraph1V2,
   paragraph2V2,
-  days,
-  nights,
-  kilometers,
-  people,
-  stages,
+  keyDate,
+  muralCount,
+  visitDuration,
+  difficulty,
   className,
 }) => {
   const stats = [
-    { num: days, label: 'Días', icon: <Sun></Sun> },
-    { num: nights, label: 'Noches', icon: <MoonStar></MoonStar> },
-    { num: kilometers, label: 'Kilómetros', icon: <Road></Road> },
-    { num: people, label: 'Personas', icon: <Users></Users> },
-    { num: stages, label: 'Etapas', icon: <MountainSnow></MountainSnow> },
+    { num: keyDate, label: 'Fecha clave', icon: <CalendarDays></CalendarDays> },
+    { num: muralCount, label: 'Murales', icon: <Palette></Palette> },
+    { num: visitDuration, label: 'Duración', icon: <Clock></Clock> },
+    { num: difficulty, label: 'Dificultad', icon: <Gauge></Gauge> },
   ].filter((stat) => stat.num)
 
   return (
