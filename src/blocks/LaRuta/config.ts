@@ -60,11 +60,5 @@ export const LaRuta: Block = {
       defaultValue: '2–3 horas',
       required: true,
     },
-    {
-      name: 'difficulty',
-      type: 'text',
-      defaultValue: 'Fácil',
-      required: true,
-    },
   ],
 }

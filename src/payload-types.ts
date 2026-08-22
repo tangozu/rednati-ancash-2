@@ -436,7 +436,6 @@ export interface LaRutaBlock {
   keyDate: string;
   muralCount: string;
   visitDuration: string;
-  difficulty: string;
   id?: string | null;
   blockName?: string | null;
   blockType: 'laRuta';
@@ -1290,7 +1289,6 @@ export interface LaRutaBlockSelect<T extends boolean = true> {
   keyDate?: T;
   muralCount?: T;
   visitDuration?: T;
-  difficulty?: T;
   id?: T;
   blockName?: T;
 }

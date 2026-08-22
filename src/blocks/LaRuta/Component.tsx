@@ -6,7 +6,7 @@ import { Media } from '@/components/Media'
 import { cn } from '@/utilities/ui'
 import { ClipReveal, Reveal, StaggerGroup, StaggerItem } from '@/components/Reveal'
 import RichText from '@/components/RichText'
-import { CalendarDays, Clock, Gauge, Palette } from 'lucide-react'
+import { CalendarDays, Clock, Palette } from 'lucide-react'
 
 export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement>> = ({
   label,
@@ -18,14 +18,12 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
   keyDate,
   muralCount,
   visitDuration,
-  difficulty,
   className,
 }) => {
   const stats = [
     { num: keyDate, label: 'Fecha clave', icon: <CalendarDays></CalendarDays> },
     { num: muralCount, label: 'Murales', icon: <Palette></Palette> },
     { num: visitDuration, label: 'Duración', icon: <Clock></Clock> },
-    { num: difficulty, label: 'Dificultad', icon: <Gauge></Gauge> },
   ].filter((stat) => stat.num)
 
   return (
