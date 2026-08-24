@@ -19,10 +19,14 @@ export const Expedicion: Block = {
       required: true,
     },
     {
+      name: 'introduction',
+      type: 'richText',
+      editor: defaultLexical,
+    },
+    {
       name: 'stops',
       type: 'array',
       minRows: 1,
-      maxRows: 6,
       labels: {
         singular: 'Punto de interés',
         plural: 'Puntos de interés',
@@ -48,29 +52,24 @@ export const Expedicion: Block = {
         {
           name: 'title',
           type: 'text',
-          required: true,
         },
         {
           name: 'media',
           type: 'upload',
           relationTo: 'media',
-          required: true,
         },
         {
           name: 'location',
           type: 'text',
-          required: true,
         },
         {
           name: 'category',
           type: 'text',
-          required: true,
         },
         {
           name: 'paragraphV2',
           type: 'richText',
           editor: defaultLexical,
-          required: true,
         },
       ],
     },

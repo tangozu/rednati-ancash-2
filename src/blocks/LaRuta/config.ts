@@ -37,12 +37,6 @@ export const LaRuta: Block = {
       required: true,
     },
     {
-      name: 'paragraph2V2',
-      type: 'richText',
-      editor: defaultLexical,
-      required: true,
-    },
-    {
       name: 'keyDate',
       type: 'text',
       defaultValue: '25 de julio',

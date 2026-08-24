@@ -14,7 +14,6 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
   subtitle,
   media,
   paragraph1V2,
-  paragraph2V2,
   keyDate,
   muralCount,
   visitDuration,
@@ -68,17 +67,6 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
               <Reveal className="mb-6">
                 <RichText
                   data={paragraph1V2}
-                  enableProse={false}
-                  enableGutter={false}
-                  className="font-body text-base leading-relaxed text-cream md:text-lg text-justify"
-                />
-              </Reveal>
-            )}
-
-            {paragraph2V2 && (
-              <Reveal className="mb-14">
-                <RichText
-                  data={paragraph2V2}
                   enableProse={false}
                   enableGutter={false}
                   className="font-body text-base leading-relaxed text-cream md:text-lg text-justify"

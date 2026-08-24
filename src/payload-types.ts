@@ -212,7 +212,14 @@ export interface Page {
     };
   };
   layout: (
-    ManifiestoBlock | LaRutaBlock | RouteMapBlock | ExpedicionBlock | GaleriaBlock | ElDestinoBlock | ContactoBlock
+    | ManifiestoBlock
+    | LaRutaBlock
+    | RouteMapBlock
+    | ExpedicionBlock
+    | SeccionesBlock
+    | GaleriaBlock
+    | ElDestinoBlock
+    | ContactoBlock
   )[];
   meta?: {
     title?: string | null;
@@ -418,21 +425,6 @@ export interface LaRutaBlock {
     };
     [k: string]: unknown;
   };
-  paragraph2V2: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
   keyDate: string;
   muralCount: string;
   visitDuration: string;
@@ -476,13 +468,28 @@ export interface RouteMapBlock {
 export interface ExpedicionBlock {
   label: string;
   title: string;
+  introduction?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   stops?:
     | {
-        title: string;
-        media: string | Media;
-        location: string;
-        category: string;
-        paragraphV2: {
+        title?: string | null;
+        media?: (string | null) | Media;
+        location?: string | null;
+        category?: string | null;
+        paragraphV2?: {
           root: {
             type: string;
             children: {
@@ -496,13 +503,47 @@ export interface ExpedicionBlock {
             version: number;
           };
           [k: string]: unknown;
-        };
+        } | null;
         id?: string | null;
       }[]
     | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'expedicion';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SeccionesBlock".
+ */
+export interface SeccionesBlock {
+  items?:
+    | {
+        label: string;
+        title: string;
+        subtitle?: string | null;
+        imagePosition: 'left' | 'right';
+        media?: (string | null) | Media;
+        contentV2?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'secciones';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1247,6 +1288,7 @@ export interface PagesSelect<T extends boolean = true> {
         laRuta?: T | LaRutaBlockSelect<T>;
         routeMap?: T | RouteMapBlockSelect<T>;
         expedicion?: T | ExpedicionBlockSelect<T>;
+        secciones?: T | SeccionesBlockSelect<T>;
         galeria?: T | GaleriaBlockSelect<T>;
         elDestino?: T | ElDestinoBlockSelect<T>;
         contacto?: T | ContactoBlockSelect<T>;
@@ -1285,7 +1327,6 @@ export interface LaRutaBlockSelect<T extends boolean = true> {
   subtitle?: T;
   media?: T;
   paragraph1V2?: T;
-  paragraph2V2?: T;
   keyDate?: T;
   muralCount?: T;
   visitDuration?: T;
@@ -1318,6 +1359,7 @@ export interface RouteMapBlockSelect<T extends boolean = true> {
 export interface ExpedicionBlockSelect<T extends boolean = true> {
   label?: T;
   title?: T;
+  introduction?: T;
   stops?:
     | T
     | {
@@ -1326,6 +1368,25 @@ export interface ExpedicionBlockSelect<T extends boolean = true> {
         location?: T;
         category?: T;
         paragraphV2?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SeccionesBlock_select".
+ */
+export interface SeccionesBlockSelect<T extends boolean = true> {
+  items?:
+    | T
+    | {
+        label?: T;
+        title?: T;
+        subtitle?: T;
+        imagePosition?: T;
+        media?: T;
+        contentV2?: T;
         id?: T;
       };
   id?: T;

@@ -10,6 +10,7 @@ import RichText from '@/components/RichText'
 export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTMLElement>> = ({
   label,
   title,
+  introduction,
   stops,
   className,
 }) => {
@@ -28,6 +29,16 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTM
             <h2 className="wrap-break-word font-display text-4xl font-bold leading-[1.05] text-cream sm:text-5xl md:text-7xl">
               {title}
             </h2>
+          </Reveal>
+        )}
+        {introduction && (
+          <Reveal as="div" className="mb-16 max-w-2xl">
+            <RichText
+              data={introduction}
+              enableProse={false}
+              enableGutter={false}
+              className="font-body text-base leading-relaxed text-cream md:text-lg"
+            />
           </Reveal>
         )}
 

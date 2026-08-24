@@ -10,12 +10,14 @@ import { GaleriaBlock } from '@/blocks/Galeria/Component'
 import { LaRutaBlock } from '@/blocks/LaRuta/Component'
 import { ManifiestoBlock } from '@/blocks/Manifiesto/Component'
 import { RouteMapBlock } from '@/blocks/RouteMap/Component'
+import { SeccionesBlock } from '@/blocks/Secciones/Component'
 
 const blockComponents = {
   manifiesto: ManifiestoBlock,
   laRuta: LaRutaBlock,
   routeMap: RouteMapBlock,
   expedicion: ExpedicionBlock,
+  secciones: SeccionesBlock,
   galeria: GaleriaBlock,
   elDestino: ElDestinoBlock,
   contacto: ContactoBlock,
@@ -26,6 +28,7 @@ const fullBleedBlockTypes = new Set([
   'laRuta',
   'routeMap',
   'expedicion',
+  'secciones',
   'galeria',
   'elDestino',
   'contacto',
