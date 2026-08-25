@@ -27,7 +27,7 @@ export const ManifiestoBlock: React.FC<ManifiestoBlockProps & HTMLAttributes<HTM
               data={quoteV2}
               enableProse={false}
               enableGutter={false}
-              className="wrap-break-word text-justify font-display text-2xl font-light italic leading-[1.08] text-cream sm:text-4xl md:text-6xl [&_p]:inline"
+              className="wrap-break-word text-justify font-display text-2xl leading-[1.08] text-cream sm:text-4xl md:text-6xl [&_p]:inline"
             />
           </Reveal>
         )}
