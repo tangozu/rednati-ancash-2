@@ -1,63 +1,46 @@
-# TODO
+# Proyecto "Casa Cultural Shancayan" (Web)
 
-- [x] corregir los diseños de los bloques
-- [x] agregar soporte para subir imagen svg
-- [x] implementar la galeria
+## Contexto del proyecto
+El sitio web es para **Shancayan**, un proyecto de arte comunitario en Áncash centrado en un **circuito turístico con murales** como foco principal.
 
-# comentarios de la reunion domingo 1 de agosto 2026
+## Cambios y features solicitados en el sitio
 
-- integrar lo mistico de chavin
-- el objetivo de las landing es que los turistas puedan contactar a los emprendimientos
-- evaluar el fondo blanco y el fondo negro
-- jugar con los colores de rednati
-- hay que mejorar el contraste de las paginas
-- colocar el logo de rednati porque se tiene q saber q el emprendimiento esta relacionado a rednati xq se espera que se llegue a la pagina por medio de la pagina de rednati
-- realizar los textos aparte, mandar los textos para que ellos los puedan corregir
-- eliminar las cosas repetidas
-- todos los tests los tenemos que hacer en nuestros celulares para tener claro como se ve en celular xq se espera que se acceda principalmente por celular
-- no puede ser muy largo xq se aburre, poner la chicha al inicio
-- acercar los colores a los colores de rednati
-- asociacion de comunidades de montaña olleros - chavin
-- los bloques se pueden ordenar en el mismo editor de la DB
-- los videos irian como que en medio
-- los logos tienen q integrarse a lo largo de la pagina xq en la iteracion anterior parecia que lo pusieron a la q chu, el logo de rednati debe ir al inicio
-- logos de rednati y llamatrek arriba y logos de otros abajo
-- logos de rednati y llamatrek arriba y logos de otros abajo (la frase aprobada que esta en el documento compartido)
-- para el 20 de agosto tiene que estar la pagina publicada
-- hagamos el esfuerzo pa tenerlo esta semana
+**Contenido / estructura**
+- Poner fotos en formato carousel (tanto en galería general como en las fotos con texto)
+- Modificar contenidos de las secciones existentes
+- Agregar un mapa
+- El manifiesto debe bajar de posición — no debe ir primero
+- La 2da sección de "Arte comunitario" debe ser un carousel con **todos los proyectos** de Shancayan
+- Se deben agregar más secciones para los otros proyectos del cliente
+- Sacar las fotos que no se ven bien de la galería
+- Ver cómo enlazar la web con **LlamaTrek**
 
-# comentarios de la reunion viernes 7 de agosto 2026
+**Navbar / Header**
+- Colocar redes sociales en el header
+- Incluir número de contacto con logo de WhatsApp
+- Incluir links directos a las secciones
+- El logo de Shancayan debe resaltar más
+- Redes principales de interacción: Facebook, Instagram, TikTok
 
-- [x] Hero:
-  - [x] el titulo de llamatrek debe ir junto
-  - [x] el subtitulo tiene que tener un color diferente al marron, naranja posiblemente
-  - [x] el boton de correo tiene que ser de color naranja
-  - [x] la foto de fondo debe ser o la 224 o la 240 (ver drive)
-- [x] manifiesto:
-  - [x] el punto final debe estar fuera de las comillas (kite el punto no hay punto v: )
-- [x] la ruta:
-  - [x] umentar el contraste de los textos
-  - [x] ambiar la imagen por la
-  - [x] titulo: Cultura viva y trekking
-  - [x] ubtitulo: con llamas en alta montaña
-- [x] la expedicion:
-  - [x] titulo: quitar los puntos poner una coma (tres dias, una transformacion)
-  - [x] incrementar el contraste
-  - [x] primera imagen: https://drive.google.com/file/d/12hma_GOgEWEVZvCkoHyCnAyV57_tmgtP/view?usp=sharing
-  - [x] segunda imagen: 243
-  - [x] tercera imagen: chavin de dia (whatsapp)
+**Wireframe**
+![Wireframe](./README_IMAGES/disenho.png)
 
-- [x] el destino:
-  - [x] imagen: actividad en chavin (whatsapp)
+## Pendientes administrativos / logísticos
+- [X] Hacer el documento (doc) con todos los contenidos del sitio
+- [X] Enviar al cliente los precios de los dominios preferidos
+- [X] Volver a evaluar el hosting — el sitio manejará **20+ imágenes**
+- [X] El hosting debe ser preferiblemente **anual**
+- [X] Una vez pagado el dominio, enviar el QR generado con el link
 
-- [x] footer:
-  - [x] eemplazar organizacion por, nuestros aliados, incluir los enlaces a rednati junto con el logo al costado
-  - [x] nir el texto de : de sobre nosotros, al: con el apoyo de
-- [x] general:
-  - reestablecer las tranciciones de entrada de los textos de la pagina
-
-# otros comentarios
-
-- [x] agregar iconos a los numeros la ruta
-
-compilaaa
+## Checklist de tareas
+- [ ] Cambiar texto del Hero previo al titulo de "Arte comunitario" a "Casa Cultural"
+- [ ] El Hero debe ser un carousel de imagenes
+- [ ] Cada seccion debe tener un carousel de imagenes
+- [ ] Rediseñar/mover el manifiesto (no debe ir primero)
+- [ ] Agregar secciones nuevas para otros proyectos
+- [ ] Agregar mapa
+- [ ] Rediseñar navbar (WhatsApp, redes, links a secciones, logo más visible)
+- [ ] Añadir un burger menu en el header para que puedan entrar todas las cosas
+- [ ] Depurar galería (quitar fotos feas)
+- [ ] Definir enlace/integración con LlamaTrek
+- [ ] Pordriamos usar el verde de rednati para el boton de wtsp
