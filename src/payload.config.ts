@@ -79,6 +79,9 @@ export default buildConfig({
     // Mongoose-specific arguments go here.
     // URL is required.
     url: process.env.MONGODB_URI || '',
+    connectOptions: {
+      maxPoolSize: 5
+    }
   }),
   collections: [Pages, Posts, Media, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
