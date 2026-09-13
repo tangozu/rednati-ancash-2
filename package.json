@@ -25,7 +25,6 @@
     "ci": "payload migrate && pnpm build"
   },
   "dependencies": {
-    "@inoo-ch/payload-image-optimizer": "^3.5.3",
     "@payloadcms/admin-bar": "3.84.1",
     "@payloadcms/db-mongodb": "3.84.1",
     "@payloadcms/db-vercel-postgres": "3.84.1",
@@ -60,6 +59,7 @@
     "next": "16.2.6",
     "next-sitemap": "^4.2.3",
     "payload": "3.84.1",
+    "payload-img-convert": "^1.0.3",
     "prism-react-renderer": "^2.3.1",
     "react": "19.2.6",
     "react-dom": "19.2.6",

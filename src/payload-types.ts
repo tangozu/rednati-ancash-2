@@ -115,12 +115,10 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
-    'image-optimizer-state': ImageOptimizerState;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
-    'image-optimizer-state': ImageOptimizerStateSelect<false> | ImageOptimizerStateSelect<true>;
   };
   locale: null;
   widgets: {
@@ -129,7 +127,6 @@ export interface Config {
   user: User | PayloadMcpApiKey;
   jobs: {
     tasks: {
-      imageOptimizer_regenerateDocument: TaskImageOptimizerRegenerateDocument;
       schedulePublish: TaskSchedulePublish;
       inline: {
         input: unknown;
@@ -272,13 +269,15 @@ export interface Media {
    */
   latitude?: number | null;
   longitude?: number | null;
-  imageOptimizer?: {
-    thumbHash?: string | null;
-    originalSize?: number | null;
-    optimizedSize?: number | null;
-    status?: ('complete' | 'error') | null;
-    error?: string | null;
-  };
+  imgConvertReprocess?: boolean | null;
+  /**
+   * Choose the image format for this upload
+   */
+  convertFormat?: 'webp' | null;
+  resizeMaxWidth?: number | null;
+  resizeMaxHeight?: number | null;
+  originalFilesize?: number | null;
+  imgConvertProcessed?: boolean | null;
   folder?: (string | null) | FolderInterface;
   updatedAt: string;
   createdAt: string;
@@ -1111,7 +1110,7 @@ export interface PayloadJob {
     | {
         executedAt: string;
         completedAt: string;
-        taskSlug: 'inline' | 'imageOptimizer_regenerateDocument' | 'schedulePublish';
+        taskSlug: 'inline' | 'schedulePublish';
         taskID: string;
         input?:
           | {
@@ -1144,7 +1143,7 @@ export interface PayloadJob {
         id?: string | null;
       }[]
     | null;
-  taskSlug?: ('inline' | 'imageOptimizer_regenerateDocument' | 'schedulePublish') | null;
+  taskSlug?: ('inline' | 'schedulePublish') | null;
   queue?: string | null;
   waitUntil?: string | null;
   processing?: boolean | null;
@@ -1476,15 +1475,12 @@ export interface MediaSelect<T extends boolean = true> {
   linkUrl?: T;
   latitude?: T;
   longitude?: T;
-  imageOptimizer?:
-    | T
-    | {
-        thumbHash?: T;
-        originalSize?: T;
-        optimizedSize?: T;
-        status?: T;
-        error?: T;
-      };
+  imgConvertReprocess?: T;
+  convertFormat?: T;
+  resizeMaxWidth?: T;
+  resizeMaxHeight?: T;
+  originalFilesize?: T;
+  imgConvertProcessed?: T;
   folder?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -2043,24 +2039,6 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "image-optimizer-state".
- */
-export interface ImageOptimizerState {
-  id: string;
-  collections?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -2140,16 +2118,6 @@ export interface FooterSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "image-optimizer-state_select".
- */
-export interface ImageOptimizerStateSelect<T extends boolean = true> {
-  collections?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "collections_widget".
  */
 export interface CollectionsWidget {
@@ -2157,20 +2125,6 @@ export interface CollectionsWidget {
     [k: string]: unknown;
   };
   width: 'full';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "TaskImageOptimizer_regenerateDocument".
- */
-export interface TaskImageOptimizerRegenerateDocument {
-  input: {
-    collectionSlug: string;
-    docId: string;
-  };
-  output: {
-    status?: string | null;
-    reason?: string | null;
-  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

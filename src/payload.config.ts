@@ -13,7 +13,7 @@ import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
-import { imageOptimizer } from '@inoo-ch/payload-image-optimizer'
+import { imageConverterPlugin } from 'payload-img-convert'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { mcpPlugin } from '@payloadcms/plugin-mcp'
 import { s3Storage } from '@payloadcms/storage-s3'
@@ -103,10 +103,17 @@ export default buildConfig({
         endpoint: process.env.R2_ENDPOINT || ''
       }
     }),
-    imageOptimizer({
-      collections: {
-        media: true,
-      },
+    imageConverterPlugin({
+      collections: [Media.slug],
+      defaultFormat: 'webp',
+      quality: 80,
+      maxFileSize: 50 * 1024 * 1024, // 50 MB
+      maxWidth: 2560,
+      maxHeight: 1440,
+      oversizeThreshold: 2560,
+      enableFormatSelector: true,
+      enableResizeSelector: true,
+      formats: ['webp']
     }),
     mcpPlugin({
       collections: {

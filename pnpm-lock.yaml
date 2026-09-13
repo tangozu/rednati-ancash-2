@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@inoo-ch/payload-image-optimizer':
-        specifier: ^3.5.3
-        version: 3.5.3(next@16.2.6(@babel/core@7.29.7)(@playwright/test@1.58.2)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.77.4))(payload@3.84.1(bufferutil@4.1.0)(graphql@16.14.2)(typescript@5.7.3))(react@19.2.6)(sharp@0.34.2)
       '@payloadcms/admin-bar':
         specifier: 3.84.1
         version: 3.84.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
@@ -113,6 +110,9 @@ importers:
       payload:
         specifier: 3.84.1
         version: 3.84.1(bufferutil@4.1.0)(graphql@16.14.2)(typescript@5.7.3)
+      payload-img-convert:
+        specifier: ^1.0.3
+        version: 1.0.3(@payloadcms/ui@3.84.1(@types/react@19.2.14)(monaco-editor@0.56.0)(next@16.2.6(@babel/core@7.29.7)(@playwright/test@1.58.2)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.77.4))(payload@3.84.1(bufferutil@4.1.0)(graphql@16.14.2)(typescript@5.7.3))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(typescript@5.7.3))(payload@3.84.1(bufferutil@4.1.0)(graphql@16.14.2)(typescript@5.7.3))(react@19.2.6)
       prism-react-renderer:
         specifier: ^2.3.1
         version: 2.4.1(react@19.2.6)
@@ -1734,15 +1734,6 @@ packages:
     engines: {node: '>=20.9.0'}
     cpu: [x64]
     os: [win32]
-
-  '@inoo-ch/payload-image-optimizer@3.5.3':
-    resolution: {integrity: sha512-jHcbPLxtYYRkFRFKujmueTw0K6rtSPU2yMJkFSVNrMBJYzGD0LT4HmIqB0XyJxf0Z6FQXDCSC57GKdewKjkowg==}
-    engines: {node: ^18.20.2 || >=20.9.0, pnpm: ^9 || ^10}
-    peerDependencies:
-      next: ^14.0.0 || ^15.0.0 || ^16.0.0
-      payload: ^3.0.0
-      react: ^18.0.0 || ^19.0.0
-      sharp: '>=0.32.0'
 
   '@jridgewell/gen-mapping@0.3.13':
     resolution: {integrity: sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==}
@@ -5075,6 +5066,14 @@ packages:
   pathe@2.0.3:
     resolution: {integrity: sha512-WUjGcAqP1gQacoQe+OBJsFA7Ld4DyXuUIjZ5cc75cLHvJ7dtNsTugphxIADwspS+AraAUePCKrSVtPLFj/F88w==}
 
+  payload-img-convert@1.0.3:
+    resolution: {integrity: sha512-3Efs6rIwnQvqcF07L5tX2hbtcZgnt9WYFrsSedi6MMZsZYrzo09OOaHx8XDRUep2gBC/g1kKb7SGvY4lgoU2fg==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@payloadcms/ui': ^3.0.0
+      payload: ^3.0.0
+      react: ^18.0.0 || ^19.0.0
+
   payload@3.84.1:
     resolution: {integrity: sha512-+aPqqeYsffrzaYmsX/Qt+mHNgcTUyc5TIjjPOaMIrG6nDx6siZ2h9Gv3b3RKAVPt7PWkHI+ooEW3cQbwiDd99Q==}
     engines: {node: ^18.20.2 || >=20.9.0}
@@ -5732,9 +5731,6 @@ packages:
   throttleit@2.1.0:
     resolution: {integrity: sha512-nt6AMGKW1p/70DF/hGBdJB57B8Tspmbp5gfJ8ilhLnt7kkr2ye7hzD6NVG8GGErk2HWF34igrL2CXmNIkzKqKw==}
     engines: {node: '>=18'}
-
-  thumbhash@0.1.1:
-    resolution: {integrity: sha512-kH5pKeIIBPQXAOni2AiY/Cu/NKdkFREdpH+TLdM0g6WA7RriCv0kPLgP731ady67MhTAqrVG/4mnEeibVuCJcg==}
 
   tinybench@2.9.0:
     resolution: {integrity: sha512-0+DUvqWMValLmha6lr4kD8iAMK1HzV0/aKnCtWb9v9641TnP/MFb7Pc2bxoxQjTXAErryXVgUOfv2YqNllqGeg==}
@@ -7431,14 +7427,6 @@ snapshots:
 
   '@img/sharp-win32-x64@0.35.2':
     optional: true
-
-  '@inoo-ch/payload-image-optimizer@3.5.3(next@16.2.6(@babel/core@7.29.7)(@playwright/test@1.58.2)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.77.4))(payload@3.84.1(bufferutil@4.1.0)(graphql@16.14.2)(typescript@5.7.3))(react@19.2.6)(sharp@0.34.2)':
-    dependencies:
-      next: 16.2.6(@babel/core@7.29.7)(@playwright/test@1.58.2)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.77.4)
-      payload: 3.84.1(bufferutil@4.1.0)(graphql@16.14.2)(typescript@5.7.3)
-      react: 19.2.6
-      sharp: 0.34.2
-      thumbhash: 0.1.1
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
@@ -11237,6 +11225,12 @@ snapshots:
 
   pathe@2.0.3: {}
 
+  payload-img-convert@1.0.3(@payloadcms/ui@3.84.1(@types/react@19.2.14)(monaco-editor@0.56.0)(next@16.2.6(@babel/core@7.29.7)(@playwright/test@1.58.2)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.77.4))(payload@3.84.1(bufferutil@4.1.0)(graphql@16.14.2)(typescript@5.7.3))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(typescript@5.7.3))(payload@3.84.1(bufferutil@4.1.0)(graphql@16.14.2)(typescript@5.7.3))(react@19.2.6):
+    dependencies:
+      '@payloadcms/ui': 3.84.1(@types/react@19.2.14)(monaco-editor@0.56.0)(next@16.2.6(@babel/core@7.29.7)(@playwright/test@1.58.2)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.77.4))(payload@3.84.1(bufferutil@4.1.0)(graphql@16.14.2)(typescript@5.7.3))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(typescript@5.7.3)
+      payload: 3.84.1(bufferutil@4.1.0)(graphql@16.14.2)(typescript@5.7.3)
+      react: 19.2.6
+
   payload@3.84.1(bufferutil@4.1.0)(graphql@16.14.2)(typescript@5.7.3):
     dependencies:
       '@next/env': 15.5.22
@@ -12087,8 +12081,6 @@ snapshots:
       real-require: 0.2.0
 
   throttleit@2.1.0: {}
-
-  thumbhash@0.1.1: {}
 
   tinybench@2.9.0: {}
 
