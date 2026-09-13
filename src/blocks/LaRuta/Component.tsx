@@ -3,6 +3,7 @@ import React, { HTMLAttributes } from 'react'
 import type { LaRutaBlock as LaRutaBlockProps } from '@/payload-types'
 
 import { Media } from '@/components/Media'
+import { Carousel } from '@/components/Carousel'
 import { cn } from '@/utilities/ui'
 import { ClipReveal, Reveal, StaggerGroup, StaggerItem } from '@/components/Reveal'
 import RichText from '@/components/RichText'
@@ -12,12 +13,13 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
   label,
   title,
   subtitle,
-  media,
+  proyectos,
   paragraph1V2,
   keyDate,
   muralCount,
   visitDuration,
   className,
+  id,
 }) => {
   const stats = [
     { num: keyDate, label: 'Fecha clave', icon: <CalendarDays></CalendarDays> },
@@ -26,7 +28,7 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
   ].filter((stat) => stat.num)
 
   return (
-    <section className={cn(className)}>
+    <section id={id} className={cn(className)}>
       <div className="mx-auto container">
         {label && (
           <Reveal className="mb-14">
@@ -38,11 +40,27 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
 
         <div className="grid grid-cols-1 items-stretch md:grid-cols-2">
           <ClipReveal className="order-1 aspect-3/4 overflow-hidden rounded-2xl bg-media-placeholder md:aspect-auto md:min-h-175 mb-16 md:mb-0">
-            {media && typeof media === 'object' && (
-              <Media
-                fill
-                imgClassName="h-full w-full object-cover object-center transition-transform duration-[3s] ease-out hover:scale-[1.03]"
-                resource={media}
+            {proyectos && proyectos.length > 0 && (
+              <Carousel
+                variant="slide"
+                ariaLabel="Proyectos murales"
+                className="h-full w-full"
+                slides={proyectos.map((proyecto, i) => (
+                  <div key={proyecto.id ?? i} className="relative h-full w-full">
+                    {proyecto.media && typeof proyecto.media === 'object' && (
+                      <Media
+                        fill
+                        imgClassName="h-full w-full object-cover object-center transition-transform duration-[3s] ease-out hover:scale-[1.03]"
+                        resource={proyecto.media}
+                      />
+                    )}
+                    {proyecto.nombre && (
+                      <span className="absolute bottom-4 left-4 right-16 font-mono text-xs uppercase tracking-widest text-cream drop-shadow-md sm:text-sm">
+                        {proyecto.nombre}
+                      </span>
+                    )}
+                  </div>
+                ))}
               />
             )}
           </ClipReveal>

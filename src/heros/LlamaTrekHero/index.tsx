@@ -6,7 +6,9 @@ import { motion, type Variants } from 'framer-motion'
 import type { Page } from '@/payload-types'
 
 import { Media } from '@/components/Media'
+import { Carousel } from '@/components/Carousel'
 import { EmailButton } from '@/components/Buttons/emailButton'
+import { WhatsappButton } from '@/components/Buttons/whatsappButton'
 import RichText from '@/components/RichText'
 
 const EASE = [0.16, 1, 0.3, 1] as const
@@ -43,22 +45,35 @@ const scrollVariants: Variants = {
 export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) => {
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-bg text-cream">
-      {llamaTrekHeroFields?.imagenDeFondo &&
-        typeof llamaTrekHeroFields.imagenDeFondo === 'object' && (
-          <motion.div
-            className="absolute inset-0"
-            initial="hidden"
-            animate="visible"
-            variants={imgVariants}
-          >
-            <Media
-              imgClassName="h-full w-full object-cover"
-              videoClassName="object-cover object-center h-full w-full"
-              priority
-              resource={llamaTrekHeroFields.imagenDeFondo}
-            />
-          </motion.div>
-        )}
+      {llamaTrekHeroFields?.imagenesDeFondo && llamaTrekHeroFields.imagenesDeFondo.length > 0 && (
+        <Carousel
+          variant="fade"
+          autoplay
+          showArrows={false}
+          ariaLabel="Imágenes destacadas"
+          className="absolute inset-0"
+          slides={llamaTrekHeroFields.imagenesDeFondo.map(
+            (entry, i) =>
+              typeof entry.image === 'object' &&
+              entry.image && (
+                <motion.div
+                  key={entry.id ?? i}
+                  className="absolute inset-0"
+                  initial="hidden"
+                  animate="visible"
+                  variants={imgVariants}
+                >
+                  <Media
+                    imgClassName="h-full w-full object-cover"
+                    videoClassName="object-cover object-center h-full w-full"
+                    priority
+                    resource={entry.image}
+                  />
+                </motion.div>
+              ),
+          )}
+        />
+      )}
 
       <div className="mx-auto container ">
         <div className="relative z-10 flex min-h-screen flex-col justify-between w-fit mr-auto px-4 sm:px-8">
@@ -108,6 +123,9 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
             >
               {llamaTrekHeroFields?.emailContact?.email && (
                 <EmailButton email={llamaTrekHeroFields.emailContact.email} />
+              )}
+              {llamaTrekHeroFields?.whatsappContact?.phone && (
+                <WhatsappButton phone={llamaTrekHeroFields.whatsappContact.phone} />
               )}
             </motion.div>
           </div>

@@ -52,28 +52,25 @@ export const Header: GlobalConfig = {
       name: 'navItems',
       type: 'array',
       fields: [
+        {
+          name: 'group',
+          type: 'text',
+          admin: {
+            description:
+              'Nombre de grupo opcional. Los elementos consecutivos con el mismo grupo se muestran juntos bajo un encabezado en el menú.',
+          },
+        },
         link({
           appearances: false,
         }),
       ],
-      maxRows: 6,
+      maxRows: 24,
       admin: {
         initCollapsed: true,
         components: {
           RowLabel: '@/Header/RowLabel#RowLabel',
         },
       },
-    },
-    {
-      name: 'whatsappContact',
-      type: 'group',
-      fields: [
-        {
-          name: 'phone',
-          type: 'text',
-          defaultValue: '+51 958 848 684',
-        },
-      ],
     },
   ],
   hooks: {

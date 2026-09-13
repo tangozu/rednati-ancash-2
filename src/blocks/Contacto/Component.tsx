@@ -5,7 +5,6 @@ import type { ContactoBlock as ContactoBlockProps } from '@/payload-types'
 import { Media } from '@/components/Media'
 import { WhatsappButton } from '@/components/Buttons/whatsappButton'
 import { EmailButton } from '@/components/Buttons/emailButton'
-import { PhoneButton } from '@/components/Buttons/phoneButton'
 import { cn } from '@/utilities/ui'
 import { Reveal, StaggerGroup } from '@/components/Reveal'
 import RichText from '@/components/RichText'
@@ -20,9 +19,10 @@ export const ContactoBlock: React.FC<ContactoBlockProps & HTMLAttributes<HTMLEle
   email,
   address,
   className,
+  id,
 }) => {
   return (
-    <section className={cn(className)}>
+    <section id={id} className={cn(className)}>
       {backgroundMedia && typeof backgroundMedia === 'object' && (
         <div className="absolute inset-0">
           <Media
@@ -71,7 +71,7 @@ export const ContactoBlock: React.FC<ContactoBlockProps & HTMLAttributes<HTMLEle
 
         <StaggerGroup className="flex min-w-0 flex-col items-center justify-center gap-4 sm:flex-row">
           {email && <EmailButton email={email} />}
-          {whatsapp && <PhoneButton phone={whatsapp} />}
+          {whatsapp && <WhatsappButton phone={whatsapp} />}
         </StaggerGroup>
 
         {address && (

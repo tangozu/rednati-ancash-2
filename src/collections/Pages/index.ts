@@ -2,14 +2,8 @@ import type { CollectionConfig } from 'payload'
 
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
-import { Contacto } from '../../blocks/Contacto/config'
-import { ElDestino } from '../../blocks/ElDestino/config'
-import { Expedicion } from '../../blocks/Expedicion/config'
-import { Galeria } from '../../blocks/Galeria/config'
-import { LaRuta } from '../../blocks/LaRuta/config'
-import { Manifiesto } from '../../blocks/Manifiesto/config'
-import { RouteMap } from '../../blocks/RouteMap/config'
-import { Secciones } from '../../blocks/Secciones/config'
+import { Book } from '../../blocks/Book/config'
+import { contentBlocks } from '../../blocks/blockList'
 import { hero } from '@/heros/config'
 import { slugField } from 'payload'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -75,16 +69,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [
-                Manifiesto,
-                LaRuta,
-                RouteMap,
-                Expedicion,
-                Secciones,
-                Galeria,
-                ElDestino,
-                Contacto,
-              ],
+              blocks: [...contentBlocks, Book],
               required: true,
               admin: {
                 initCollapsed: true,

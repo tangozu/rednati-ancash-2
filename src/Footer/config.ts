@@ -62,39 +62,6 @@ export const Footer: GlobalConfig = {
       defaultValue: 'https://wa.me/51958848684',
     },
     {
-      name: 'socialLinks',
-      type: 'array',
-      defaultValue: [
-        { platform: 'instagram', href: '#' },
-        { platform: 'youtube', href: '#' },
-        { platform: 'facebook', href: '#' },
-        { platform: 'twitter', href: '#' },
-        { platform: 'linkedin', href: '#' },
-      ],
-      fields: [
-        {
-          name: 'platform',
-          type: 'select',
-          required: true,
-          options: [
-            { label: 'Instagram', value: 'instagram' },
-            { label: 'YouTube', value: 'youtube' },
-            { label: 'Facebook', value: 'facebook' },
-            { label: 'Twitter', value: 'twitter' },
-            { label: 'LinkedIn', value: 'linkedin' },
-          ],
-        },
-        {
-          name: 'href',
-          type: 'text',
-          required: true,
-        },
-      ],
-      admin: {
-        initCollapsed: true,
-      },
-    },
-    {
       name: 'supportLabel',
       type: 'text',
       defaultValue: 'Con el Apoyo de',

@@ -3,6 +3,7 @@ import React, { HTMLAttributes } from 'react'
 import type { SeccionesBlock as SeccionesBlockProps } from '@/payload-types'
 
 import { Media } from '@/components/Media'
+import { Carousel } from '@/components/Carousel'
 import { cn } from '@/utilities/ui'
 import { ClipReveal, Reveal } from '@/components/Reveal'
 import RichText from '@/components/RichText'
@@ -10,9 +11,10 @@ import RichText from '@/components/RichText'
 export const SeccionesBlock: React.FC<SeccionesBlockProps & HTMLAttributes<HTMLElement>> = ({
   items,
   className,
+  id,
 }) => {
   return (
-    <section className={cn(className)}>
+    <section id={id} className={cn(className)}>
       <div className="mx-auto container flex flex-col gap-24">
         {items?.map((item, i) => {
           const imageOnRight = item.imagePosition !== 'left'
@@ -34,11 +36,31 @@ export const SeccionesBlock: React.FC<SeccionesBlockProps & HTMLAttributes<HTMLE
                     imageOnRight ? 'order-1 md:order-2' : 'order-1',
                   )}
                 >
-                  {item.media && typeof item.media === 'object' && (
+                  {item.media && item.media.length === 1 && item.media[0]?.image && typeof item.media[0].image === 'object' && (
                     <Media
                       fill
                       imgClassName="h-full w-full object-cover object-center transition-transform duration-[3s] ease-out hover:scale-[1.03]"
-                      resource={item.media}
+                      resource={item.media[0].image}
+                    />
+                  )}
+
+                  {item.media && item.media.length > 1 && (
+                    <Carousel
+                      variant="slide"
+                      ariaLabel={item.title ?? 'Imágenes de la sección'}
+                      className="h-full w-full"
+                      slides={item.media.map(
+                        (entry, i) =>
+                          entry.image &&
+                          typeof entry.image === 'object' && (
+                            <Media
+                              key={entry.id ?? i}
+                              fill
+                              imgClassName="h-full w-full object-cover object-center"
+                              resource={entry.image}
+                            />
+                          ),
+                      )}
                     />
                   )}
                 </ClipReveal>

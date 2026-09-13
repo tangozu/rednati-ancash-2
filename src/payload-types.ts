@@ -105,10 +105,12 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
+    'social-links': SocialLink;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    'social-links': SocialLinksSelect<false> | SocialLinksSelect<true>;
   };
   locale: null;
   widgets: {
@@ -172,7 +174,10 @@ export interface Page {
   hero: {
     type: 'llamaTrek';
     llamaTrekHeroFields?: {
-      imagenDeFondo: string | Media;
+      imagenesDeFondo: {
+        image: string | Media;
+        id?: string | null;
+      }[];
       region: string;
       highlight: string;
       title: string;
@@ -194,6 +199,9 @@ export interface Page {
       emailContact: {
         email: string;
       };
+      whatsappContact?: {
+        phone?: string | null;
+      };
       duration: string;
       location: string;
     };
@@ -205,8 +213,8 @@ export interface Page {
     | ExpedicionBlock
     | SeccionesBlock
     | GaleriaBlock
-    | ElDestinoBlock
     | ContactoBlock
+    | BookBlock
   )[];
   meta?: {
     title?: string | null;
@@ -398,7 +406,11 @@ export interface LaRutaBlock {
   label: string;
   title: string;
   subtitle: string;
-  media: string | Media;
+  proyectos: {
+    nombre: string;
+    media: string | Media;
+    id?: string | null;
+  }[];
   paragraph1V2: {
     root: {
       type: string;
@@ -429,9 +441,9 @@ export interface RouteMapBlock {
   label?: string | null;
   difficulty?: ('facil' | 'moderada' | 'dificil' | 'muy-dificil') | null;
   /**
-   * Sube un archivo .gpx con la ruta del trek.
+   * Opcional. Si no se sube un archivo .gpx, el mapa mostrará solo los marcadores.
    */
-  gpxFile: string | Media;
+  gpxFile?: (string | null) | Media;
   /**
    * Si se activa, todas las imágenes de la biblioteca de medios que tengan coordenadas GPS se mostrarán como marcadores en el mapa, además de las seleccionadas manualmente abajo.
    */
@@ -511,7 +523,12 @@ export interface SeccionesBlock {
         title: string;
         subtitle?: string | null;
         imagePosition: 'left' | 'right';
-        media?: (string | null) | Media;
+        media?:
+          | {
+              image: string | Media;
+              id?: string | null;
+            }[]
+          | null;
         contentV2?: {
           root: {
             type: string;
@@ -546,51 +563,6 @@ export interface GaleriaBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ElDestinoBlock".
- */
-export interface ElDestinoBlock {
-  label: string;
-  title: string;
-  media: string | Media;
-  recognition: string;
-  location: string;
-  altitude: string;
-  paragraph1V2: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  paragraph2V2: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'elDestino';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ContactoBlock".
  */
 export interface ContactoBlock {
@@ -619,6 +591,39 @@ export interface ContactoBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'contacto';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BookBlock".
+ */
+export interface BookBlock {
+  /**
+   * Etiqueta mostrada encima de la navegación de páginas.
+   */
+  label?: string | null;
+  paginas?:
+    | {
+        /**
+         * Texto del botón de navegación (pestaña), ej: "01. Muralismo".
+         */
+        label: string;
+        contenido?:
+          | (
+              | ManifiestoBlock
+              | LaRutaBlock
+              | RouteMapBlock
+              | ExpedicionBlock
+              | SeccionesBlock
+              | GaleriaBlock
+              | ContactoBlock
+            )[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'book';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -935,7 +940,12 @@ export interface PagesSelect<T extends boolean = true> {
         llamaTrekHeroFields?:
           | T
           | {
-              imagenDeFondo?: T;
+              imagenesDeFondo?:
+                | T
+                | {
+                    image?: T;
+                    id?: T;
+                  };
               region?: T;
               highlight?: T;
               title?: T;
@@ -944,6 +954,11 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     email?: T;
+                  };
+              whatsappContact?:
+                | T
+                | {
+                    phone?: T;
                   };
               duration?: T;
               location?: T;
@@ -958,8 +973,8 @@ export interface PagesSelect<T extends boolean = true> {
         expedicion?: T | ExpedicionBlockSelect<T>;
         secciones?: T | SeccionesBlockSelect<T>;
         galeria?: T | GaleriaBlockSelect<T>;
-        elDestino?: T | ElDestinoBlockSelect<T>;
         contacto?: T | ContactoBlockSelect<T>;
+        book?: T | BookBlockSelect<T>;
       };
   meta?:
     | T
@@ -993,7 +1008,13 @@ export interface LaRutaBlockSelect<T extends boolean = true> {
   label?: T;
   title?: T;
   subtitle?: T;
-  media?: T;
+  proyectos?:
+    | T
+    | {
+        nombre?: T;
+        media?: T;
+        id?: T;
+      };
   paragraph1V2?: T;
   keyDate?: T;
   muralCount?: T;
@@ -1053,7 +1074,12 @@ export interface SeccionesBlockSelect<T extends boolean = true> {
         title?: T;
         subtitle?: T;
         imagePosition?: T;
-        media?: T;
+        media?:
+          | T
+          | {
+              image?: T;
+              id?: T;
+            };
         contentV2?: T;
         id?: T;
       };
@@ -1071,22 +1097,6 @@ export interface GaleriaBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ElDestinoBlock_select".
- */
-export interface ElDestinoBlockSelect<T extends boolean = true> {
-  label?: T;
-  title?: T;
-  media?: T;
-  recognition?: T;
-  location?: T;
-  altitude?: T;
-  paragraph1V2?: T;
-  paragraph2V2?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ContactoBlock_select".
  */
 export interface ContactoBlockSelect<T extends boolean = true> {
@@ -1098,6 +1108,32 @@ export interface ContactoBlockSelect<T extends boolean = true> {
   whatsapp?: T;
   email?: T;
   address?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BookBlock_select".
+ */
+export interface BookBlockSelect<T extends boolean = true> {
+  label?: T;
+  paginas?:
+    | T
+    | {
+        label?: T;
+        contenido?:
+          | T
+          | {
+              manifiesto?: T | ManifiestoBlockSelect<T>;
+              laRuta?: T | LaRutaBlockSelect<T>;
+              routeMap?: T | RouteMapBlockSelect<T>;
+              expedicion?: T | ExpedicionBlockSelect<T>;
+              secciones?: T | SeccionesBlockSelect<T>;
+              galeria?: T | GaleriaBlockSelect<T>;
+              contacto?: T | ContactoBlockSelect<T>;
+            };
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -1383,6 +1419,10 @@ export interface Header {
   middleShortLogo?: (string | null) | Media;
   navItems?:
     | {
+        /**
+         * Nombre de grupo opcional. Los elementos consecutivos con el mismo grupo se muestran juntos bajo un encabezado en el menú.
+         */
+        group?: string | null;
         link: {
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
@@ -1396,9 +1436,6 @@ export interface Header {
         id?: string | null;
       }[]
     | null;
-  whatsappContact?: {
-    phone?: string | null;
-  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1435,13 +1472,6 @@ export interface Footer {
    */
   contactPhone?: string | null;
   contactWhatsappLink?: string | null;
-  socialLinks?:
-    | {
-        platform: 'instagram' | 'youtube' | 'facebook' | 'twitter' | 'linkedin';
-        href: string;
-        id?: string | null;
-      }[]
-    | null;
   supportLabel?: string | null;
   creditImages?:
     | {
@@ -1471,6 +1501,22 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "social-links".
+ */
+export interface SocialLink {
+  id: string;
+  links?:
+    | {
+        platform: 'facebook' | 'instagram' | 'tiktok' | 'youtube' | 'twitter' | 'linkedin';
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -1482,6 +1528,7 @@ export interface HeaderSelect<T extends boolean = true> {
   navItems?:
     | T
     | {
+        group?: T;
         link?:
           | T
           | {
@@ -1492,11 +1539,6 @@ export interface HeaderSelect<T extends boolean = true> {
               label?: T;
             };
         id?: T;
-      };
-  whatsappContact?:
-    | T
-    | {
-        phone?: T;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -1527,13 +1569,6 @@ export interface FooterSelect<T extends boolean = true> {
   contactEmail?: T;
   contactPhone?: T;
   contactWhatsappLink?: T;
-  socialLinks?:
-    | T
-    | {
-        platform?: T;
-        href?: T;
-        id?: T;
-      };
   supportLabel?: T;
   creditImages?:
     | T
@@ -1544,6 +1579,22 @@ export interface FooterSelect<T extends boolean = true> {
   aboutTextV2?: T;
   copyrightText?: T;
   creditsText?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "social-links_select".
+ */
+export interface SocialLinksSelect<T extends boolean = true> {
+  links?:
+    | T
+    | {
+        platform?: T;
+        href?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

@@ -8,6 +8,7 @@ import { Pages } from './collections/Pages'
 import { Users } from './collections/Users'
 import { Footer } from './Footer/config'
 import { Header } from './Header/config'
+import { SocialLinks } from './SocialLinks/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
@@ -124,7 +125,7 @@ export default buildConfig({
       },
     }),
   ],
-  globals: [Header, Footer],
+  globals: [Header, Footer, SocialLinks],
   secret: process.env.PAYLOAD_SECRET,
   sharp,
   typescript: {

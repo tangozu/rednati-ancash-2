@@ -13,9 +13,10 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTM
   introduction,
   stops,
   className,
+  id,
 }) => {
   return (
-    <section className={cn(className)}>
+    <section id={id} className={cn(className)}>
       <div className="mx-auto container">
         {label && (
           <Reveal className="mb-14">

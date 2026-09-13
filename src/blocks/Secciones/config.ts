@@ -67,8 +67,22 @@ export const Secciones: Block = {
         },
         {
           name: 'media',
-          type: 'upload',
-          relationTo: 'media',
+          type: 'array',
+          labels: {
+            singular: 'Imagen',
+            plural: 'Imágenes',
+          },
+          admin: {
+            initCollapsed: true,
+          },
+          fields: [
+            {
+              name: 'image',
+              type: 'upload',
+              relationTo: 'media',
+              required: true,
+            },
+          ],
         },
         {
           name: 'contentV2',

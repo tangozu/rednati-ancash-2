@@ -64,7 +64,9 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Polyline positions={positions} pathOptions={{ color: 'var(--color-earth)', weight: 4 }} />
+      {positions.length > 0 && (
+        <Polyline positions={positions} pathOptions={{ color: 'var(--color-earth)', weight: 4 }} />
+      )}
 
       {markers.map((marker) => (
         <Marker

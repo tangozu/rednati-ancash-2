@@ -4,6 +4,7 @@ import React from 'react'
 
 export async function Header() {
   const headerData = await getCachedGlobal('header', 1)()
+  const socialLinksData = await getCachedGlobal('social-links', 1)()
 
-  return <HeaderClient data={headerData} />
+  return <HeaderClient data={headerData} socialLinks={socialLinksData?.links ?? []} />
 }

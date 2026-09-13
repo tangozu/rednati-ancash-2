@@ -25,10 +25,30 @@ export const LaRuta: Block = {
       required: true,
     },
     {
-      name: 'media',
-      type: 'upload',
-      relationTo: 'media',
+      name: 'proyectos',
+      type: 'array',
+      minRows: 1,
       required: true,
+      labels: {
+        singular: 'Proyecto mural',
+        plural: 'Proyectos murales',
+      },
+      admin: {
+        initCollapsed: true,
+      },
+      fields: [
+        {
+          name: 'nombre',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'media',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+        },
+      ],
     },
     {
       name: 'paragraph1V2',
