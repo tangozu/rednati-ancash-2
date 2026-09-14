@@ -2,10 +2,10 @@ import React from 'react'
 
 import type { Page } from '@/payload-types'
 
-import { LlamaTrekHero } from '@/heros/LlamaTrekHero'
+import { DefaultHero } from '@/heros/DefaultHero'
 
 const heroes = {
-  llamaTrek: LlamaTrekHero,
+  default: DefaultHero,
 }
 
 export const RenderHero: React.FC<Page['hero']> = (props) => {

@@ -16,6 +16,7 @@ import { imageConverterPlugin } from 'payload-img-convert'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { mcpPlugin } from '@payloadcms/plugin-mcp'
 import { s3Storage } from '@payloadcms/storage-s3'
+import { importExportPlugin } from '@payloadcms/plugin-import-export'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -91,6 +92,12 @@ export default buildConfig({
         media: {
           disableLocalStorage: true,
         },
+        imports: {
+          disableLocalStorage: true
+        },
+        exports: {
+          disableLocalStorage: true
+        }
       },
       bucket: process.env.R2_BUCKET_NAME || '',
       config: {
@@ -122,7 +129,33 @@ export default buildConfig({
         media: {
           enabled: true,
         },
+        'payload-folders': {
+          enabled: true,
+        },
       },
+    }),
+    importExportPlugin({
+
+      collections: [{
+        slug: "media",
+        export: {
+          format: "json",
+          disableJobsQueue: true
+        },
+        import: {
+          disableJobsQueue: true
+        }
+      }, {
+        slug: "pages",
+        export: {
+          format: "json",
+          disableJobsQueue: true
+        },
+        import: {
+          disableJobsQueue: true
+        }
+      }],
+
     }),
   ],
   globals: [Header, Footer, SocialLinks],

@@ -2,8 +2,8 @@ import type { Field } from 'payload'
 
 import { defaultLexical } from '@/fields/defaultLexical'
 
-export const llamaTrekHeroFields: Field = {
-  name: 'llamaTrekHeroFields',
+export const defaultHeroFields: Field = {
+  name: 'defaultHeroFields',
   type: 'group',
   required: true,
   fields: [

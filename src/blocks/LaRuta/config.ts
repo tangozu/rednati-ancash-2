@@ -15,13 +15,13 @@ export const LaRuta: Block = {
     {
       name: 'title',
       type: 'text',
-      defaultValue: 'Cultura viva y Trekking',
+      defaultValue: 'Arte Comunitario',
       required: true,
     },
     {
       name: 'subtitle',
       type: 'text',
-      defaultValue: 'con llamas en alta montaña',
+      defaultValue: 'Historias que transforman el barrio',
       required: true,
     },
     {

@@ -24,7 +24,7 @@ const getRandomLoginImages = async () => {
     .slice(0, 2)
     .map((doc) => ({
       url: getMediaUrl(doc.url, doc.updatedAt),
-      alt: doc.alt || 'LlamaTrek · RedNatí',
+      alt: doc.alt || 'Casa Cultural Shancayán · RedNatí',
     }))
     .filter((image) => image.url)
 }
