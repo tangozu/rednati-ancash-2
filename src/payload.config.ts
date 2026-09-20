@@ -133,6 +133,14 @@ export default buildConfig({
           enabled: true,
         },
       },
+      globals: {
+        header: {
+          enabled: true,
+        },
+        footer: {
+          enabled: true,
+        },
+      },
     }),
     importExportPlugin({
 

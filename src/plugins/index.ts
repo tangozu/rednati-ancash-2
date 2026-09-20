@@ -6,6 +6,7 @@ import { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
 
 import { Page } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
+import { mediaGalleryPlugin } from '@sitebytom/payload-media-gallery'
 
 const generateTitle: GenerateTitle<Page> = ({ doc }) => {
   return doc?.title ? doc.title : ''
@@ -43,5 +44,28 @@ export const plugins: Plugin[] = [
   seoPlugin({
     generateTitle,
     generateURL,
+  }),
+  mediaGalleryPlugin({
+    collections: {
+      media: true,
+    },
+    defaultView: 'justified', // 'justified' | 'masonry' | 'grid' | 'list'
+    layouts: {
+      justified: {
+        enabled: true,
+        footer: 'hover', // 'hover' | 'always'
+      },
+      masonry: {
+        enabled: true,
+        footer: 'hover', // 'hover' | 'always'
+      },
+      grid: {
+        enabled: true,
+        footer: 'hover', // 'hover' | 'always'
+      },
+    },
+    lightbox: true,
+    edit: true,
+    disabled: false,
   }),
 ]
