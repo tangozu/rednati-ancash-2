@@ -3,6 +3,7 @@ import React, { HTMLAttributes } from 'react'
 import type { ExpedicionBlock as ExpedicionBlockProps } from '@/payload-types'
 
 import { Media } from '@/components/Media'
+import { Carousel } from '@/components/Carousel'
 import { cn } from '@/utilities/ui'
 import { ClipReveal, Reveal } from '@/components/Reveal'
 import RichText from '@/components/RichText'
@@ -79,11 +80,36 @@ export const ExpedicionBlock: React.FC<ExpedicionBlockProps & HTMLAttributes<HTM
                     i % 2 === 1 ? 'md:order-1' : ''
                   }`}
                 >
-                  {stop.media && typeof stop.media === 'object' && (
-                    <Media
-                      fill
-                      imgClassName="h-full w-full object-cover transition-transform duration-[2.5s] ease-out hover:scale-[1.04]"
-                      resource={stop.media}
+                  {stop.media &&
+                    stop.media.length === 1 &&
+                    stop.media[0]?.image &&
+                    typeof stop.media[0].image === 'object' && (
+                      <Media
+                        fill
+                        imgClassName="h-full w-full object-cover transition-transform duration-[2.5s] ease-out hover:scale-[1.04]"
+                        resource={stop.media[0].image}
+                      />
+                    )}
+
+                  {stop.media && stop.media.length > 1 && (
+                    <Carousel
+                      variant="slide"
+                      autoplay
+                      autoplayDelay={5000}
+                      ariaLabel={stop.title ?? 'Imágenes del punto de interés'}
+                      className="h-full w-full"
+                      slides={stop.media.map(
+                        (entry, j) =>
+                          entry.image &&
+                          typeof entry.image === 'object' && (
+                            <Media
+                              key={entry.id ?? j}
+                              fill
+                              imgClassName="h-full w-full object-cover transition-transform duration-[2.5s] ease-out hover:scale-[1.04]"
+                              resource={entry.image}
+                            />
+                          ),
+                      )}
                     />
                   )}
                 </ClipReveal>

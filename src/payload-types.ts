@@ -493,7 +493,12 @@ export interface ExpedicionBlock {
   stops?:
     | {
         title?: string | null;
-        media?: (string | null) | Media;
+        media?:
+          | {
+              image: string | Media;
+              id?: string | null;
+            }[]
+          | null;
         location?: string | null;
         category?: string | null;
         paragraphV2?: {
@@ -826,6 +831,26 @@ export interface PayloadMcpApiKey {
      */
     delete?: boolean | null;
   };
+  header?: {
+    /**
+     * Allow clients to find header global.
+     */
+    find?: boolean | null;
+    /**
+     * Allow clients to update header global.
+     */
+    update?: boolean | null;
+  };
+  footer?: {
+    /**
+     * Allow clients to find footer global.
+     */
+    find?: boolean | null;
+    /**
+     * Allow clients to update footer global.
+     */
+    update?: boolean | null;
+  };
   updatedAt: string;
   createdAt: string;
   enableAPIKey?: boolean | null;
@@ -1151,7 +1176,12 @@ export interface ExpedicionBlockSelect<T extends boolean = true> {
     | T
     | {
         title?: T;
-        media?: T;
+        media?:
+          | T
+          | {
+              image?: T;
+              id?: T;
+            };
         location?: T;
         category?: T;
         paragraphV2?: T;
@@ -1468,6 +1498,18 @@ export interface PayloadMcpApiKeysSelect<T extends boolean = true> {
         create?: T;
         update?: T;
         delete?: T;
+      };
+  header?:
+    | T
+    | {
+        find?: T;
+        update?: T;
+      };
+  footer?:
+    | T
+    | {
+        find?: T;
+        update?: T;
       };
   updatedAt?: T;
   createdAt?: T;

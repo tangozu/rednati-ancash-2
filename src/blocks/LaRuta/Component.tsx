@@ -43,6 +43,8 @@ export const LaRutaBlock: React.FC<LaRutaBlockProps & HTMLAttributes<HTMLElement
             {proyectos && proyectos.length > 0 && (
               <Carousel
                 variant="slide"
+                autoplay
+                autoplayDelay={5000}
                 ariaLabel="Proyectos murales"
                 className="h-full w-full"
                 slides={proyectos.map((proyecto, i) => (

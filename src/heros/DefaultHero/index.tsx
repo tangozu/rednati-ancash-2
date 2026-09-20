@@ -47,8 +47,9 @@ export const DefaultHero: React.FC<Page['hero']> = ({ defaultHeroFields }) => {
     <section className="relative min-h-screen w-full overflow-hidden bg-bg text-cream">
       {defaultHeroFields?.imagenesDeFondo && defaultHeroFields.imagenesDeFondo.length > 0 && (
         <Carousel
-          variant="fade"
+          variant="slide"
           autoplay
+          autoplayDelay={5000}
           showArrows={false}
           ariaLabel="Imágenes destacadas"
           className="absolute inset-0"

@@ -47,6 +47,8 @@ export const SeccionesBlock: React.FC<SeccionesBlockProps & HTMLAttributes<HTMLE
                   {item.media && item.media.length > 1 && (
                     <Carousel
                       variant="slide"
+                      autoplay
+                      autoplayDelay={5000}
                       ariaLabel={item.title ?? 'Imágenes de la sección'}
                       className="h-full w-full"
                       slides={item.media.map(
