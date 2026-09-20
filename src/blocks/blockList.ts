@@ -4,6 +4,7 @@ import { Contacto } from './Contacto/config'
 import { Expedicion } from './Expedicion/config'
 import { Galeria } from './Galeria/config'
 import { LaRuta } from './LaRuta/config'
+import { LineaTrabajo } from './LineaTrabajo/config'
 import { Manifiesto } from './Manifiesto/config'
 import { RouteMap } from './RouteMap/config'
 import { Secciones } from './Secciones/config'
@@ -18,6 +19,7 @@ export const contentBlocks: Block[] = [
   LaRuta,
   RouteMap,
   Expedicion,
+  LineaTrabajo,
   Secciones,
   Galeria,
   Contacto,

@@ -1,6 +1,7 @@
 'use client'
 
 import React, { createContext, useContext, useEffect, useRef, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import Lenis from '@studio-freight/lenis'
 
 import { resolveAnchor } from '@/blocks/Book/bookRegistry'
@@ -35,7 +36,33 @@ export const SmoothScrollProvider: React.FC<{
     }
   }, [])
 
-  return <LenisContext.Provider value={lenis}>{children}</LenisContext.Provider>
+  return (
+    <LenisContext.Provider value={lenis}>
+      {children}
+      <InitialHashScroll />
+    </LenisContext.Provider>
+  )
+}
+
+/**
+ * Handles landing on a page with a hash already in the URL (e.g. a header nav link
+ * pointing from another page to "/new-shancayan-page#some-anchor"), including anchors
+ * hidden inside a Book page — cases native browser hash-scroll can't resolve on its own.
+ * Re-runs on pathname change since client-side route transitions don't remount this provider.
+ */
+const InitialHashScroll: React.FC = () => {
+  const scrollToId = useScrollToId()
+  const pathname = usePathname()
+
+  useEffect(() => {
+    const hash = window.location.hash
+    if (hash && hash.length > 1) {
+      scrollToId(hash.slice(1))
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname])
+
+  return null
 }
 
 export function useLenis(): Lenis | null {

@@ -217,6 +217,7 @@ export interface Page {
     | LaRutaBlock
     | RouteMapBlock
     | ExpedicionBlock
+    | LineaTrabajoBlock
     | SeccionesBlock
     | GaleriaBlock
     | ContactoBlock
@@ -525,6 +526,54 @@ export interface ExpedicionBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LineaTrabajoBlock".
+ */
+export interface LineaTrabajoBlock {
+  label: string;
+  title: string;
+  introduction?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  media?:
+    | {
+        image: string | Media;
+        id?: string | null;
+      }[]
+    | null;
+  subtitle?: string | null;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'lineaTrabajo';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "SeccionesBlock".
  */
 export interface SeccionesBlock {
@@ -624,6 +673,7 @@ export interface BookBlock {
               | LaRutaBlock
               | RouteMapBlock
               | ExpedicionBlock
+              | LineaTrabajoBlock
               | SeccionesBlock
               | GaleriaBlock
               | ContactoBlock
@@ -1094,6 +1144,7 @@ export interface PagesSelect<T extends boolean = true> {
         laRuta?: T | LaRutaBlockSelect<T>;
         routeMap?: T | RouteMapBlockSelect<T>;
         expedicion?: T | ExpedicionBlockSelect<T>;
+        lineaTrabajo?: T | LineaTrabajoBlockSelect<T>;
         secciones?: T | SeccionesBlockSelect<T>;
         galeria?: T | GaleriaBlockSelect<T>;
         contacto?: T | ContactoBlockSelect<T>;
@@ -1192,6 +1243,25 @@ export interface ExpedicionBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LineaTrabajoBlock_select".
+ */
+export interface LineaTrabajoBlockSelect<T extends boolean = true> {
+  label?: T;
+  title?: T;
+  introduction?: T;
+  media?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  subtitle?: T;
+  content?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "SeccionesBlock_select".
  */
 export interface SeccionesBlockSelect<T extends boolean = true> {
@@ -1256,6 +1326,7 @@ export interface BookBlockSelect<T extends boolean = true> {
               laRuta?: T | LaRutaBlockSelect<T>;
               routeMap?: T | RouteMapBlockSelect<T>;
               expedicion?: T | ExpedicionBlockSelect<T>;
+              lineaTrabajo?: T | LineaTrabajoBlockSelect<T>;
               secciones?: T | SeccionesBlockSelect<T>;
               galeria?: T | GaleriaBlockSelect<T>;
               contacto?: T | ContactoBlockSelect<T>;

@@ -8,6 +8,7 @@ import { ContactoBlock } from '@/blocks/Contacto/Component'
 import { ExpedicionBlock } from '@/blocks/Expedicion/Component'
 import { GaleriaBlock } from '@/blocks/Galeria/Component'
 import { LaRutaBlock } from '@/blocks/LaRuta/Component'
+import { LineaTrabajoBlock } from '@/blocks/LineaTrabajo/Component'
 import { ManifiestoBlock } from '@/blocks/Manifiesto/Component'
 import { RouteMapBlock } from '@/blocks/RouteMap/Component'
 import { SeccionesBlock } from '@/blocks/Secciones/Component'
@@ -17,6 +18,7 @@ const blockComponents = {
   laRuta: LaRutaBlock,
   routeMap: RouteMapBlock,
   expedicion: ExpedicionBlock,
+  lineaTrabajo: LineaTrabajoBlock,
   secciones: SeccionesBlock,
   galeria: GaleriaBlock,
   contacto: ContactoBlock,
@@ -28,6 +30,7 @@ const fullBleedBlockTypes = new Set([
   'laRuta',
   'routeMap',
   'expedicion',
+  'lineaTrabajo',
   'secciones',
   'galeria',
   'contacto',

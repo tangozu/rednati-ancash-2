@@ -4,6 +4,7 @@ import { Button, type ButtonProps } from '@/components/ui/button'
 import { cn } from '@/utilities/ui'
 import { useScrollToId } from '@/providers/SmoothScroll'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import React from 'react'
 
 import type { Page } from '@/payload-types'
@@ -49,11 +50,13 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   const newTabProps = newTab ? { rel: 'noopener noreferrer', target: '_blank' } : {}
 
   const scrollToId = useScrollToId()
-  const isAnchor = href.startsWith('#')
+  const pathname = usePathname()
+  const [hrefPath, hrefHash] = href.split('#')
+  const isAnchor = hrefHash !== undefined && (hrefPath === '' || hrefPath === pathname)
   const onClick = (e: React.MouseEvent) => {
     if (isAnchor) {
       e.preventDefault()
-      scrollToId(href.slice(1))
+      scrollToId(hrefHash)
     }
     onClickProp?.()
   }
