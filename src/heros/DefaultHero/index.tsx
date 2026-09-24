@@ -59,7 +59,7 @@ export const DefaultHero: React.FC<Page['hero']> = ({ defaultHeroFields }) => {
               entry.image && (
                 <motion.div
                   key={entry.id ?? i}
-                  className="absolute inset-0"
+                  className="h-full w-full"
                   initial="hidden"
                   animate="visible"
                   variants={imgVariants}

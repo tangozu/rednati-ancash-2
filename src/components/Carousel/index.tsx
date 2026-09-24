@@ -90,12 +90,12 @@ function SlideCarousel({
       aria-roledescription="carousel"
       aria-label={ariaLabel}
     >
-      <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex">
+      <div className="h-full overflow-hidden" ref={emblaRef}>
+        <div className="flex h-full">
           {slides.map((slide, index) => (
             <div
               key={index}
-              className={cn('min-w-0 shrink-0 grow-0 basis-full', slideClassName)}
+              className={cn('h-full min-w-0 shrink-0 grow-0 basis-full', slideClassName)}
               role="group"
               aria-roledescription="slide"
               aria-label={`${index + 1} de ${slides.length}`}
