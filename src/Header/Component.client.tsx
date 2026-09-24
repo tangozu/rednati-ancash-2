@@ -4,16 +4,17 @@ import { useHeaderTheme } from '@/providers/HeaderTheme'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
-import type { Header } from '@/payload-types'
+import type { Header, SocialLink } from '@/payload-types'
 
 import { Media } from '@/components/Media'
 import { HeaderNav } from './Nav'
 
 interface HeaderClientProps {
   data: Header
+  socialLinks: NonNullable<SocialLink['links']>
 }
 
-export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
+export const HeaderClient: React.FC<HeaderClientProps> = ({ data, socialLinks }) => {
   const [scrolled, setScrolled] = useState(false)
 
   const { headerTheme, setHeaderTheme } = useHeaderTheme()
@@ -82,7 +83,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           <MiddleLogo data={data} />
         </div>
 
-        <HeaderNav data={data} />
+        <HeaderNav data={data} socialLinks={socialLinks} />
       </div>
     </header>
   )

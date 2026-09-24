@@ -6,7 +6,9 @@ import { motion, type Variants } from 'framer-motion'
 import type { Page } from '@/payload-types'
 
 import { Media } from '@/components/Media'
+import { Carousel } from '@/components/Carousel'
 import { EmailButton } from '@/components/Buttons/emailButton'
+import { WhatsappButton } from '@/components/Buttons/whatsappButton'
 import RichText from '@/components/RichText'
 
 const EASE = [0.16, 1, 0.3, 1] as const
@@ -40,25 +42,39 @@ const scrollVariants: Variants = {
   visible: { opacity: 1, transition: { duration: 1, ease: EASE, delay: 3.2 } },
 }
 
-export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) => {
+export const DefaultHero: React.FC<Page['hero']> = ({ defaultHeroFields }) => {
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-bg text-cream">
-      {llamaTrekHeroFields?.imagenDeFondo &&
-        typeof llamaTrekHeroFields.imagenDeFondo === 'object' && (
-          <motion.div
-            className="absolute inset-0"
-            initial="hidden"
-            animate="visible"
-            variants={imgVariants}
-          >
-            <Media
-              imgClassName="h-full w-full object-cover"
-              videoClassName="object-cover object-center h-full w-full"
-              priority
-              resource={llamaTrekHeroFields.imagenDeFondo}
-            />
-          </motion.div>
-        )}
+      {defaultHeroFields?.imagenesDeFondo && defaultHeroFields.imagenesDeFondo.length > 0 && (
+        <Carousel
+          variant="slide"
+          autoplay
+          autoplayDelay={5000}
+          showArrows={false}
+          ariaLabel="Imágenes destacadas"
+          className="absolute inset-0"
+          slides={defaultHeroFields.imagenesDeFondo.map(
+            (entry, i) =>
+              typeof entry.image === 'object' &&
+              entry.image && (
+                <motion.div
+                  key={entry.id ?? i}
+                  className="h-full w-full"
+                  initial="hidden"
+                  animate="visible"
+                  variants={imgVariants}
+                >
+                  <Media
+                    imgClassName="h-full w-full object-cover"
+                    videoClassName="object-cover object-center h-full w-full"
+                    priority
+                    resource={entry.image}
+                  />
+                </motion.div>
+              ),
+          )}
+        />
+      )}
 
       <div className="mx-auto container ">
         <div className="relative z-10 flex min-h-screen flex-col justify-between w-fit mr-auto px-4 sm:px-8">
@@ -71,7 +87,7 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
               variants={metaVariants}
             >
               <span className="text-xs uppercase tracking-[0.28em] text-cream">
-                {llamaTrekHeroFields?.highlight}
+                {defaultHeroFields?.highlight}
               </span>
             </motion.div>
 
@@ -81,7 +97,7 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
               animate="visible"
               variants={titleVariants}
             >
-              {llamaTrekHeroFields?.title && llamaTrekHeroFields?.title}
+              {defaultHeroFields?.title && defaultHeroFields?.title}
             </motion.h1>
 
             <motion.div
@@ -90,9 +106,9 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
               animate="visible"
               variants={subVariants}
             >
-              {llamaTrekHeroFields?.subtitleV2 && (
+              {defaultHeroFields?.subtitleV2 && (
                 <RichText
-                  data={llamaTrekHeroFields.subtitleV2}
+                  data={defaultHeroFields.subtitleV2}
                   enableProse={false}
                   enableGutter={false}
                   className="wrap-break-word font-body text-earth-accent text-base md:text-lg leading-relaxed"
@@ -106,8 +122,11 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
               animate="visible"
               variants={subVariants}
             >
-              {llamaTrekHeroFields?.emailContact?.email && (
-                <EmailButton email={llamaTrekHeroFields.emailContact.email} />
+              {defaultHeroFields?.emailContact?.email && (
+                <EmailButton email={defaultHeroFields.emailContact.email} />
+              )}
+              {defaultHeroFields?.whatsappContact?.phone && (
+                <WhatsappButton phone={defaultHeroFields.whatsappContact.phone} />
               )}
             </motion.div>
           </div>
@@ -123,10 +142,10 @@ export const LlamaTrekHero: React.FC<Page['hero']> = ({ llamaTrekHeroFields }) =
             </div>
             <div className=" flex flex-col items-end gap-1.5 text-right sm:bottom-8 sm:right-8 md:bottom-10 md:right-10">
               <span className="text-xs uppercase tracking-[0.2em] text-cream">
-                {llamaTrekHeroFields?.duration}
+                {defaultHeroFields?.duration}
               </span>
               <span className="text-xs uppercase tracking-[0.2em] text-cream">
-                {llamaTrekHeroFields?.location}
+                {defaultHeroFields?.location}
               </span>
             </div>
           </motion.div>

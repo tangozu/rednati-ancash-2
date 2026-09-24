@@ -15,20 +15,40 @@ export const LaRuta: Block = {
     {
       name: 'title',
       type: 'text',
-      defaultValue: 'Cultura viva y Trekking',
+      defaultValue: 'Arte Comunitario',
       required: true,
     },
     {
       name: 'subtitle',
       type: 'text',
-      defaultValue: 'con llamas en alta montaña',
+      defaultValue: 'Historias que transforman el barrio',
       required: true,
     },
     {
-      name: 'media',
-      type: 'upload',
-      relationTo: 'media',
+      name: 'proyectos',
+      type: 'array',
+      minRows: 1,
       required: true,
+      labels: {
+        singular: 'Proyecto mural',
+        plural: 'Proyectos murales',
+      },
+      admin: {
+        initCollapsed: true,
+      },
+      fields: [
+        {
+          name: 'nombre',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'media',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+        },
+      ],
     },
     {
       name: 'paragraph1V2',

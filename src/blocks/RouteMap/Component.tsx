@@ -33,6 +33,26 @@ const mediaToMarker = (media: Media, caption?: string | null): RouteMarker | nul
   }
 }
 
+const computeBoundsFromMarkers = (
+  markers: RouteMarker[],
+): { minLat: number; maxLat: number; minLon: number; maxLon: number } | null => {
+  if (markers.length === 0) return null
+
+  let minLat = markers[0]!.lat
+  let maxLat = markers[0]!.lat
+  let minLon = markers[0]!.lon
+  let maxLon = markers[0]!.lon
+
+  for (const marker of markers) {
+    minLat = Math.min(minLat, marker.lat)
+    maxLat = Math.max(maxLat, marker.lat)
+    minLon = Math.min(minLon, marker.lon)
+    maxLon = Math.max(maxLon, marker.lon)
+  }
+
+  return { minLat, maxLat, minLon, maxLon }
+}
+
 export const RouteMapBlock: React.FC<RouteMapBlockProps & HTMLAttributes<HTMLElement>> = async ({
   label,
   difficulty,
@@ -40,20 +60,8 @@ export const RouteMapBlock: React.FC<RouteMapBlockProps & HTMLAttributes<HTMLEle
   markers,
   autoIncludeGpsMedia,
   className,
+  id,
 }) => {
-  if (!gpxFile || typeof gpxFile !== 'object' || !gpxFile.url) return null
-
-  const gpxUrl = getMediaUrl(gpxFile.url, gpxFile.updatedAt)
-  const absoluteUrl = gpxUrl.startsWith('http') ? gpxUrl : `${getServerSideURL()}${gpxUrl}`
-
-  const res = await fetch(absoluteUrl, { next: { revalidate: 3600 } })
-  if (!res.ok) return null
-
-  const xml = await res.text()
-  const track = parseGpx(xml)
-
-  if (!track || !track.bounds) return null
-
   const routeMarkers = new Map<string, RouteMarker>()
 
   for (const entry of markers ?? []) {
@@ -78,17 +86,34 @@ export const RouteMapBlock: React.FC<RouteMapBlockProps & HTMLAttributes<HTMLEle
     }
   }
 
-  const distanceKm = track.distanceMeters / 1000
+  let track: Awaited<ReturnType<typeof parseGpx>> = null
+
+  if (gpxFile && typeof gpxFile === 'object' && gpxFile.url) {
+    const gpxUrl = getMediaUrl(gpxFile.url, gpxFile.updatedAt)
+    const absoluteUrl = gpxUrl.startsWith('http') ? gpxUrl : `${getServerSideURL()}${gpxUrl}`
+
+    const res = await fetch(absoluteUrl, { next: { revalidate: 3600 } })
+    if (res.ok) {
+      const xml = await res.text()
+      track = parseGpx(xml)
+    }
+  }
+
+  const bounds = track?.bounds ?? computeBoundsFromMarkers(Array.from(routeMarkers.values()))
+
+  if (!bounds) return null
+
+  const distanceKm = track ? track.distanceMeters / 1000 : null
   const stats = [
-    { label: 'Distancia', value: `${distanceKm.toFixed(2)} km` },
-    track.elevationGainMeters !== null
+    distanceKm !== null ? { label: 'Distancia', value: `${distanceKm.toFixed(2)} km` } : null,
+    track?.elevationGainMeters != null
       ? { label: 'Desnivel +', value: `${Math.round(track.elevationGainMeters)} m` }
       : null,
     difficulty ? { label: 'Dificultad', value: DIFFICULTY_LABELS[difficulty] ?? difficulty } : null,
   ].filter((s): s is { label: string; value: string } => s !== null)
 
   return (
-    <section className={cn(className)}>
+    <section id={id} className={cn(className)}>
       <div className="mx-auto container">
         {label && (
           <Reveal className="mb-8">
@@ -115,8 +140,8 @@ export const RouteMapBlock: React.FC<RouteMapBlockProps & HTMLAttributes<HTMLEle
 
         <Reveal className="overflow-hidden rounded-2xl border-2 border-cream">
           <LeafletMap
-            points={track.points}
-            bounds={track.bounds}
+            points={track?.points ?? []}
+            bounds={bounds}
             markers={Array.from(routeMarkers.values())}
             className="h-105 w-full sm:h-130"
           />

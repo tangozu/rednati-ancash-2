@@ -12,6 +12,7 @@ import { Gallery } from './Gallery'
 export const GaleriaBlock: React.FC<GaleriaBlockProps & HTMLAttributes<HTMLElement>> = async ({
   label,
   className,
+  id,
 }) => {
   const payload = await getPayload({ config: configPromise })
 
@@ -29,7 +30,7 @@ export const GaleriaBlock: React.FC<GaleriaBlockProps & HTMLAttributes<HTMLEleme
   if (!label && gallery.length === 0) return null
 
   return (
-    <section className={cn(className)}>
+    <section id={id} className={cn(className)}>
       <div className="mx-auto container">
         {label && (
           <Reveal className="mb-12 px-2 md:px-0">

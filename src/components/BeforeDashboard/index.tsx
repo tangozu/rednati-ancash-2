@@ -9,7 +9,7 @@ const BeforeDashboard: React.FC = () => {
   return (
     <div className={baseClass}>
       <Banner className={`${baseClass}__banner`} type="success">
-        <h4>Bienvenido al panel administrativo de LlamaTrek</h4>
+        <h4>Bienvenido al panel administrativo de Casa Cultural Shancayán</h4>
       </Banner>
       <p>
         Desde este panel podrá actualizar el contenido de su página web sin necesidad de

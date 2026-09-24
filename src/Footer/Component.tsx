@@ -1,17 +1,10 @@
-import { Facebook, Instagram, Linkedin, Mail, Phone, Twitter, Youtube } from 'lucide-react'
+import { Mail, Phone } from 'lucide-react'
 
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 import { getCachedGlobal } from '@/utilities/getGlobals'
+import { socialIcons } from '@/utilities/socialIcons'
 import type { Footer as FooterType } from '@/payload-types'
 import RichText from '@/components/RichText'
-
-const socialIcons = {
-  instagram: Instagram,
-  youtube: Youtube,
-  facebook: Facebook,
-  twitter: Twitter,
-  linkedin: Linkedin,
-} as const
 
 const labelClassName = `
   mb-2.5
@@ -24,13 +17,14 @@ const labelClassName = `
 
 export async function Footer() {
   const footerData = (await getCachedGlobal('footer', 1)()) as FooterType
+  const socialLinksData = await getCachedGlobal('social-links', 1)()
+  const socialLinks = socialLinksData?.links ?? []
 
   const {
     alliesLabel,
     contactLabel,
     contactEmail,
     contactPhone,
-    socialLinks,
     supportLabel,
     aboutTextV2,
     copyrightText,

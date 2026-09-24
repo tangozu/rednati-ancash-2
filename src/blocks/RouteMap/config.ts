@@ -29,10 +29,11 @@ export const RouteMap: Block = {
       name: 'gpxFile',
       type: 'upload',
       relationTo: 'media',
-      required: true,
-      label: 'Archivo GPX',
+      required: false,
+      label: 'Archivo GPX (opcional)',
       admin: {
-        description: 'Sube un archivo .gpx con la ruta del trek.',
+        description:
+          'Opcional. Si no se sube un archivo .gpx, el mapa mostrará solo los marcadores.',
       },
     },
     {

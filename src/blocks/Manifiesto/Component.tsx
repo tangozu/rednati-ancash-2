@@ -9,9 +9,10 @@ export const ManifiestoBlock: React.FC<ManifiestoBlockProps & HTMLAttributes<HTM
   label,
   quoteV2,
   className,
+  id,
 }) => {
   return (
-    <section className={cn(className)}>
+    <section id={id} className={cn(className)}>
       <div className="mx-auto container">
         {label && (
           <Reveal className="mb-14">

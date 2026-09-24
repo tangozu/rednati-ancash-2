@@ -2,16 +2,28 @@ import type { Field } from 'payload'
 
 import { defaultLexical } from '@/fields/defaultLexical'
 
-export const llamaTrekHeroFields: Field = {
-  name: 'llamaTrekHeroFields',
+export const defaultHeroFields: Field = {
+  name: 'defaultHeroFields',
   type: 'group',
   required: true,
   fields: [
     {
-      name: 'imagenDeFondo',
-      type: 'upload',
-      relationTo: 'media',
+      name: 'imagenesDeFondo',
+      type: 'array',
+      minRows: 1,
       required: true,
+      labels: {
+        singular: 'Imagen de fondo',
+        plural: 'Imágenes de fondo',
+      },
+      fields: [
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+        },
+      ],
     },
     {
       name: 'region',
@@ -46,6 +58,16 @@ export const llamaTrekHeroFields: Field = {
           type: 'text',
           defaultValue: '[correo pendiente]',
           required: true,
+        },
+      ],
+    },
+    {
+      name: 'whatsappContact',
+      type: 'group',
+      fields: [
+        {
+          name: 'phone',
+          type: 'text',
         },
       ],
     },

@@ -3,20 +3,20 @@ import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
 
-import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
-import { Posts } from './collections/Posts'
 import { Users } from './collections/Users'
 import { Footer } from './Footer/config'
 import { Header } from './Header/config'
+import { SocialLinks } from './SocialLinks/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
-import { imageOptimizer } from '@inoo-ch/payload-image-optimizer'
+import { imageConverterPlugin } from 'payload-img-convert'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { mcpPlugin } from '@payloadcms/plugin-mcp'
 import { s3Storage } from '@payloadcms/storage-s3'
+import { importExportPlugin } from '@payloadcms/plugin-import-export'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -83,7 +83,7 @@ export default buildConfig({
       maxPoolSize: 5
     }
   }),
-  collections: [Pages, Posts, Media, Categories, Users],
+  collections: [Pages, Media, Users],
   cors: [getServerSideURL()].filter(Boolean),
   plugins: [
     ...plugins,
@@ -92,6 +92,12 @@ export default buildConfig({
         media: {
           disableLocalStorage: true,
         },
+        imports: {
+          disableLocalStorage: true
+        },
+        exports: {
+          disableLocalStorage: true
+        }
       },
       bucket: process.env.R2_BUCKET_NAME || '',
       config: {
@@ -103,10 +109,17 @@ export default buildConfig({
         endpoint: process.env.R2_ENDPOINT || ''
       }
     }),
-    imageOptimizer({
-      collections: {
-        media: true,
-      },
+    imageConverterPlugin({
+      collections: [Media.slug],
+      defaultFormat: 'webp',
+      quality: 80,
+      maxFileSize: 50 * 1024 * 1024, // 50 MB
+      maxWidth: 2560,
+      maxHeight: 1440,
+      oversizeThreshold: 2560,
+      enableFormatSelector: true,
+      enableResizeSelector: true,
+      formats: ['webp']
     }),
     mcpPlugin({
       collections: {
@@ -116,10 +129,44 @@ export default buildConfig({
         media: {
           enabled: true,
         },
+        'payload-folders': {
+          enabled: true,
+        },
+      },
+      globals: {
+        header: {
+          enabled: true,
+        },
+        footer: {
+          enabled: true,
+        },
       },
     }),
+    importExportPlugin({
+
+      collections: [{
+        slug: "media",
+        export: {
+          format: "json",
+          disableJobsQueue: true
+        },
+        import: {
+          disableJobsQueue: true
+        }
+      }, {
+        slug: "pages",
+        export: {
+          format: "json",
+          disableJobsQueue: true
+        },
+        import: {
+          disableJobsQueue: true
+        }
+      }],
+
+    }),
   ],
-  globals: [Header, Footer],
+  globals: [Header, Footer, SocialLinks],
   secret: process.env.PAYLOAD_SECRET,
   sharp,
   typescript: {
